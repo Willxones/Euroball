@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>207595270265-9sp6s4n0lm8mfe22c2m5mo7gb8322v6i.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.207595270265-9sp6s4n0lm8mfe22c2m5mo7gb8322v6i</string>
+	<key>API_KEY</key>
+	<string>AIzaSyATw61S8PyQfue3UZx9qgxJgyaw8yPtQ24</string>
+	<key>GCM_SENDER_ID</key>
+	<string>207595270265</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.willjones.ATP-Football</string>
+	<key>PROJECT_ID</key>
+	<string>atpfootball-bd2f7</string>
+	<key>STORAGE_BUCKET</key>
+	<string>atpfootball-bd2f7.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:207595270265:ios:141bfef90899efcc5624a8</string>
+</dict>
+</plist>
