@@ -69,9 +69,9 @@ class NewsViewController: UIViewController {
     }
     
     func loadArticles(league: String, allPage: Bool){
-        articles = []
+        self.articles = []
         if allPage == false {
-            db.collection("articles").whereField("category", isEqualTo: league).getDocuments { querySnapshot, error in
+            db.collection("articles").whereField("category", isEqualTo: league).order(by: "articleOrderDate", descending: true).getDocuments { querySnapshot, error in
                 if let e = error {
                     print("Issue retrieving data from Firestore. \(e)")
                 } else {
@@ -83,9 +83,10 @@ class NewsViewController: UIViewController {
                                let articleText = data["content"] as? String,
                                let articleSource = data["sourceImage"] as? String,
                                let articleDate = data["date"] as? String,
+                               let articleOrderDate = data["articleOrderDate"] as? Double,
                                let articleCategory = ["category"].joined() as String?,
                                let articleImage = data["headerImage"] as? String {
-                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: articleDate, articleCategory: articleCategory)
+                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: articleDate, articleOrderDate: articleOrderDate, articleCategory: articleCategory)
                                 self.articles.append(newArticle)
                                 DispatchQueue.main.async {
                                     self.newsTableView.reloadData()
@@ -98,8 +99,8 @@ class NewsViewController: UIViewController {
                 }
             }
         } else {
-            articles = []
-            db.collection("articles").getDocuments { querySnapshot, error in
+            self.articles = []
+            db.collection("articles").order(by: "articleOrderDate", descending: true).getDocuments { querySnapshot, error in
                 if let e = error {
                     print("Issue retrieving data from Firestore. \(e)")
                 } else {
@@ -111,9 +112,10 @@ class NewsViewController: UIViewController {
                                let articleText = data["content"] as? String,
                                let articleSource = data["sourceImage"] as? String,
                                let articleDate = data["date"] as? String,
+                               let articleOrderDate = data["articleOrderDate"] as? Double,
                                let articleCategory = ["category"].joined() as String?,
                                let articleImage = data["headerImage"] as? String {
-                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: articleDate, articleCategory: articleCategory)
+                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: articleDate, articleOrderDate: articleOrderDate, articleCategory: articleCategory)
                                 self.articles.append(newArticle)
                                 DispatchQueue.main.async {
                                     self.newsTableView.reloadData()

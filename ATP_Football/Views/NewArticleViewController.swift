@@ -17,23 +17,27 @@ class NewArticleViewController: UIViewController {
     
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var categoryPopUpButton: UIButton!
-    @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
     
     @IBOutlet weak var sourceImageTextField: UITextField!
     @IBOutlet weak var headerImageTextField: UITextField!
     @IBAction func postPressed(_ sender: UIButton) {
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yy"
         if let title = titleTextField.text,
         let headerImage = headerImageTextField.text,
         let sourceImage = sourceImageTextField.text,
-        let date = dateTextField.text,
+        let date = dateFormatter.string(from: currentDate) as String?,
+        let articleOrderDate = Date().timeIntervalSince1970 as Double?,
         let content = contentTextView.text {
             db.collection("articles").addDocument(data: [
-                "title": title, "headerImage": headerImage, "sourceImage": sourceImage, "date": date, "content": content, "category": category]) { (error) in
+                "title": title, "headerImage": headerImage, "sourceImage": sourceImage, "date": date, "articleOrderDate": articleOrderDate, "content": content, "category": category]) { (error) in
                     if let e = error {
                         print("There was an issue saving data to firestore, \(e)")
                     } else {
                         print("Successfully saved data")
+                        self.dismiss(animated: true)
                     }
                 }
         }
