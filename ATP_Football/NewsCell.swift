@@ -16,7 +16,7 @@ class NewsCell: UITableViewCell {
     @IBOutlet weak var articleTitleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        stackView.layer.cornerRadius = stackView.frame.size.height / 10
+        stackView.layer.cornerRadius = stackView.frame.size.height / 20
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

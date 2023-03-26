@@ -24,7 +24,7 @@ class NewArticleViewController: UIViewController {
     @IBAction func postPressed(_ sender: UIButton) {
         let currentDate = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yy"
+        dateFormatter.dateFormat = "MMM d"
         if let title = titleTextField.text,
         let headerImage = headerImageTextField.text,
         let sourceImage = sourceImageTextField.text,
