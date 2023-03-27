@@ -211,8 +211,22 @@
                     <view key="view" contentMode="scaleToFill" id="K9m-AW-M4D">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlg-Yd-616">
+                                <rect key="frame" x="177.66666666666666" y="448.66666666666669" width="75" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <segue destination="hvQ-Qe-fCp" kind="show" id="Nf6-XA-hyQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="zbe-td-SId"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nlg-Yd-616" firstAttribute="centerY" secondItem="K9m-AW-M4D" secondAttribute="centerY" id="MJi-YW-KqU"/>
+                            <constraint firstItem="nlg-Yd-616" firstAttribute="centerX" secondItem="K9m-AW-M4D" secondAttribute="centerX" id="Uzp-Sl-X8m"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Games" image="football.circle" catalog="system" selectedImage="football.circle.fill" id="huL-Uw-KhF"/>
                 </viewController>
@@ -407,6 +421,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tQ2-Xo-pVa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2169.7674418604652" y="-1648.0686695278971"/>
+        </scene>
+        <!--Article View Controller-->
+        <scene sceneID="O2H-a2-roJ">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="hvQ-Qe-fCp" customClass="ArticleViewController" customModule="ATP_Football" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Yp-Z5-0zu">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TSQ-W1-QI2">
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="898"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tyl-75-ebY">
+                                        <rect key="frame" x="0.0" y="-59" width="430" height="262"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FootballImage" translatesAutoresizingMaskIntoConstraints="NO" id="v1i-Bb-8gh">
+                                                <rect key="frame" x="0.0" y="0.0" width="430" height="262"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <view contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7AI-UK-IQW" customClass="GradientView" customModule="ATP_Football" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="430" height="262"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </view>
+                                        </subviews>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v7f-CY-imF">
+                                        <rect key="frame" x="0.0" y="236" width="430" height="95"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lorem ipsum " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sC6-eP-GMj" userLabel="Lorem ipsum">
+                                        <rect key="frame" x="0.0" y="353" width="430" height="486"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="MLk-kL-jjM"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="uct-FR-Dv9"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Hyr-af-KeK"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="z6o-Z8-Aln"/>
+                    <connections>
+                        <outlet property="GradientView" destination="7AI-UK-IQW" id="kSR-Md-mbr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="byi-IR-gt5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3092.0930232558139" y="-572.31759656652366"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="apM-1J-3Ia">
@@ -770,6 +839,7 @@
         <segue reference="sBS-V4-9kJ"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="FootballImage" width="496" height="333"/>
         <image name="PurpleBackground" width="1000" height="1000"/>
         <image name="WhiteLogo" width="835" height="347"/>
         <image name="bag" catalog="system" width="128" height="128"/>

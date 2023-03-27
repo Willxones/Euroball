@@ -10,6 +10,8 @@
 		430B283029BB4A08009DDF73 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 430B282F29BB4A08009DDF73 /* IQKeyboardManagerSwift */; };
 		430B283229BB4A51009DDF73 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B283129BB4A51009DDF73 /* LoginViewController.swift */; };
 		430B283429BB4BA7009DDF73 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B283329BB4BA7009DDF73 /* RegisterViewController.swift */; };
+		432AA20129D0CB4200E22949 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432AA20029D0CB4200E22949 /* GradientView.swift */; };
+		432AA20329D0CBB400E22949 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432AA20229D0CBB300E22949 /* ArticleViewController.swift */; };
 		438CBEB829C14385008F742E /* NewArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CBEB729C14385008F742E /* NewArticleViewController.swift */; };
 		43AFB33329BF69B20016F657 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43AFB33229BF69B20016F657 /* GoogleService-Info.plist */; };
 		43AFB33629BF6A470016F657 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 43AFB33529BF6A470016F657 /* FirebaseAuth */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		430B283129BB4A51009DDF73 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		430B283329BB4BA7009DDF73 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		432AA20029D0CB4200E22949 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		432AA20229D0CBB300E22949 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		438CBEB729C14385008F742E /* NewArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewArticleViewController.swift; sourceTree = "<group>"; };
 		43AFB33229BF69B20016F657 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		43AFB33929BF730F0016F657 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 				43AFB33929BF730F0016F657 /* AccountViewController.swift */,
 				43AFB33F29BF7C560016F657 /* NewsViewController.swift */,
 				438CBEB729C14385008F742E /* NewArticleViewController.swift */,
+				432AA20229D0CBB300E22949 /* ArticleViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 				43E7802929BA934700D3ADD7 /* Info.plist */,
 				43AFB33229BF69B20016F657 /* GoogleService-Info.plist */,
 				43AFB33D29BF797E0016F657 /* NewsArticle.swift */,
+				432AA20029D0CB4200E22949 /* GradientView.swift */,
 			);
 			path = ATP_Football;
 			sourceTree = "<group>";
@@ -191,7 +197,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				430B283229BB4A51009DDF73 /* LoginViewController.swift in Sources */,
+				432AA20329D0CBB400E22949 /* ArticleViewController.swift in Sources */,
 				430B283429BB4BA7009DDF73 /* RegisterViewController.swift in Sources */,
+				432AA20129D0CB4200E22949 /* GradientView.swift in Sources */,
 				43AFB33A29BF730F0016F657 /* AccountViewController.swift in Sources */,
 				43E7802029BA934600D3ADD7 /* ViewController.swift in Sources */,
 				43E7801C29BA934600D3ADD7 /* AppDelegate.swift in Sources */,
