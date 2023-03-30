@@ -19,12 +19,15 @@
 		43AFB33A29BF730F0016F657 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AFB33929BF730F0016F657 /* AccountViewController.swift */; };
 		43AFB33E29BF797E0016F657 /* NewsArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AFB33D29BF797E0016F657 /* NewsArticle.swift */; };
 		43AFB34029BF7C560016F657 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AFB33F29BF7C560016F657 /* NewsViewController.swift */; };
+		43E6465F29D4C31E0089408B /* welcomeVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 43E6465D29D4C2130089408B /* welcomeVideo.mp4 */; };
+		43E6466129D4D0530089408B /* VerticleTopAlignLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E6466029D4D0530089408B /* VerticleTopAlignLabel.swift */; };
 		43E7801C29BA934600D3ADD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E7801B29BA934600D3ADD7 /* AppDelegate.swift */; };
 		43E7801E29BA934600D3ADD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E7801D29BA934600D3ADD7 /* SceneDelegate.swift */; };
 		43E7802029BA934600D3ADD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E7801F29BA934600D3ADD7 /* ViewController.swift */; };
 		43E7802329BA934600D3ADD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43E7802129BA934600D3ADD7 /* Main.storyboard */; };
 		43E7802529BA934700D3ADD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43E7802429BA934700D3ADD7 /* Assets.xcassets */; };
 		43E7802829BA934700D3ADD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43E7802629BA934700D3ADD7 /* LaunchScreen.storyboard */; };
+		43ECCAE929D64192008F062F /* SelectedArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ECCAE829D64192008F062F /* SelectedArticle.swift */; };
 		43ED592729BE929700CEDD06 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED592529BE929700CEDD06 /* NewsCell.swift */; };
 		43ED592829BE929700CEDD06 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43ED592629BE929700CEDD06 /* NewsCell.xib */; };
 /* End PBXBuildFile section */
@@ -39,6 +42,8 @@
 		43AFB33929BF730F0016F657 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		43AFB33D29BF797E0016F657 /* NewsArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticle.swift; sourceTree = "<group>"; };
 		43AFB33F29BF7C560016F657 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		43E6465D29D4C2130089408B /* welcomeVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = welcomeVideo.mp4; sourceTree = "<group>"; };
+		43E6466029D4D0530089408B /* VerticleTopAlignLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticleTopAlignLabel.swift; sourceTree = "<group>"; };
 		43E7801829BA934600D3ADD7 /* ATP_Football.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATP_Football.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43E7801B29BA934600D3ADD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43E7801D29BA934600D3ADD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +52,7 @@
 		43E7802429BA934700D3ADD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43E7802729BA934700D3ADD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43E7802929BA934700D3ADD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43ECCAE829D64192008F062F /* SelectedArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedArticle.swift; sourceTree = "<group>"; };
 		43ED592529BE929700CEDD06 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		43ED592629BE929700CEDD06 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +85,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		43E6465E29D4C2A20089408B /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				43E6465D29D4C2130089408B /* welcomeVideo.mp4 */,
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
 		43E7800F29BA934600D3ADD7 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +112,7 @@
 		43E7801A29BA934600D3ADD7 /* ATP_Football */ = {
 			isa = PBXGroup;
 			children = (
+				43E6465E29D4C2A20089408B /* Videos */,
 				43E7801B29BA934600D3ADD7 /* AppDelegate.swift */,
 				43E7801D29BA934600D3ADD7 /* SceneDelegate.swift */,
 				430B283529BB4BC4009DDF73 /* Views */,
@@ -110,6 +125,8 @@
 				43AFB33229BF69B20016F657 /* GoogleService-Info.plist */,
 				43AFB33D29BF797E0016F657 /* NewsArticle.swift */,
 				432AA20029D0CB4200E22949 /* GradientView.swift */,
+				43E6466029D4D0530089408B /* VerticleTopAlignLabel.swift */,
+				43ECCAE829D64192008F062F /* SelectedArticle.swift */,
 			);
 			path = ATP_Football;
 			sourceTree = "<group>";
@@ -181,6 +198,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43E6465F29D4C31E0089408B /* welcomeVideo.mp4 in Resources */,
 				43E7802829BA934700D3ADD7 /* LaunchScreen.storyboard in Resources */,
 				43E7802529BA934700D3ADD7 /* Assets.xcassets in Resources */,
 				43AFB33329BF69B20016F657 /* GoogleService-Info.plist in Resources */,
@@ -197,9 +215,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				430B283229BB4A51009DDF73 /* LoginViewController.swift in Sources */,
+				43ECCAE929D64192008F062F /* SelectedArticle.swift in Sources */,
 				432AA20329D0CBB400E22949 /* ArticleViewController.swift in Sources */,
 				430B283429BB4BA7009DDF73 /* RegisterViewController.swift in Sources */,
 				432AA20129D0CB4200E22949 /* GradientView.swift in Sources */,
+				43E6466129D4D0530089408B /* VerticleTopAlignLabel.swift in Sources */,
 				43AFB33A29BF730F0016F657 /* AccountViewController.swift in Sources */,
 				43E7802029BA934600D3ADD7 /* ViewController.swift in Sources */,
 				43E7801C29BA934600D3ADD7 /* AppDelegate.swift in Sources */,
@@ -357,7 +377,7 @@
 				DEVELOPMENT_TEAM = PMJPWG4MX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ATP_Football/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ATP;
+				INFOPLIST_KEY_CFBundleDisplayName = Euroball;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -391,7 +411,7 @@
 				DEVELOPMENT_TEAM = PMJPWG4MX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ATP_Football/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ATP;
+				INFOPLIST_KEY_CFBundleDisplayName = Euroball;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

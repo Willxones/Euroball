@@ -10,11 +10,19 @@ import UIKit
 
 class ArticleViewController: UIViewController {
     
+    @IBOutlet weak var articleContentLabel: VerticalTopAlignLabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var sourceImageView: UIImageView!
+    @IBOutlet weak var articleTitleLabel: UILabel!
+    @IBOutlet weak var articleImageView: UIImageView!
+    @IBOutlet weak var StackView: UIStackView!
+    @IBOutlet weak var ScrollView: UIScrollView!
     @IBOutlet weak var GradientView: GradientView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         GradientView.configureGradientLayer()
+        ScrollView.contentInsetAdjustmentBehavior = .never
     }
     
 }
