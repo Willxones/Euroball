@@ -86,8 +86,8 @@ class NewsViewController: UIViewController, UITableViewDelegate {
                                let articleDate = data["date"] as? String,
                                let articleOrderDate = data["articleOrderDate"] as? Double,
                                let articleCategory = ["category"].joined() as String?,
-                               let articleImage = data["headerImage"] as? String {
-                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: articleDate, articleOrderDate: articleOrderDate, articleCategory: articleCategory)
+                               let articleImage = data["headerImage"] as? String, let articleID = doc.documentID as String? {
+                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: articleDate, articleOrderDate: articleOrderDate, articleCategory: articleCategory, articleID: articleID)
                                 self.articles.append(newArticle)
                                 DispatchQueue.main.async {
                                     self.newsTableView.reloadData()
@@ -115,8 +115,8 @@ class NewsViewController: UIViewController, UITableViewDelegate {
                                let articleDate = data["date"] as? String,
                                let articleOrderDate = data["articleOrderDate"] as? Double,
                                let articleCategory = ["category"].joined() as String?,
-                               let articleImage = data["headerImage"] as? String {
-                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: articleDate, articleOrderDate: articleOrderDate, articleCategory: articleCategory)
+                               let articleImage = data["headerImage"] as? String, let articleID = doc.documentID as String? {
+                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: articleDate, articleOrderDate: articleOrderDate, articleCategory: articleCategory, articleID: articleID)
                                 self.articles.append(newArticle)
                                 DispatchQueue.main.async {
                                     self.newsTableView.reloadData()
@@ -147,7 +147,8 @@ extension NewsViewController: UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        SelectedArticle.selectedArticle = articles[indexPath.row].articleID
+        print(SelectedArticle.selectedArticle)
         let vc = storyboard?.instantiateViewController(withIdentifier: "articleViewController") as! ArticleViewController
         navigationController?.show(vc, sender: self)
     }

@@ -17,8 +17,9 @@ class NewsArticle {
     let articleDate: String
     let articleOrderDate: Double
     let articleCategory: String
+    let articleID: String
     
-    init(articleTitle: String, articleText: String, articleImage: URL, articleSource: URL, articleDate: String, articleOrderDate: Double, articleCategory: String) {
+    init(articleTitle: String, articleText: String, articleImage: URL, articleSource: URL, articleDate: String, articleOrderDate: Double, articleCategory: String, articleID: String) {
         self.articleTitle = articleTitle
         self.articleText = articleText
         self.articleImage = articleImage
@@ -26,5 +27,6 @@ class NewsArticle {
         self.articleDate = articleDate
         self.articleOrderDate = articleOrderDate
         self.articleCategory = articleCategory
+        self.articleID = articleID
     }
 }

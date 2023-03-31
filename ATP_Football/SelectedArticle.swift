@@ -7,6 +7,6 @@
 
 import Foundation
 
-class SelectedArticle: ObservableObject {
-    @Published var selectedArticle = ""
+struct SelectedArticle {
+    static var selectedArticle: String = ""
 }
