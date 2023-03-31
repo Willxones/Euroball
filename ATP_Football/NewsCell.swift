@@ -15,9 +15,6 @@ class NewsCell: UITableViewCell {
     @IBOutlet weak var articleDateLabel: UILabel!
     @IBOutlet weak var articleTitleLabel: UILabel!
     
-    @IBAction func articleButtonPressed(_ sender: UIButton) {
-        
-    }
     override func awakeFromNib() {
         super.awakeFromNib()
         stackView.layer.cornerRadius = stackView.frame.size.height / 20

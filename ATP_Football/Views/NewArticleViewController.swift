@@ -45,6 +45,7 @@ class NewArticleViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        self.tabBarController?.tabBar.isHidden = true
         super.viewDidLoad()
         setupPopUpButton()
     }

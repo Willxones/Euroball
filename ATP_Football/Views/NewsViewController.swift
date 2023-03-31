@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Firebase
 
-class NewsViewController: UIViewController {
+class NewsViewController: UIViewController, UITableViewDelegate {
     let db = Firestore.firestore()
     
     @IBOutlet weak var LeagueBar: UIStackView!
@@ -23,6 +23,7 @@ class NewsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        newsTableView.delegate = self
         newsTableView.dataSource = self
         newsTableView.register(UINib.init(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "cell")
         loadArticles(league: "BAFA", allPage: true)
@@ -144,6 +145,11 @@ extension NewsViewController: UITableViewDataSource {
         cell.articleImageView.load(url: articles[indexPath.row].articleImage)
         cell.articleSourceImageView.load(url: articles[indexPath.row].articleSource)
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "articleViewController") as! ArticleViewController
+        navigationController?.show(vc, sender: self)
     }
     
     

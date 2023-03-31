@@ -20,6 +20,7 @@ class ArticleViewController: UIViewController {
     @IBOutlet weak var GradientView: GradientView!
     
     override func viewDidLoad() {
+        self.tabBarController?.tabBar.isHidden = true
         super.viewDidLoad()
         GradientView.configureGradientLayer()
         ScrollView.contentInsetAdjustmentBehavior = .never
