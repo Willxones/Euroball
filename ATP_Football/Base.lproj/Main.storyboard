@@ -197,22 +197,8 @@
                     <view key="view" contentMode="scaleToFill" id="K9m-AW-M4D">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlg-Yd-616">
-                                <rect key="frame" x="177.66666666666666" y="448.66666666666669" width="75" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <segue destination="hvQ-Qe-fCp" kind="show" id="Nf6-XA-hyQ"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="zbe-td-SId"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="nlg-Yd-616" firstAttribute="centerY" secondItem="K9m-AW-M4D" secondAttribute="centerY" id="MJi-YW-KqU"/>
-                            <constraint firstItem="nlg-Yd-616" firstAttribute="centerX" secondItem="K9m-AW-M4D" secondAttribute="centerX" id="Uzp-Sl-X8m"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Games" image="football.circle" catalog="system" selectedImage="football.circle.fill" id="huL-Uw-KhF"/>
                 </viewController>
@@ -260,8 +246,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yb-o6-DZd">
-                                <rect key="frame" x="152" y="430" width="126" height="73"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yb-o6-DZd">
+                                <rect key="frame" x="152" y="407" width="126" height="34.333333333333314"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Logout"/>
@@ -269,8 +255,8 @@
                                     <action selector="logoutButtonPressed:" destination="N4x-LM-sA9" eventType="touchUpInside" id="peA-dw-Hy6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QI5-fv-3yf">
-                                <rect key="frame" x="69" y="336" width="293" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QI5-fv-3yf">
+                                <rect key="frame" x="69" y="336" width="293" height="20.333333333333314"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -280,14 +266,12 @@
                         <viewLayoutGuide key="safeArea" id="v5R-Jw-dfB"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="QI5-fv-3yf" firstAttribute="centerX" secondItem="cmC-zD-5Dj" secondAttribute="centerX" id="1si-8x-ad9"/>
-                            <constraint firstItem="1yb-o6-DZd" firstAttribute="top" secondItem="QI5-fv-3yf" secondAttribute="bottom" constant="51" id="44b-qE-cOE"/>
-                            <constraint firstItem="1yb-o6-DZd" firstAttribute="leading" secondItem="v5R-Jw-dfB" secondAttribute="leading" constant="152" id="6jm-YL-5Ag"/>
-                            <constraint firstItem="QI5-fv-3yf" firstAttribute="top" secondItem="v5R-Jw-dfB" secondAttribute="top" constant="277" id="Kva-kI-Haq"/>
-                            <constraint firstItem="QI5-fv-3yf" firstAttribute="leading" secondItem="v5R-Jw-dfB" secondAttribute="leading" constant="69" id="aQb-z8-ln8"/>
-                            <constraint firstItem="v5R-Jw-dfB" firstAttribute="bottom" secondItem="1yb-o6-DZd" secondAttribute="bottom" constant="346" id="hqG-dm-FJF"/>
-                            <constraint firstItem="1yb-o6-DZd" firstAttribute="centerY" secondItem="cmC-zD-5Dj" secondAttribute="centerY" id="mtd-Ow-Lxp"/>
-                            <constraint firstItem="QI5-fv-3yf" firstAttribute="centerX" secondItem="1yb-o6-DZd" secondAttribute="centerX" id="waM-mg-1VY"/>
+                            <constraint firstItem="v5R-Jw-dfB" firstAttribute="trailing" secondItem="1yb-o6-DZd" secondAttribute="trailing" constant="152" id="Dkp-MT-ifX"/>
+                            <constraint firstItem="QI5-fv-3yf" firstAttribute="leading" secondItem="v5R-Jw-dfB" secondAttribute="leading" constant="69" id="EDc-8g-Afm"/>
+                            <constraint firstItem="v5R-Jw-dfB" firstAttribute="trailing" secondItem="QI5-fv-3yf" secondAttribute="trailing" constant="68" id="OUD-id-Ken"/>
+                            <constraint firstItem="1yb-o6-DZd" firstAttribute="top" secondItem="QI5-fv-3yf" secondAttribute="bottom" constant="50.670000000000002" id="ZXn-nm-Qv0"/>
+                            <constraint firstItem="QI5-fv-3yf" firstAttribute="top" secondItem="v5R-Jw-dfB" secondAttribute="top" constant="277" id="inT-Gp-9pa"/>
+                            <constraint firstItem="1yb-o6-DZd" firstAttribute="leading" secondItem="v5R-Jw-dfB" secondAttribute="leading" constant="152" id="t2a-Pj-519"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="person.circle" catalog="system" selectedImage="person.circle.fill" id="obC-mZ-BFn"/>
@@ -523,6 +507,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="uct-FR-Dv9"/>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="t3F-JE-RHL"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TSQ-W1-QI2" firstAttribute="trailing" secondItem="9Yp-Z5-0zu" secondAttribute="trailing" id="6i7-rN-hCG"/>
@@ -545,7 +530,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="byi-IR-gt5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3092.0930232558139" y="-572.31759656652366"/>
+            <point key="canvasLocation" x="3014" y="-1373"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="apM-1J-3Ia">

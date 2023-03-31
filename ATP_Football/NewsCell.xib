@@ -70,11 +70,23 @@
                             <constraint firstAttribute="trailing" secondItem="MgF-DQ-dZI" secondAttribute="trailing" constant="15" id="pNJ-1N-M6O"/>
                         </constraints>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOe-cb-KMY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="254"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain"/>
+                        <connections>
+                            <action selector="articleButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qNl-DU-VYH"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="dYD-Bq-8tR" secondAttribute="trailing" id="9qC-FU-f0i"/>
+                    <constraint firstItem="rOe-cb-KMY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="H3m-zj-VST"/>
+                    <constraint firstAttribute="trailing" secondItem="rOe-cb-KMY" secondAttribute="trailing" id="JSf-cb-DA6"/>
+                    <constraint firstAttribute="bottom" secondItem="rOe-cb-KMY" secondAttribute="bottom" constant="17" id="KEc-fd-FIk"/>
                     <constraint firstItem="dYD-Bq-8tR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KKl-OT-9LW"/>
+                    <constraint firstItem="rOe-cb-KMY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PM7-1d-e7v"/>
                     <constraint firstAttribute="bottom" secondItem="dYD-Bq-8tR" secondAttribute="bottom" constant="17" id="Poa-Wv-3Vg"/>
                     <constraint firstItem="dYD-Bq-8tR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YIE-Zu-nZc"/>
                 </constraints>
