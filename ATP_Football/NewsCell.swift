@@ -9,7 +9,7 @@ import UIKit
 
 class NewsCell: UITableViewCell {
 
-    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var articleSourceImageView: UIImageView!
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var articleDateLabel: UILabel!
@@ -17,7 +17,10 @@ class NewsCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        stackView.layer.cornerRadius = stackView.frame.size.height / 20
+        articleImageView.layer.cornerRadius = 20
+        titleView.layer.cornerRadius = 20
+        titleView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,4 +29,12 @@ class NewsCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+extension UIView {
+    func cornerRadius (usingCorners corners: UIRectCorner, cornerRadii: CGSize) {
+        let path = UIBezierPath( roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: cornerRadii)
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        self.layer.mask = maskLayer
+    }
 }
