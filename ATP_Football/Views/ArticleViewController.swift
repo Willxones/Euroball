@@ -21,6 +21,9 @@ class ArticleViewController: UIViewController {
     @IBOutlet weak var ScrollView: UIScrollView!
     @IBOutlet weak var GradientView: GradientView!
     
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
     func loadArticle() {
         db.collection("articles").document(SelectedArticle.selectedArticle).getDocument { (document, error) in
             if let document = document, document.exists,

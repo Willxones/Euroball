@@ -37,7 +37,7 @@ class NewArticleViewController: UIViewController {
                         print("There was an issue saving data to firestore, \(e)")
                     } else {
                         print("Successfully saved data")
-                        self.dismiss(animated: true)
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
         }
@@ -51,7 +51,7 @@ class NewArticleViewController: UIViewController {
     }
     
     @IBAction func backButton(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     func setupPopUpButton() {
             let leagues = ["BAFA", "BUCS", "ELF", "Other"]

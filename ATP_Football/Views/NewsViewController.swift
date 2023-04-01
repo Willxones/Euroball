@@ -22,6 +22,7 @@ class NewsViewController: UIViewController, UITableViewDelegate {
     var articles: [NewsArticle] = []
 
     override func viewDidLoad() {
+        self.tabBarController?.tabBar.isHidden = false
         super.viewDidLoad()
         newsTableView.delegate = self
         newsTableView.dataSource = self
