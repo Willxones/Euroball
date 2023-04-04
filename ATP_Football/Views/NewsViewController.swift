@@ -22,12 +22,14 @@ class NewsViewController: UIViewController, UITableViewDelegate {
     var articles: [NewsArticle] = []
 
     override func viewDidLoad() {
-        self.tabBarController?.tabBar.isHidden = false
         super.viewDidLoad()
         newsTableView.delegate = self
         newsTableView.dataSource = self
         newsTableView.register(UINib.init(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "cell")
         loadArticles(league: "BAFA", allPage: true)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @IBAction func AllNewsPressed(_ sender: UIButton) {
