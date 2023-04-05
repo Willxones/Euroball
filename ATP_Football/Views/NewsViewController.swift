@@ -90,7 +90,7 @@ class NewsViewController: UIViewController, UITableViewDelegate {
                                let articleOrderDate = data["articleOrderDate"] as? Double,
                                let articleCategory = ["category"].joined() as String?,
                                let articleImage = data["headerImage"] as? String, let articleID = doc.documentID as String? {
-                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: articleDate, articleOrderDate: articleOrderDate, articleCategory: articleCategory, articleID: articleID)
+                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: self.dateFormatter(datePosted: articleDate), articleOrderDate: articleOrderDate, articleCategory: articleCategory, articleID: articleID)
                                 self.articles.append(newArticle)
                                 DispatchQueue.main.async {
                                     self.newsTableView.reloadData()
@@ -119,7 +119,7 @@ class NewsViewController: UIViewController, UITableViewDelegate {
                                let articleOrderDate = data["articleOrderDate"] as? Double,
                                let articleCategory = ["category"].joined() as String?,
                                let articleImage = data["headerImage"] as? String, let articleID = doc.documentID as String? {
-                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: articleDate, articleOrderDate: articleOrderDate, articleCategory: articleCategory, articleID: articleID)
+                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: self.dateFormatter(datePosted: articleDate), articleOrderDate: articleOrderDate, articleCategory: articleCategory, articleID: articleID)
                                 self.articles.append(newArticle)
                                 DispatchQueue.main.async {
                                     self.newsTableView.reloadData()
@@ -151,9 +151,47 @@ extension NewsViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         SelectedArticle.selectedArticle = articles[indexPath.row].articleID
-        print(SelectedArticle.selectedArticle)
         let vc = storyboard?.instantiateViewController(withIdentifier: "articleViewController") as! ArticleViewController
         navigationController?.show(vc, sender: self)
+    }
+    
+    func dateFormatter(datePosted: String) -> String {
+        let fullDateFormatter = DateFormatter()
+        let shortDateFormatter = DateFormatter()
+        fullDateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
+        shortDateFormatter.dateFormat = "MMM d"
+        let shortDate = processDate(string: datePosted)
+        let postedDate = fullDateFormatter.date(from: datePosted)
+        let currentDate = Date().getFormattedDate(format: "MM-dd-yyyy HH:mm:ss")
+        let formattedDate = fullDateFormatter.date(from: currentDate)
+        let timeInterval = formattedDate!.timeIntervalSince(postedDate!)
+        let minutesBetweenDates = Int(timeInterval / 60)
+        let hoursBetweenDates = Int(timeInterval / (60 * 60))
+        let daysBetweenDates = Int(timeInterval / (60 * 60 * 24))
+        if daysBetweenDates > 6 {
+            return shortDate!
+        } else if daysBetweenDates > 0 {
+            return "\(daysBetweenDates)d ago"
+        } else {
+            if hoursBetweenDates > 0 {
+                return "\(hoursBetweenDates)h ago"
+            } else {
+                if minutesBetweenDates > 0 {
+                    return "\(minutesBetweenDates)m ago"
+                } else {
+                    return "Just Now"
+                }
+            }
+        }
+        func processDate(string: String, fromFormat: String = "MM-dd-yyyy HH:mm:ss", toFormat: String = "MMM d") -> String? {
+            let formatter = DateFormatter()
+
+            formatter.dateFormat = fromFormat
+            guard let date = formatter.date(from: string) else { return nil }
+
+            formatter.dateFormat = toFormat
+            return formatter.string(from: date)
+        }
     }
     
     
@@ -172,5 +210,13 @@ extension UIImageView {
                 print("error")
             }
         }
+    }
+}
+
+extension Date {
+   func getFormattedDate(format: String) -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = format
+        return dateformat.string(from: self)
     }
 }

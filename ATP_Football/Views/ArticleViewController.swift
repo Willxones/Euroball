@@ -35,7 +35,7 @@ class ArticleViewController: UIViewController {
                 self.articleTitleLabel.text = articleTitle
                 self.articleImageView.load(url: URL(string: articleImage)!)
                 self.sourceImageView.load(url: URL(string: articleSource)!)
-                self.dateLabel.text = articleDate
+                self.dateLabel.text = self.dateFormatter(datePosted: articleDate)
                 self.articleContentLabel.text = content
             }
         }
@@ -47,6 +47,45 @@ class ArticleViewController: UIViewController {
         loadArticle()
         GradientView.configureGradientLayer()
         ScrollView.contentInsetAdjustmentBehavior = .never
+    }
+    
+    func dateFormatter(datePosted: String) -> String {
+        let fullDateFormatter = DateFormatter()
+        let shortDateFormatter = DateFormatter()
+        fullDateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
+        shortDateFormatter.dateFormat = "MMM d"
+        let shortDate = processDate(string: datePosted)
+        let postedDate = fullDateFormatter.date(from: datePosted)
+        let currentDate = Date().getFormattedDate(format: "MM-dd-yyyy HH:mm:ss")
+        let formattedDate = fullDateFormatter.date(from: currentDate)
+        let timeInterval = formattedDate!.timeIntervalSince(postedDate!)
+        let minutesBetweenDates = Int(timeInterval / 60)
+        let hoursBetweenDates = Int(timeInterval / (60 * 60))
+        let daysBetweenDates = Int(timeInterval / (60 * 60 * 24))
+        if daysBetweenDates > 6 {
+            return shortDate!
+        } else if daysBetweenDates > 0 {
+            return "\(daysBetweenDates)d ago"
+        } else {
+            if hoursBetweenDates > 0 {
+                return "\(hoursBetweenDates)h ago"
+            } else {
+                if minutesBetweenDates > 0 {
+                    return "\(minutesBetweenDates)m ago"
+                } else {
+                    return "Just Now"
+                }
+            }
+        }
+        func processDate(string: String, fromFormat: String = "MM-dd-yyyy HH:mm:ss", toFormat: String = "MMM d") -> String? {
+            let formatter = DateFormatter()
+
+            formatter.dateFormat = fromFormat
+            guard let date = formatter.date(from: string) else { return nil }
+
+            formatter.dateFormat = toFormat
+            return formatter.string(from: date)
+        }
     }
     
 }
