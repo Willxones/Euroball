@@ -15,6 +15,7 @@ class NewArticleViewController: UIViewController {
     
     var category = "BAFA"
     
+    @IBOutlet weak var postButton: UIButton!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var categoryPopUpButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
@@ -48,11 +49,34 @@ class NewArticleViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         super.viewDidLoad()
         setupPopUpButton()
+        setupAllFields(fields: [titleTextField, sourceImageTextField, headerImageTextField])
     }
     
     @IBAction func backButton(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
+    
+    func setupAllFields(fields: [UITextField]) {
+        setUpTextFields(fields: fields)
+        let whiteColor = CGColor(red: 255, green: 255, blue: 255, alpha: 1)
+        contentTextView.layer.borderWidth = 1.0
+        contentTextView.layer.cornerRadius = 10.0
+        contentTextView.layer.borderColor = whiteColor
+        categoryPopUpButton.layer.borderWidth = 1.0
+        categoryPopUpButton.layer.cornerRadius = 10.0
+        categoryPopUpButton.layer.borderColor = whiteColor
+        postButton.layer.cornerRadius = 10
+        
+    }
+    
+    func setUpTextFields(fields: [UITextField]) {
+        for myTextField in fields {
+            myTextField.layer.borderWidth = 1.0
+            myTextField.layer.cornerRadius = 10.0
+            myTextField.layer.borderColor = CGColor(red: 255, green: 255, blue: 255, alpha: 1)
+        }
+    }
+    
     func setupPopUpButton() {
             let leagues = ["BAFA", "BUCS", "ELF", "Other"]
             let optionClosure = {(action: UIAction) in
