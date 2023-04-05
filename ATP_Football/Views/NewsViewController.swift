@@ -34,6 +34,7 @@ class NewsViewController: UIViewController, UITableViewDelegate {
     
     @IBAction func AllNewsPressed(_ sender: UIButton) {
         if AllNewsButton.isSelected == false {
+            reloadArticles()
             loadArticles(league: "BAFA", allPage: true)
             BAFAButton.isSelected = false
             BUCSButton.isSelected = false
@@ -44,6 +45,7 @@ class NewsViewController: UIViewController, UITableViewDelegate {
     
     @IBAction func BAFAPressed(_ sender: UIButton) {
         if BAFAButton.isSelected == false {
+            reloadArticles()
             loadArticles(league: "BAFA", allPage: false)
             BAFAButton.isSelected = true
             BUCSButton.isSelected = false
@@ -54,6 +56,7 @@ class NewsViewController: UIViewController, UITableViewDelegate {
     }
     @IBAction func BUCSPressed(_ sender: UIButton) {
         if BUCSButton.isSelected == false {
+            reloadArticles()
             loadArticles(league: "BUCS", allPage: false)
             BAFAButton.isSelected = false
             BUCSButton.isSelected = true
@@ -64,11 +67,18 @@ class NewsViewController: UIViewController, UITableViewDelegate {
     }
     @IBAction func ELFPressed(_ sender: UIButton) {
         if ELFButton.isSelected == false {
+            reloadArticles()
             loadArticles(league: "ELF", allPage: false)
             BAFAButton.isSelected = false
             BUCSButton.isSelected = false
             ELFButton.isSelected = true
             AllNewsButton.isSelected = false
+        }
+    }
+    
+    func reloadArticles() {
+        DispatchQueue.main.async {
+            self.newsTableView.reloadData()
         }
     }
     
@@ -121,9 +131,9 @@ class NewsViewController: UIViewController, UITableViewDelegate {
                                let articleImage = data["headerImage"] as? String, let articleID = doc.documentID as String? {
                                 let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: self.dateFormatter(datePosted: articleDate), articleOrderDate: articleOrderDate, articleCategory: articleCategory, articleID: articleID)
                                 self.articles.append(newArticle)
-                                DispatchQueue.main.async {
-                                    self.newsTableView.reloadData()
-                                }
+                                    DispatchQueue.main.async {
+                                        self.newsTableView.reloadData()
+                                    }
                             } else {
                                 print("There is no news available")
                             }

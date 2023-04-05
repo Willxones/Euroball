@@ -13,7 +13,7 @@ class NewArticleViewController: UIViewController {
     
     let db = Firestore.firestore()
     
-    var category = ""
+    var category = "BAFA"
     
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var categoryPopUpButton: UIButton!
