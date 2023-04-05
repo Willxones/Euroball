@@ -88,10 +88,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteEuroballFull" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-3I-Qvf">
-                                <rect key="frame" x="95" y="59" width="240" height="400"/>
+                                <rect key="frame" x="95" y="159" width="240" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="dQi-9w-1o2"/>
+                                </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQw-cM-RwM">
-                                <rect key="frame" x="20" y="467" width="390" height="361"/>
+                                <rect key="frame" x="20" y="522" width="390" height="306"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8B-Vq-5Ow">
                                         <rect key="frame" x="15" y="20" width="360" height="21"/>
@@ -158,6 +161,7 @@
                                     <constraint firstItem="O8B-Vq-5Ow" firstAttribute="top" secondItem="NQw-cM-RwM" secondAttribute="top" constant="20" id="but-TK-z8b"/>
                                     <constraint firstAttribute="trailing" secondItem="thp-YD-d57" secondAttribute="trailing" constant="15" id="ccX-Cs-lla"/>
                                     <constraint firstItem="y5w-5C-OAj" firstAttribute="top" secondItem="dUu-uY-km6" secondAttribute="bottom" constant="15" id="ctL-6w-ypS"/>
+                                    <constraint firstAttribute="height" constant="306" id="dJp-Ze-1BA"/>
                                     <constraint firstItem="thp-YD-d57" firstAttribute="top" secondItem="O8B-Vq-5Ow" secondAttribute="bottom" constant="10" id="eig-Tr-Azd"/>
                                     <constraint firstItem="O8B-Vq-5Ow" firstAttribute="leading" secondItem="NQw-cM-RwM" secondAttribute="leading" constant="15" id="nfI-jK-Fck"/>
                                     <constraint firstItem="dnW-pW-ISy" firstAttribute="top" secondItem="thp-YD-d57" secondAttribute="bottom" constant="18" id="qK1-zW-hMJ"/>
@@ -168,12 +172,11 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qER-RX-uf3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qER-RX-uf3" firstAttribute="trailing" secondItem="NQw-cM-RwM" secondAttribute="trailing" constant="20" id="0ms-7N-sSz"/>
-                            <constraint firstItem="aaa-3I-Qvf" firstAttribute="top" secondItem="qER-RX-uf3" secondAttribute="top" id="AVS-Ig-Yud"/>
+                            <constraint firstItem="aaa-3I-Qvf" firstAttribute="top" secondItem="qER-RX-uf3" secondAttribute="top" constant="100" id="AVS-Ig-Yud"/>
                             <constraint firstItem="qER-RX-uf3" firstAttribute="trailing" secondItem="aaa-3I-Qvf" secondAttribute="trailing" constant="95" id="GJB-aQ-nKB"/>
-                            <constraint firstItem="NQw-cM-RwM" firstAttribute="top" secondItem="aaa-3I-Qvf" secondAttribute="bottom" constant="8" symbolic="YES" id="OIm-eh-epr"/>
                             <constraint firstItem="qER-RX-uf3" firstAttribute="bottom" secondItem="NQw-cM-RwM" secondAttribute="bottom" constant="70" id="VDj-8h-3Pb"/>
                             <constraint firstItem="NQw-cM-RwM" firstAttribute="leading" secondItem="qER-RX-uf3" secondAttribute="leading" constant="20" id="o0t-id-YBE"/>
                             <constraint firstItem="aaa-3I-Qvf" firstAttribute="leading" secondItem="qER-RX-uf3" secondAttribute="leading" constant="95" id="oQo-FW-dWW"/>
@@ -188,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uh1-Zm-quz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="481" y="709"/>
+            <point key="canvasLocation" x="480" y="708.79828326180257"/>
         </scene>
         <!--GamesView-->
         <scene sceneID="2KC-2O-W38">
@@ -595,10 +598,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiteEuroballFull" translatesAutoresizingMaskIntoConstraints="NO" id="5A2-ep-VmB">
-                                <rect key="frame" x="95" y="59" width="240" height="400"/>
+                                <rect key="frame" x="95" y="159" width="240" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Ean-Pg-k2l"/>
+                                </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZ9-pR-oC5">
-                                <rect key="frame" x="20" y="467" width="390" height="361"/>
+                                <rect key="frame" x="20" y="522" width="390" height="306"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcZ-Kt-M2p">
                                         <rect key="frame" x="15" y="20" width="360" height="21"/>
@@ -663,6 +669,7 @@
                                     <constraint firstItem="ZcZ-Kt-M2p" firstAttribute="leading" secondItem="tZ9-pR-oC5" secondAttribute="leading" constant="15" id="Gdj-Gy-Fg8"/>
                                     <constraint firstAttribute="trailing" secondItem="OtA-ej-Q4A" secondAttribute="trailing" constant="15" id="I4L-2m-Gq5"/>
                                     <constraint firstAttribute="trailing" secondItem="ZcZ-Kt-M2p" secondAttribute="trailing" constant="15" id="L9F-V3-16d"/>
+                                    <constraint firstAttribute="height" constant="306" id="LVf-pJ-03E"/>
                                     <constraint firstItem="Qfk-li-08Q" firstAttribute="centerX" secondItem="tZ9-pR-oC5" secondAttribute="centerX" id="P7o-Pr-jjS"/>
                                     <constraint firstAttribute="trailing" secondItem="fwR-3h-70z" secondAttribute="trailing" constant="15" id="Q1g-AW-Uld"/>
                                     <constraint firstAttribute="trailing" secondItem="sXy-h2-YE2" secondAttribute="trailing" constant="15" id="WWM-ls-Ftd"/>
@@ -678,9 +685,8 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5A2-ep-VmB" firstAttribute="leading" secondItem="DBD-2p-VOA" secondAttribute="leading" constant="95" id="2rV-yd-nAz"/>
-                            <constraint firstItem="tZ9-pR-oC5" firstAttribute="top" secondItem="5A2-ep-VmB" secondAttribute="bottom" constant="8" symbolic="YES" id="5gl-jj-vWQ"/>
                             <constraint firstItem="DBD-2p-VOA" firstAttribute="trailing" secondItem="5A2-ep-VmB" secondAttribute="trailing" constant="95" id="6Vf-Xq-kIi"/>
-                            <constraint firstItem="5A2-ep-VmB" firstAttribute="top" secondItem="DBD-2p-VOA" secondAttribute="top" id="CuS-9S-lYJ"/>
+                            <constraint firstItem="5A2-ep-VmB" firstAttribute="top" secondItem="DBD-2p-VOA" secondAttribute="top" constant="100" id="CuS-9S-lYJ"/>
                             <constraint firstItem="DBD-2p-VOA" firstAttribute="trailing" secondItem="tZ9-pR-oC5" secondAttribute="trailing" constant="20" id="WUp-yb-lSu"/>
                             <constraint firstItem="DBD-2p-VOA" firstAttribute="bottom" secondItem="tZ9-pR-oC5" secondAttribute="bottom" constant="70" id="noT-dD-fn8"/>
                             <constraint firstItem="tZ9-pR-oC5" firstAttribute="leading" secondItem="DBD-2p-VOA" secondAttribute="leading" constant="20" id="sZ0-bg-vLt"/>
@@ -993,8 +999,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hRs-LA-MBG"/>
-        <segue reference="sBe-Mx-0Q5"/>
+        <segue reference="unV-wB-30P"/>
+        <segue reference="TVV-rc-dfn"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="FootballImage" width="496" height="333"/>
