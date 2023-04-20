@@ -18,11 +18,27 @@ class NewsViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var BUCSButton: UIButton!
     @IBOutlet weak var BAFAButton: UIButton!
     @IBOutlet weak var newsTableView: UITableView!
+    @IBOutlet weak var addButton: UIButton!
     
     var articles: [NewsArticle] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Auth.auth().currentUser?.getIDTokenResult(completion: { (result, error) in
+            if let error = error {
+                print("Error getting token: \(error)")
+                return
+            }
+            if let isAdmin = result?.claims["admin"] as? Bool {
+                if isAdmin {
+                    self.addButton.isHidden = false
+                } else {
+                    print("is not admin")
+                }
+            } else {
+                print("is not admin")
+            }
+        })
         newsTableView.delegate = self
         newsTableView.dataSource = self
         newsTableView.register(UINib.init(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "cell")

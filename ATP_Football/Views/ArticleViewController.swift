@@ -12,6 +12,7 @@ import Firebase
 class ArticleViewController: UIViewController {
     let db = Firestore.firestore()
     
+    @IBOutlet weak var optionsPullDownButton: UIButton!
     @IBOutlet weak var articleContentLabel: VerticalTopAlignLabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var sourceImageView: UIImageView!
@@ -47,6 +48,16 @@ class ArticleViewController: UIViewController {
         loadArticle()
         GradientView.configureGradientLayer()
         ScrollView.contentInsetAdjustmentBehavior = .never
+        optionsPullDownButton.showsMenuAsPrimaryAction = true
+        optionsPullDownButton.changesSelectionAsPrimaryAction = true
+        
+    }
+    
+    func update(number:String) {
+        if number == "Edit" {
+            print("Edit selected")
+            
+        }
     }
     
     func dateFormatter(datePosted: String) -> String {
