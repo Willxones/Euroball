@@ -12,18 +12,20 @@ import Firebase
 class NewsViewController: UIViewController, UITableViewDelegate {
     let db = Firestore.firestore()
     
+    @IBOutlet weak var addArticleView: UIView!
+    @IBOutlet weak var addArticleButton: UIButton!
     @IBOutlet weak var LeagueBar: UIStackView!
     @IBOutlet weak var AllNewsButton: UIButton!
     @IBOutlet weak var ELFButton: UIButton!
     @IBOutlet weak var BUCSButton: UIButton!
     @IBOutlet weak var BAFAButton: UIButton!
     @IBOutlet weak var newsTableView: UITableView!
-    @IBOutlet weak var addButton: UIButton!
     
     var articles: [NewsArticle] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addArticleButton.layer.cornerRadius = 5
         Auth.auth().currentUser?.getIDTokenResult(completion: { (result, error) in
             if let error = error {
                 print("Error getting token: \(error)")
@@ -31,7 +33,7 @@ class NewsViewController: UIViewController, UITableViewDelegate {
             }
             if let isAdmin = result?.claims["admin"] as? Bool {
                 if isAdmin {
-                    self.addButton.isHidden = false
+                    self.addArticleView.isHidden = false
                 } else {
                     print("is not admin")
                 }
@@ -47,6 +49,7 @@ class NewsViewController: UIViewController, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
     }
+    
     
     @IBAction func AllNewsPressed(_ sender: UIButton) {
         if AllNewsButton.isSelected == false {
@@ -177,6 +180,11 @@ extension NewsViewController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         SelectedArticle.selectedArticle = articles[indexPath.row].articleID
+        SelectedArticle.articleTitle = articles[indexPath.row].articleTitle
+        SelectedArticle.articleHeaderImage = articles[indexPath.row].articleImage
+        SelectedArticle.articleSourceImage = articles[indexPath.row].articleSource
+        SelectedArticle.articleCategory = articles[indexPath.row].articleCategory
+        SelectedArticle.articleContent = articles[indexPath.row].articleText
         let vc = storyboard?.instantiateViewController(withIdentifier: "articleViewController") as! ArticleViewController
         navigationController?.show(vc, sender: self)
     }

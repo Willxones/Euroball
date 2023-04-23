@@ -12,7 +12,8 @@ import Firebase
 class ArticleViewController: UIViewController {
     let db = Firestore.firestore()
     
-    @IBOutlet weak var optionsPullDownButton: UIButton!
+    @IBOutlet weak var deleteArticleButton: UIButton!
+    @IBOutlet weak var updateArticleButton: UIButton!
     @IBOutlet weak var articleContentLabel: VerticalTopAlignLabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var sourceImageView: UIImageView!
@@ -41,6 +42,9 @@ class ArticleViewController: UIViewController {
             }
         }
     }
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         self.tabBarController?.tabBar.isHidden = true
@@ -48,8 +52,22 @@ class ArticleViewController: UIViewController {
         loadArticle()
         GradientView.configureGradientLayer()
         ScrollView.contentInsetAdjustmentBehavior = .never
-        optionsPullDownButton.showsMenuAsPrimaryAction = true
-        optionsPullDownButton.changesSelectionAsPrimaryAction = true
+        Auth.auth().currentUser?.getIDTokenResult(completion: { (result, error) in
+            if let error = error {
+                print("Error getting token: \(error)")
+                return
+            }
+            if let isAdmin = result?.claims["admin"] as? Bool {
+                if isAdmin {
+                    self.updateArticleButton.isHidden = false
+                    self.deleteArticleButton.isHidden = false
+                } else {
+                    print("is not admin")
+                }
+            } else {
+                print("is not admin")
+            }
+        })
         
     }
     
@@ -60,6 +78,23 @@ class ArticleViewController: UIViewController {
         }
     }
     
+    @IBAction func deleteButtonPressed(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Are you sure?", message: "This will permanently delete the article", preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            self.db.collection("articles").document(SelectedArticle.selectedArticle).delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
     func dateFormatter(datePosted: String) -> String {
         let fullDateFormatter = DateFormatter()
         let shortDateFormatter = DateFormatter()
