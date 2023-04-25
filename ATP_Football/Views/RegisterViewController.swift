@@ -12,9 +12,25 @@ import AVFoundation
 
 class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBAction func registerPressed(_ sender: UIButton) {
+        if let email = emailTextField.text, let confirmEmail = confirmPasswordTextField.text, let password = passwordTextField.text {
+            if email == confirmEmail {
+                    Auth.auth().createUser(withEmail: email, password: password){ authResult, error in
+                        if let e = error {
+                            print(e)
+                        } else {
+                            self.performSegue(withIdentifier: "registerToNews", sender: self)
+                        }
+                }
+            } else {
+                //what to do if email does not = confirm email
+            }
+        } else {
+            //what to do if no email, confirm email or password
+        }
         
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: email, password: password){ authResult, error in

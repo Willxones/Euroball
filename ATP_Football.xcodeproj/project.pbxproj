@@ -13,6 +13,7 @@
 		430B283429BB4BA7009DDF73 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B283329BB4BA7009DDF73 /* RegisterViewController.swift */; };
 		432AA20129D0CB4200E22949 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432AA20029D0CB4200E22949 /* GradientView.swift */; };
 		432AA20329D0CBB400E22949 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432AA20229D0CBB300E22949 /* ArticleViewController.swift */; };
+		433B0D7329F8560900D751B5 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433B0D7229F8560900D751B5 /* ForgotPasswordViewController.swift */; };
 		4384C3B129E8DADF00F09597 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 4384C3B029E8DADF00F09597 /* FirebaseFunctions */; };
 		438CBEB829C14385008F742E /* NewArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CBEB729C14385008F742E /* NewArticleViewController.swift */; };
 		43AECF5F29DCF42C00DBDC34 /* welcomeVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 43AECF5E29DCF42C00DBDC34 /* welcomeVideo.mp4 */; };
@@ -40,6 +41,7 @@
 		430B283329BB4BA7009DDF73 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		432AA20029D0CB4200E22949 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		432AA20229D0CBB300E22949 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		433B0D7229F8560900D751B5 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		438CBEB729C14385008F742E /* NewArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewArticleViewController.swift; sourceTree = "<group>"; };
 		43AECF5E29DCF42C00DBDC34 /* welcomeVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = welcomeVideo.mp4; sourceTree = "<group>"; };
 		43AFB33229BF69B20016F657 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				438CBEB729C14385008F742E /* NewArticleViewController.swift */,
 				432AA20229D0CBB300E22949 /* ArticleViewController.swift */,
 				430338B529F427E1007D3265 /* UpdateArticleViewController.swift */,
+				433B0D7229F8560900D751B5 /* ForgotPasswordViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				433B0D7329F8560900D751B5 /* ForgotPasswordViewController.swift in Sources */,
 				430B283229BB4A51009DDF73 /* LoginViewController.swift in Sources */,
 				43ECCAE929D64192008F062F /* SelectedArticle.swift in Sources */,
 				432AA20329D0CBB400E22949 /* ArticleViewController.swift in Sources */,
