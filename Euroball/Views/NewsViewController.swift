@@ -21,6 +21,7 @@ class NewsViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var BAFAButton: UIButton!
     @IBOutlet weak var newsTableView: UITableView!
     
+    @IBOutlet weak var GFLButton: UIButton!
     var articles: [NewsArticle] = []
 
     override func viewDidLoad() {
@@ -58,6 +59,7 @@ class NewsViewController: UIViewController, UITableViewDelegate {
             BAFAButton.isSelected = false
             BUCSButton.isSelected = false
             ELFButton.isSelected = false
+            GFLButton.isSelected = false
             AllNewsButton.isSelected = true
         }
     }
@@ -70,6 +72,7 @@ class NewsViewController: UIViewController, UITableViewDelegate {
             BUCSButton.isSelected = false
             ELFButton.isSelected = false
             AllNewsButton.isSelected = false
+            GFLButton.isSelected = false
             
         }
     }
@@ -81,6 +84,7 @@ class NewsViewController: UIViewController, UITableViewDelegate {
             BUCSButton.isSelected = true
             ELFButton.isSelected = false
             AllNewsButton.isSelected = false
+            GFLButton.isSelected = false
             
         }
     }
@@ -92,6 +96,19 @@ class NewsViewController: UIViewController, UITableViewDelegate {
             BUCSButton.isSelected = false
             ELFButton.isSelected = true
             AllNewsButton.isSelected = false
+            GFLButton.isSelected = false
+        }
+    }
+    
+    @IBAction func GFLPressed(_ sender: UIButton) {
+        if GFLButton.isSelected == false {
+            reloadArticles()
+            loadArticles(league: "GFL", allPage: false)
+            BAFAButton.isSelected = false
+            BUCSButton.isSelected = false
+            ELFButton.isSelected = false
+            AllNewsButton.isSelected = false
+            GFLButton.isSelected = true
         }
     }
     

@@ -78,7 +78,7 @@ class NewArticleViewController: UIViewController {
     }
     
     func setupPopUpButton() {
-            let leagues = ["BAFA", "BUCS", "ELF", "Other"]
+            let leagues = ["BAFA", "BUCS", "ELF", "GFL", "Other"]
             let optionClosure = {(action: UIAction) in
                 self.category = action.title
             }

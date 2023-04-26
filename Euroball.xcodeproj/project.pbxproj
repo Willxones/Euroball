@@ -49,7 +49,7 @@
 		43AFB33D29BF797E0016F657 /* NewsArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticle.swift; sourceTree = "<group>"; };
 		43AFB33F29BF7C560016F657 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		43E6466029D4D0530089408B /* VerticleTopAlignLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticleTopAlignLabel.swift; sourceTree = "<group>"; };
-		43E7801829BA934600D3ADD7 /* ATP_Football.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATP_Football.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		43E7801829BA934600D3ADD7 /* Euroball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Euroball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43E7801B29BA934600D3ADD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43E7801D29BA934600D3ADD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		43E7801F29BA934600D3ADD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		43E7800F29BA934600D3ADD7 = {
 			isa = PBXGroup;
 			children = (
-				43E7801A29BA934600D3ADD7 /* ATP_Football */,
+				43E7801A29BA934600D3ADD7 /* Euroball */,
 				43E7801929BA934600D3ADD7 /* Products */,
 				4384C3AF29E8DADF00F09597 /* Frameworks */,
 			);
@@ -120,12 +120,12 @@
 		43E7801929BA934600D3ADD7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				43E7801829BA934600D3ADD7 /* ATP_Football.app */,
+				43E7801829BA934600D3ADD7 /* Euroball.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		43E7801A29BA934600D3ADD7 /* ATP_Football */ = {
+		43E7801A29BA934600D3ADD7 /* Euroball */ = {
 			isa = PBXGroup;
 			children = (
 				43E6465E29D4C2A20089408B /* Videos */,
@@ -144,15 +144,15 @@
 				43E6466029D4D0530089408B /* VerticleTopAlignLabel.swift */,
 				43ECCAE829D64192008F062F /* SelectedArticle.swift */,
 			);
-			path = ATP_Football;
+			path = Euroball;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		43E7801729BA934600D3ADD7 /* ATP_Football */ = {
+		43E7801729BA934600D3ADD7 /* Euroball */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 43E7802C29BA934700D3ADD7 /* Build configuration list for PBXNativeTarget "ATP_Football" */;
+			buildConfigurationList = 43E7802C29BA934700D3ADD7 /* Build configuration list for PBXNativeTarget "Euroball" */;
 			buildPhases = (
 				43E7801429BA934600D3ADD7 /* Sources */,
 				43E7801529BA934600D3ADD7 /* Frameworks */,
@@ -162,7 +162,7 @@
 			);
 			dependencies = (
 			);
-			name = ATP_Football;
+			name = Euroball;
 			packageProductDependencies = (
 				430B282F29BB4A08009DDF73 /* IQKeyboardManagerSwift */,
 				43AFB33529BF6A470016F657 /* FirebaseAuth */,
@@ -170,7 +170,7 @@
 				4384C3B029E8DADF00F09597 /* FirebaseFunctions */,
 			);
 			productName = ATP_Football;
-			productReference = 43E7801829BA934600D3ADD7 /* ATP_Football.app */;
+			productReference = 43E7801829BA934600D3ADD7 /* Euroball.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -188,7 +188,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 43E7801329BA934600D3ADD7 /* Build configuration list for PBXProject "ATP_Football" */;
+			buildConfigurationList = 43E7801329BA934600D3ADD7 /* Build configuration list for PBXProject "Euroball" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -205,7 +205,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				43E7801729BA934600D3ADD7 /* ATP_Football */,
+				43E7801729BA934600D3ADD7 /* Euroball */,
 			);
 		};
 /* End PBXProject section */
@@ -395,7 +395,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PMJPWG4MX2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ATP_Football/Info.plist;
+				INFOPLIST_FILE = Euroball/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Euroball;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -429,7 +429,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PMJPWG4MX2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ATP_Football/Info.plist;
+				INFOPLIST_FILE = Euroball/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Euroball;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -457,7 +457,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		43E7801329BA934600D3ADD7 /* Build configuration list for PBXProject "ATP_Football" */ = {
+		43E7801329BA934600D3ADD7 /* Build configuration list for PBXProject "Euroball" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43E7802A29BA934700D3ADD7 /* Debug */,
@@ -466,7 +466,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		43E7802C29BA934700D3ADD7 /* Build configuration list for PBXNativeTarget "ATP_Football" */ = {
+		43E7802C29BA934700D3ADD7 /* Build configuration list for PBXNativeTarget "Euroball" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43E7802D29BA934700D3ADD7 /* Debug */,
