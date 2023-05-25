@@ -11,7 +11,7 @@ import Firebase
 
 class NewsViewController: UIViewController, UITableViewDelegate {
     let db = Firestore.firestore()
-    
+    var currentPage = 1
     @IBOutlet weak var addArticleView: UIView!
     @IBOutlet weak var addArticleButton: UIButton!
     @IBOutlet weak var LeagueBar: UIStackView!
@@ -23,10 +23,25 @@ class NewsViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var GFLButton: UIButton!
     var articles: [NewsArticle] = []
+    var ELFArticles = 0
+    var GFLArticles = 0
+    var BAFAArticles = 0
+    var BUCSArticles = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addArticleButton.layer.cornerRadius = 5
+        ELFButton.layer.cornerRadius = 12
+        ELFButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+        AllNewsButton.layer.cornerRadius = 12
+        AllNewsButton.tintColor = UIColor(named: "DarkGreyBackground")
+        AllNewsButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
+        GFLButton.layer.cornerRadius = 12
+        GFLButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+        BAFAButton.layer.cornerRadius = 12
+        BAFAButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+        BUCSButton.layer.cornerRadius = 12
+        BUCSButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
         Auth.auth().currentUser?.getIDTokenResult(completion: { (result, error) in
             if let error = error {
                 print("Error getting token: \(error)")
@@ -45,71 +60,165 @@ class NewsViewController: UIViewController, UITableViewDelegate {
         newsTableView.delegate = self
         newsTableView.dataSource = self
         newsTableView.register(UINib.init(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "cell")
-        loadArticles(league: "BAFA", allPage: true)
+        loadArticles()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    
-    @IBAction func AllNewsPressed(_ sender: UIButton) {
-        if AllNewsButton.isSelected == false {
+    @IBAction func swipedRight(_ sender: UISwipeGestureRecognizer) {
+        if ELFButton.tintColor == UIColor(named: "DarkGreyBackground") {
+            AllNewsButton.tintColor = UIColor(named: "DarkGreyBackground")
+            AllNewsButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
+            ELFButton.tintColor = UIColor(named: "EuroballPurple")
+            ELFButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
             reloadArticles()
-            loadArticles(league: "BAFA", allPage: true)
-            BAFAButton.isSelected = false
-            BUCSButton.isSelected = false
-            ELFButton.isSelected = false
-            GFLButton.isSelected = false
-            AllNewsButton.isSelected = true
+            loadArticles()
+        } else if GFLButton.tintColor == UIColor(named: "DarkGreyBackground") {
+            ELFButton.tintColor = UIColor(named: "DarkGreyBackground")
+            ELFButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
+            GFLButton.tintColor = UIColor(named: "EuroballPurple")
+            GFLButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            reloadArticles()
+            loadArticles(league: "ELF")
+        } else if BAFAButton.tintColor == UIColor(named: "DarkGreyBackground") {
+            GFLButton.tintColor = UIColor(named: "DarkGreyBackground")
+            GFLButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
+            BAFAButton.tintColor = UIColor(named: "EuroballPurple")
+            BAFAButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            reloadArticles()
+            loadArticles(league: "GFL")
+        } else if BUCSButton.tintColor == UIColor(named: "DarkGreyBackground") {
+            BAFAButton.tintColor = UIColor(named: "DarkGreyBackground")
+            BAFAButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
+            BUCSButton.tintColor = UIColor(named: "EuroballPurple")
+            BUCSButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            reloadArticles()
+            loadArticles(league: "BAFA")
+        } else {
+            return
+        }
+    }
+    
+    @IBAction func swipedLeft(_ sender: UISwipeGestureRecognizer) {
+        if AllNewsButton.tintColor == UIColor(named: "DarkGreyBackground") {
+            ELFButton.tintColor = UIColor(named: "DarkGreyBackground")
+            ELFButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
+            AllNewsButton.tintColor = UIColor(named: "EuroballPurple")
+            AllNewsButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            reloadArticles()
+            loadArticles(league: "ELF")
+        } else if ELFButton.tintColor == UIColor(named: "DarkGreyBackground") {
+            GFLButton.tintColor = UIColor(named: "DarkGreyBackground")
+            GFLButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
+            ELFButton.tintColor = UIColor(named: "EuroballPurple")
+            ELFButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            reloadArticles()
+            loadArticles(league: "GFL")
+        } else if GFLButton.tintColor == UIColor(named: "DarkGreyBackground") {
+            BAFAButton.tintColor = UIColor(named: "DarkGreyBackground")
+            BAFAButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
+            GFLButton.tintColor = UIColor(named: "EuroballPurple")
+            GFLButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            reloadArticles()
+            loadArticles(league: "BAFA")
+        } else if BAFAButton.tintColor == UIColor(named: "DarkGreyBackground") {
+            BUCSButton.tintColor = UIColor(named: "DarkGreyBackground")
+            BUCSButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
+            BAFAButton.tintColor = UIColor(named: "EuroballPurple")
+            BAFAButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            reloadArticles()
+            loadArticles(league: "BUCS")
+        } else {
+            return
+        }
+    }
+    @IBAction func AllNewsPressed(_ sender: UIButton) {
+        if AllNewsButton.tintColor != UIColor(named: "DarkGreyBackground") {
+            reloadArticles()
+            loadArticles()
+            BAFAButton.tintColor = UIColor(named: "EuroballPurple")
+            BAFAButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            BUCSButton.tintColor = UIColor(named: "EuroballPurple")
+            BUCSButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            ELFButton.tintColor = UIColor(named: "EuroballPurple")
+            ELFButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            GFLButton.tintColor = UIColor(named: "EuroballPurple")
+            GFLButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            AllNewsButton.tintColor = UIColor(named: "DarkGreyBackground")
+            AllNewsButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
         }
     }
     
     @IBAction func BAFAPressed(_ sender: UIButton) {
         if BAFAButton.isSelected == false {
             reloadArticles()
-            loadArticles(league: "BAFA", allPage: false)
-            BAFAButton.isSelected = true
-            BUCSButton.isSelected = false
-            ELFButton.isSelected = false
-            AllNewsButton.isSelected = false
-            GFLButton.isSelected = false
+            loadArticles(league: "BAFA")
+            AllNewsButton.tintColor = UIColor(named: "EuroballPurple")
+            AllNewsButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            BUCSButton.tintColor = UIColor(named: "EuroballPurple")
+            BUCSButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            ELFButton.tintColor = UIColor(named: "EuroballPurple")
+            ELFButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            GFLButton.tintColor = UIColor(named: "EuroballPurple")
+            GFLButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            BAFAButton.tintColor = UIColor(named: "DarkGreyBackground")
+            BAFAButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
             
         }
     }
     @IBAction func BUCSPressed(_ sender: UIButton) {
         if BUCSButton.isSelected == false {
             reloadArticles()
-            loadArticles(league: "BUCS", allPage: false)
-            BAFAButton.isSelected = false
-            BUCSButton.isSelected = true
-            ELFButton.isSelected = false
-            AllNewsButton.isSelected = false
-            GFLButton.isSelected = false
+            loadArticles(league: "BUCS")
+            BAFAButton.tintColor = UIColor(named: "EuroballPurple")
+            BAFAButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            AllNewsButton.tintColor = UIColor(named: "EuroballPurple")
+            AllNewsButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            ELFButton.tintColor = UIColor(named: "EuroballPurple")
+            ELFButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            GFLButton.tintColor = UIColor(named: "EuroballPurple")
+            GFLButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            BUCSButton.tintColor = UIColor(named: "DarkGreyBackground")
+            BUCSButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
             
         }
     }
     @IBAction func ELFPressed(_ sender: UIButton) {
         if ELFButton.isSelected == false {
             reloadArticles()
-            loadArticles(league: "ELF", allPage: false)
-            BAFAButton.isSelected = false
-            BUCSButton.isSelected = false
-            ELFButton.isSelected = true
-            AllNewsButton.isSelected = false
-            GFLButton.isSelected = false
+            loadArticles(league: "ELF")
+            BAFAButton.tintColor = UIColor(named: "EuroballPurple")
+            BAFAButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            BUCSButton.tintColor = UIColor(named: "EuroballPurple")
+            BUCSButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            AllNewsButton.tintColor = UIColor(named: "EuroballPurple")
+            AllNewsButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            GFLButton.tintColor = UIColor(named: "EuroballPurple")
+            GFLButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            ELFButton.tintColor = UIColor(named: "DarkGreyBackground")
+            ELFButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
         }
     }
     
     @IBAction func GFLPressed(_ sender: UIButton) {
         if GFLButton.isSelected == false {
             reloadArticles()
-            loadArticles(league: "GFL", allPage: false)
-            BAFAButton.isSelected = false
-            BUCSButton.isSelected = false
-            ELFButton.isSelected = false
-            AllNewsButton.isSelected = false
-            GFLButton.isSelected = true
+            loadArticles(league: "GFL")
+            BAFAButton.tintColor = UIColor(named: "EuroballPurple")
+            BAFAButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            BUCSButton.tintColor = UIColor(named: "EuroballPurple")
+            BUCSButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            ELFButton.tintColor = UIColor(named: "EuroballPurple")
+            ELFButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            AllNewsButton.tintColor = UIColor(named: "EuroballPurple")
+            AllNewsButton.layer.backgroundColor = CGColor(red: 0.091, green: 0.092, blue: 0.092, alpha: 1)
+            GFLButton.tintColor = UIColor(named: "DarkGreyBackground")
+            GFLButton.layer.backgroundColor = CGColor(red: 0, green: 1, blue: 1, alpha: 1)
         }
+    }
+    
+    @IBAction func morePressed(_ sender: UIButton) {
     }
     
     func reloadArticles() {
@@ -118,34 +227,14 @@ class NewsViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    func loadArticles(league: String, allPage: Bool){
+    func loadArticles(league: String? = nil) {
         self.articles = []
-        if allPage == false {
-            db.collection("articles").whereField("category", isEqualTo: league).order(by: "articleOrderDate", descending: true).getDocuments { querySnapshot, error in
+        if league != nil {
+            db.collection("articles").whereField("category", isEqualTo: league!).order(by: "articleOrderDate", descending: true).getDocuments { querySnapshot, error in
                 if let e = error {
                     print("Issue retrieving data from Firestore. \(e)")
                 } else {
-                    if let snapshotDocuments = querySnapshot?.documents {
-                        for doc in snapshotDocuments {
-                            let data = doc.data()
-                            
-                            if let articleTitle = data["title"] as? String,
-                               let articleText = data["content"] as? String,
-                               let articleSource = data["sourceImage"] as? String,
-                               let articleDate = data["date"] as? String,
-                               let articleOrderDate = data["articleOrderDate"] as? Double,
-                               let articleCategory = ["category"].joined() as String?,
-                               let articleImage = data["headerImage"] as? String, let articleID = doc.documentID as String? {
-                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: self.dateFormatter(datePosted: articleDate), articleOrderDate: articleOrderDate, articleCategory: articleCategory, articleID: articleID)
-                                self.articles.append(newArticle)
-                                DispatchQueue.main.async {
-                                    self.newsTableView.reloadData()
-                                }
-                            } else {
-                                print("There is no news available")
-                            }
-                        }
-                    }
+                    self.addArticle(querySnapshot)
                 }
             }
         } else {
@@ -154,32 +243,37 @@ class NewsViewController: UIViewController, UITableViewDelegate {
                 if let e = error {
                     print("Issue retrieving data from Firestore. \(e)")
                 } else {
-                    if let snapshotDocuments = querySnapshot?.documents {
-                        for doc in snapshotDocuments {
-                            let data = doc.data()
-                            
-                            if let articleTitle = data["title"] as? String,
-                               let articleText = data["content"] as? String,
-                               let articleSource = data["sourceImage"] as? String,
-                               let articleDate = data["date"] as? String,
-                               let articleOrderDate = data["articleOrderDate"] as? Double,
-                               let articleCategory = ["category"].joined() as String?,
-                               let articleImage = data["headerImage"] as? String, let articleID = doc.documentID as String? {
-                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: self.dateFormatter(datePosted: articleDate), articleOrderDate: articleOrderDate, articleCategory: articleCategory, articleID: articleID)
-                                self.articles.append(newArticle)
-                                    DispatchQueue.main.async {
-                                        self.newsTableView.reloadData()
-                                    }
-                            } else {
-                                print("There is no news available")
-                            }
-                        }
-                    }
+                    self.addArticle(querySnapshot)
                 }
             }
         }
     }
+    func addArticle(_ querySnapshot:QuerySnapshot?){
+        if let snapshotDocuments = querySnapshot?.documents {
+            for doc in snapshotDocuments {
+                let data = doc.data()
+                if let articleTitle = data["title"] as? String,
+                   let articleText = data["content"] as? String,
+                   let articleSource = data["sourceImage"] as? String,
+                   let articleDate = data["date"] as? String,
+                   let articleOrderDate = data["articleOrderDate"] as? Double,
+                   let articleCategory = ["category"].joined() as String?,
+                   let articleImage = data["headerImage"] as? String, let articleID = doc.documentID as String? {
+                    let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: self.dateFormatter(datePosted: articleDate), articleOrderDate: articleOrderDate, articleCategory: articleCategory, articleID: articleID)
+                    self.articles.append(newArticle)
+                    DispatchQueue.main.async {
+                        self.newsTableView.reloadData()
+                    }
+                } else {
+                    print("There is no news available")
+                }
+            }
+        }
     }
+    func checkArticlesLoaded() {
+        
+    }
+}
 
 
 extension NewsViewController: UITableViewDataSource {
@@ -205,7 +299,9 @@ extension NewsViewController: UITableViewDataSource {
         let vc = storyboard?.instantiateViewController(withIdentifier: "articleViewController") as! ArticleViewController
         navigationController?.show(vc, sender: self)
     }
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+    }
     func dateFormatter(datePosted: String) -> String {
         let fullDateFormatter = DateFormatter()
         let shortDateFormatter = DateFormatter()
@@ -270,4 +366,5 @@ extension Date {
         dateformat.dateFormat = format
         return dateformat.string(from: self)
     }
+    
 }

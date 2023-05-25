@@ -26,6 +26,9 @@ class ArticleViewController: UIViewController {
     @IBAction func backButtonPressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
+    @IBAction func swipeRight(_ sender: UISwipeGestureRecognizer) {
+        navigationController?.popViewController(animated: true)
+    }
     func loadArticle() {
         db.collection("articles").document(SelectedArticle.selectedArticle).getDocument { (document, error) in
             if let document = document, document.exists,

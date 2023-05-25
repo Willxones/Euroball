@@ -14,7 +14,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="ATP_Football" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="Euroball" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,11 +27,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="CEr-8z-iy8"/>
                                 </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" name="EuroballPurple"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign In">
                                     <backgroundConfiguration key="background" cornerRadius="20" strokeWidth="3">
-                                        <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="strokeColor" name="EuroballPurple"/>
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
                                 <connections>
@@ -49,10 +49,9 @@
                                 </state>
                                 <buttonConfiguration key="configuration" style="plain" title="Create an Account">
                                     <backgroundConfiguration key="background" cornerRadius="20" strokeWidth="3">
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="strokeColor" name="EuroballPurple"/>
                                     </backgroundConfiguration>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseForegroundColor" name="EuroballPurple"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="NvL-Z5-Zgs" kind="show" id="JYB-i0-0BG"/>
@@ -82,7 +81,7 @@
         <!--SignInView-->
         <scene sceneID="YyI-1L-InT">
             <objects>
-                <viewController title="SignInView" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="emh-ZP-qFb" customClass="LoginViewController" customModule="ATP_Football" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="SignInView" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="emh-ZP-qFb" customClass="LoginViewController" customModule="Euroball" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t9h-mu-uQ9">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -127,7 +126,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2N-RS-NOL">
                                                 <rect key="frame" x="0.0" y="0.0" width="176" height="34.333333333333336"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" name="EuroballPurple"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Register"/>
                                                 <connections>
@@ -137,12 +136,12 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqE-TE-8MJ">
                                                 <rect key="frame" x="176" y="0.0" width="4" height="34.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" name="EuroballPurple"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKL-Qg-kNZ">
                                                 <rect key="frame" x="180" y="0.0" width="180" height="34.333333333333336"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" name="EuroballPurple"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Forgot Password?"/>
                                                 <connections>
@@ -153,11 +152,11 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUu-uY-km6">
                                         <rect key="frame" x="15" y="199.66666666666663" width="360" height="34.333333333333343"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" name="EuroballPurple"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Sign In">
                                             <backgroundConfiguration key="background" cornerRadius="5">
-                                                <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="strokeColor" name="EuroballPurple"/>
                                             </backgroundConfiguration>
                                         </buttonConfiguration>
                                         <connections>
@@ -213,7 +212,7 @@
         <!--Forgot Password View Controller-->
         <scene sceneID="iB2-be-jww">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Gy0-ZP-Med" customClass="ForgotPasswordViewController" customModule="ATP_Football" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Gy0-ZP-Med" customClass="ForgotPasswordViewController" customModule="Euroball" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eVI-dK-YT6">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -239,7 +238,9 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="arrow.forward" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrow.forward" catalog="system">
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="sendEmailButtonPressed:" destination="Gy0-ZP-Med" eventType="touchUpInside" id="9dg-4Y-zF0"/>
                                         </connections>
@@ -266,7 +267,9 @@
                                 <color key="backgroundColor" name="EuroballPurple"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="emh-ZP-qFb" kind="show" id="WVu-Yp-a1C"/>
                                 </connections>
@@ -368,7 +371,7 @@
         <!--AccountView-->
         <scene sceneID="8W3-gG-QO6">
             <objects>
-                <viewController title="AccountView" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="N4x-LM-sA9" customClass="AccountViewController" customModule="ATP_Football" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="AccountView" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="N4x-LM-sA9" customClass="AccountViewController" customModule="Euroball" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cmC-zD-5Dj">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -428,7 +431,7 @@
         <!--NewsView-->
         <scene sceneID="f6N-DG-Bk9">
             <objects>
-                <viewController storyboardIdentifier="newsViewController" title="NewsView" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="319-im-AOL" customClass="NewsViewController" customModule="ATP_Football" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newsViewController" title="NewsView" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="319-im-AOL" customClass="NewsViewController" customModule="Euroball" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hon-fc-xEB">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -440,7 +443,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="agB-wZ-Xar">
-                                <rect key="frame" x="20" y="160" width="390" height="689"/>
+                                <rect key="frame" x="20" y="158" width="390" height="691"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WNZ-ad-fsh">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
@@ -450,7 +453,9 @@
                                                 <color key="backgroundColor" name="EuroballPurple"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system">
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <segue destination="dNh-pT-vCC" kind="show" id="raE-gD-ewi"/>
                                                 </connections>
@@ -465,10 +470,10 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="iAy-Bp-xqt">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="689"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="691"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="8Fa-Rd-r24" customClass="NewsCell" customModule="ATP_Football" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="8Fa-Rd-r24" customClass="NewsCell" customModule="Euroball" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="390" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Fa-Rd-r24" id="F1F-DP-Cs8">
@@ -489,13 +494,17 @@
                                     <constraint firstItem="WNZ-ad-fsh" firstAttribute="leading" secondItem="agB-wZ-Xar" secondAttribute="leading" id="vGS-dg-Zuc"/>
                                     <constraint firstAttribute="trailing" secondItem="WNZ-ad-fsh" secondAttribute="trailing" id="wUB-O5-Phm"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Ohs-gb-tTE" appends="YES" id="OXI-bS-fqm"/>
+                                    <outletCollection property="gestureRecognizers" destination="JIv-VO-g0K" appends="YES" id="HsY-jn-9HY"/>
+                                </connections>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="50v-D0-Y7l">
-                                <rect key="frame" x="20" y="116" width="390" height="35"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="50v-D0-Y7l">
+                                <rect key="frame" x="20" y="119" width="390" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhd-Hz-n4Y">
-                                        <rect key="frame" x="0.0" y="0.0" width="78" height="35"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhd-Hz-n4Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="74" height="30"/>
+                                        <color key="tintColor" name="EuroballPurple"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="All News"/>
                                         <connections>
@@ -503,8 +512,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUV-Uf-rli">
-                                        <rect key="frame" x="78" y="0.0" width="78" height="35"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="79" y="0.0" width="74" height="30"/>
+                                        <color key="tintColor" name="EuroballPurple"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="ELF"/>
                                         <connections>
@@ -512,8 +521,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUi-TR-96n">
-                                        <rect key="frame" x="156" y="0.0" width="78" height="35"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="158" y="0.0" width="74" height="30"/>
+                                        <color key="tintColor" name="EuroballPurple"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="GFL"/>
                                         <connections>
@@ -521,8 +530,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNq-7S-ihO">
-                                        <rect key="frame" x="234" y="0.0" width="78" height="35"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="237" y="0.0" width="74" height="30"/>
+                                        <color key="tintColor" name="EuroballPurple"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="BAFA"/>
                                         <connections>
@@ -530,18 +539,28 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jP-aU-lGF">
-                                        <rect key="frame" x="312" y="0.0" width="78" height="35"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="316" y="0.0" width="74" height="30"/>
+                                        <color key="tintColor" name="EuroballPurple"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="BUCS"/>
                                         <connections>
                                             <action selector="BUCSPressed:" destination="319-im-AOL" eventType="touchUpInside" id="srO-dw-xyp"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhi-Ha-l1E">
+                                        <rect key="frame" x="390" y="0.0" width="0.0" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="More"/>
+                                        <connections>
+                                            <action selector="GFLPressed:" destination="319-im-AOL" eventType="touchUpInside" id="fzc-Pu-rMU"/>
+                                            <action selector="morePressed:" destination="319-im-AOL" eventType="touchUpInside" id="Bdn-SH-YWs"/>
+                                            <segue destination="aBg-qY-bsB" kind="show" id="VSm-lY-jKr"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="tYv-JL-0Sa"/>
+                                    <constraint firstAttribute="height" constant="30" id="tYv-JL-0Sa"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -550,7 +569,7 @@
                         <constraints>
                             <constraint firstItem="50v-D0-Y7l" firstAttribute="leading" secondItem="Y3W-0T-Sav" secondAttribute="leading" constant="20" id="3qg-xb-JTL"/>
                             <constraint firstItem="05L-c8-QoL" firstAttribute="leading" secondItem="Y3W-0T-Sav" secondAttribute="leading" constant="120" id="41R-fs-1oU"/>
-                            <constraint firstItem="50v-D0-Y7l" firstAttribute="top" secondItem="05L-c8-QoL" secondAttribute="bottom" constant="2" id="9Us-LJ-8sZ"/>
+                            <constraint firstItem="50v-D0-Y7l" firstAttribute="top" secondItem="05L-c8-QoL" secondAttribute="bottom" constant="5" id="9Us-LJ-8sZ"/>
                             <constraint firstItem="Y3W-0T-Sav" firstAttribute="trailing" secondItem="50v-D0-Y7l" secondAttribute="trailing" constant="20" id="BGU-N9-Yk9"/>
                             <constraint firstItem="Y3W-0T-Sav" firstAttribute="trailing" secondItem="agB-wZ-Xar" secondAttribute="trailing" constant="20" id="Kdb-Uc-UsO"/>
                             <constraint firstItem="agB-wZ-Xar" firstAttribute="bottom" secondItem="Y3W-0T-Sav" secondAttribute="bottom" id="OMz-yb-02j"/>
@@ -576,13 +595,23 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tQ2-Xo-pVa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="Ohs-gb-tTE">
+                    <connections>
+                        <action selector="swipedRight:" destination="319-im-AOL" id="AGU-UX-ScO"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="JIv-VO-g0K">
+                    <connections>
+                        <action selector="swipedLeft:" destination="319-im-AOL" id="43x-Bq-SWH"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3068.3720930232557" y="-1648.0686695278971"/>
         </scene>
         <!--Article View Controller-->
         <scene sceneID="O2H-a2-roJ">
             <objects>
-                <viewController storyboardIdentifier="articleViewController" modalPresentationStyle="fullScreen" id="hvQ-Qe-fCp" customClass="ArticleViewController" customModule="ATP_Football" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="articleViewController" modalPresentationStyle="fullScreen" id="hvQ-Qe-fCp" customClass="ArticleViewController" customModule="Euroball" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Yp-Z5-0zu">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -599,7 +628,7 @@
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v1i-Bb-8gh">
                                                         <rect key="frame" x="0.0" y="0.0" width="430" height="262"/>
                                                     </imageView>
-                                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="7AI-UK-IQW" customClass="GradientView" customModule="ATP_Football" customModuleProvider="target">
+                                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="7AI-UK-IQW" customClass="GradientView" customModule="Euroball" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="430" height="262"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0P-4j-mfE">
@@ -702,7 +731,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ejq-n3-OtG">
                                                 <rect key="frame" x="0.0" y="312" width="430" height="69.666666666666686"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWi-qP-LfM" customClass="VerticalTopAlignLabel" customModule="ATP_Football" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWi-qP-LfM" customClass="VerticalTopAlignLabel" customModule="Euroball" customModuleProvider="target">
                                                         <rect key="frame" x="8" y="8.0000000000000018" width="414" height="21.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -741,6 +770,9 @@
                             <constraint firstItem="TSQ-W1-QI2" firstAttribute="leading" secondItem="9Yp-Z5-0zu" secondAttribute="leading" id="GBI-e2-5hv"/>
                             <constraint firstItem="TSQ-W1-QI2" firstAttribute="top" secondItem="9Yp-Z5-0zu" secondAttribute="top" id="vg1-vy-Jp3"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="bfe-j5-QxS" appends="YES" id="UlS-tb-7wp"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="z6o-Z8-Aln"/>
                     <connections>
@@ -757,6 +789,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="byi-IR-gt5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="bfe-j5-QxS">
+                    <connections>
+                        <action selector="swipeRight:" destination="hvQ-Qe-fCp" id="OVG-5y-HR9"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3912.5581395348836" y="-1373.1759656652362"/>
         </scene>
@@ -789,7 +826,7 @@
         <!--RegisterView-->
         <scene sceneID="yJG-d5-vgz">
             <objects>
-                <viewController title="RegisterView" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="NvL-Z5-Zgs" customClass="RegisterViewController" customModule="ATP_Football" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="RegisterView" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="NvL-Z5-Zgs" customClass="RegisterViewController" customModule="Euroball" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oEt-q8-DAH">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -844,11 +881,11 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwR-3h-70z">
                                         <rect key="frame" x="15" y="276" width="360" height="34.666666666666686"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" name="EuroballPurple"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Create an Account">
                                             <backgroundConfiguration key="background" cornerRadius="5">
-                                                <color key="strokeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="strokeColor" name="EuroballPurple"/>
                                             </backgroundConfiguration>
                                         </buttonConfiguration>
                                         <connections>
@@ -857,7 +894,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-27-tRg">
                                         <rect key="frame" x="84.666666666666686" y="318.66666666666663" width="221" height="35"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" name="EuroballPurple"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Alerady have an Account?"/>
                                         <connections>
@@ -919,7 +956,7 @@
         <!--New Article View Controller-->
         <scene sceneID="bEP-Y7-3IW">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="dNh-pT-vCC" customClass="NewArticleViewController" customModule="ATP_Football" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="dNh-pT-vCC" customClass="NewArticleViewController" customModule="Euroball" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ATE-ad-hZm">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1121,7 +1158,9 @@
                                                         <color key="backgroundColor" name="EuroballPurple"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Post Article"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Post Article">
+                                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </buttonConfiguration>
                                                         <connections>
                                                             <action selector="postPressed:" destination="dNh-pT-vCC" eventType="touchUpInside" id="2t9-4N-7tg"/>
                                                         </connections>
@@ -1189,6 +1228,65 @@
             </objects>
             <point key="canvasLocation" x="3913" y="-2039"/>
         </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="bhN-Zf-ZQB">
+            <objects>
+                <viewController id="aBg-qY-bsB" customClass="LoadingViewController" customModule="Euroball" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fme-JW-olb">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pBc-bc-uwA">
+                                <rect key="frame" x="0.0" y="59" width="430" height="790"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOu-if-UN5" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                        <rect key="frame" x="150" y="330" width="130" height="130"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="LOu-if-UN5" secondAttribute="height" multiplier="130:130" id="lWJ-yv-rg1"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballClipRotateMultiple"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                <color key="value" name="EuroballPurple"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6x-9Y-bR5">
+                                        <rect key="frame" x="185" y="464" width="60" height="20.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <color key="textColor" name="EuroballPurple"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="DarkGreyBackground"/>
+                                <constraints>
+                                    <constraint firstItem="g6x-9Y-bR5" firstAttribute="centerX" secondItem="pBc-bc-uwA" secondAttribute="centerX" id="5Ug-C7-RAe"/>
+                                    <constraint firstItem="g6x-9Y-bR5" firstAttribute="top" secondItem="LOu-if-UN5" secondAttribute="bottom" constant="4" id="8I3-Da-XUm"/>
+                                    <constraint firstItem="LOu-if-UN5" firstAttribute="leading" secondItem="pBc-bc-uwA" secondAttribute="leading" constant="150" id="CJo-pS-xzR"/>
+                                    <constraint firstItem="LOu-if-UN5" firstAttribute="centerY" secondItem="pBc-bc-uwA" secondAttribute="centerY" id="GqW-2S-4gM"/>
+                                    <constraint firstAttribute="trailing" secondItem="LOu-if-UN5" secondAttribute="trailing" constant="150" id="bvI-Nk-PLx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fsu-3J-LVq"/>
+                        <color key="backgroundColor" name="DarkGreyBackground"/>
+                        <constraints>
+                            <constraint firstItem="pBc-bc-uwA" firstAttribute="leading" secondItem="fsu-3J-LVq" secondAttribute="leading" id="Zl1-Hb-48R"/>
+                            <constraint firstItem="fsu-3J-LVq" firstAttribute="bottom" secondItem="pBc-bc-uwA" secondAttribute="bottom" id="cas-Dt-4hu"/>
+                            <constraint firstItem="fsu-3J-LVq" firstAttribute="trailing" secondItem="pBc-bc-uwA" secondAttribute="trailing" id="rBO-wF-GT4"/>
+                            <constraint firstItem="pBc-bc-uwA" firstAttribute="top" secondItem="fsu-3J-LVq" secondAttribute="top" id="wuO-Ju-ttT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ibb-wo-EjL"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="LOu-if-UN5" id="7Ie-MV-NR2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JDY-fw-Bik" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3164.6511627906975" y="-2512.0171673819746"/>
+        </scene>
         <!--News-->
         <scene sceneID="bg4-XQ-gRp">
             <objects>
@@ -1214,7 +1312,7 @@
         <!--Update Article View Controller-->
         <scene sceneID="qru-7i-M6a">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="zJ3-z9-2Kf" customClass="UpdateArticleViewController" customModule="ATP_Football" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="zJ3-z9-2Kf" customClass="UpdateArticleViewController" customModule="Euroball" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v9D-Ks-8jD">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1415,7 +1513,9 @@
                                                         <color key="backgroundColor" name="EuroballPurple"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Update Article"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Update Article">
+                                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </buttonConfiguration>
                                                         <connections>
                                                             <action selector="updateButtonPressed:" destination="zJ3-z9-2Kf" eventType="touchUpInside" id="E0z-VH-ScJ"/>
                                                         </connections>
@@ -1483,8 +1583,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="jXr-cM-Z6s"/>
-        <segue reference="hRs-LA-MBG"/>
-        <segue reference="WGb-rP-Syn"/>
+        <segue reference="unV-wB-30P"/>
+        <segue reference="8be-nh-Cke"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.forward" catalog="system" width="128" height="95"/>
@@ -1512,7 +1612,7 @@
             <color red="0.090999998152256012" green="0.092000000178813934" blue="0.092000000178813934" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="EuroballPurple">
-            <color red="0.37299999594688416" green="0.097999997437000275" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

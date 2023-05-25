@@ -15,3 +15,6 @@ struct SelectedArticle {
     static var articleCategory: String = ""
     static var articleContent: String = ""
 }
+struct SelectedArticleLeague {
+    static var leagueName: String = ""
+}
