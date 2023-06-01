@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import Firebase
 
 class ViewController: UIViewController {
     var avPlayer: AVPlayer!
@@ -35,6 +36,11 @@ class ViewController: UIViewController {
             p.seek(to: CMTime.zero, completionHandler: nil)
        }
     override func viewDidAppear(_ animated: Bool) {
+        if Auth.auth().currentUser != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "mainTabVC")
+            self.view.window!.rootViewController = initialViewController
+        } else { return }
             super.viewDidAppear(animated)
             avPlayer.play()
             paused = false

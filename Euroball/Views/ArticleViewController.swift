@@ -8,9 +8,11 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class ArticleViewController: UIViewController {
     let db = Firestore.firestore()
+    let storageRef = Storage.storage().reference()
     
     @IBOutlet weak var deleteArticleButton: UIButton!
     @IBOutlet weak var updateArticleButton: UIButton!
@@ -32,16 +34,27 @@ class ArticleViewController: UIViewController {
     func loadArticle() {
         db.collection("articles").document(SelectedArticle.selectedArticle).getDocument { (document, error) in
             if let document = document, document.exists,
-            let articleTitle = document.get("title") as? String,
-               let articleImage = document.get("headerImage") as? String,
+               let articleTitle = document.get("title") as? String,
+               let articleImage = document.get("headerImageRef") as? String,
                let articleSource = document.get("sourceImage") as? String,
                let articleDate = document.get("date") as? String,
                let content = document.get("content") as? String {
-                self.articleTitleLabel.text = articleTitle
-                self.articleImageView.load(url: URL(string: articleImage)!)
-                self.sourceImageView.load(url: URL(string: articleSource)!)
-                self.dateLabel.text = self.dateFormatter(datePosted: articleDate)
-                self.articleContentLabel.text = content
+                let fileRef = self.storageRef.child("images/articles/headerImages/\(articleImage)")
+                fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                    if error == nil && data != nil {
+                        let image = UIImage(data: data!)
+                        DispatchQueue.main.async {
+                            self.articleTitleLabel.text = articleTitle
+                            self.articleImageView.image = image
+                            self.sourceImageView.load(url: URL(string: articleSource)!)
+                            self.dateLabel.text = self.dateFormatter(datePosted: articleDate)
+                            self.articleContentLabel.text = content
+                        }
+                    } else {
+                        print("Issue Getting Image")
+                        return()
+                    }
+                }
             }
         }
     }
@@ -80,18 +93,32 @@ class ArticleViewController: UIViewController {
             
         }
     }
-    
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "Are you sure?", message: "This will permanently delete the article", preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
-            self.db.collection("articles").document(SelectedArticle.selectedArticle).delete() { err in
-                if let err = err {
-                    print("Error removing document: \(err)")
+            self.db.collection("articles").document(SelectedArticle.selectedArticle).getDocument { (document, error) in
+                if let document = document, document.exists,
+                let itemToDelete = document.get("headerImageRef") as? String {
+                        self.storageRef.child("images/articles/headerImages/\(itemToDelete)").delete() { error in
+                            if let error = error {
+                                print(error)
+                            } else {
+                                print("Successfully deleted Image")
+                                self.db.collection("articles").document(SelectedArticle.selectedArticle).delete() { err in
+                                    if let err = err {
+                                        print("Error removing document: \(err)")
+                                    } else {
+                                        print("Document successfully removed!")
+                                    }
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                            }
+                        }
                 } else {
-                    print("Document successfully removed!")
-                    self.navigationController?.popViewController(animated: true)
+                    print("Error getting document")
                 }
             }
+            
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
         alert.addAction(deleteAction)

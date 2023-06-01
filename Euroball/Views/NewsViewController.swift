@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class NewsViewController: UIViewController, UITableViewDelegate {
     let db = Firestore.firestore()
@@ -23,10 +24,7 @@ class NewsViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var GFLButton: UIButton!
     var articles: [NewsArticle] = []
-    var ELFArticles = 0
-    var GFLArticles = 0
-    var BAFAArticles = 0
-    var BUCSArticles = 0
+    var headerImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -258,20 +256,30 @@ class NewsViewController: UIViewController, UITableViewDelegate {
                    let articleDate = data["date"] as? String,
                    let articleOrderDate = data["articleOrderDate"] as? Double,
                    let articleCategory = ["category"].joined() as String?,
-                   let articleImage = data["headerImage"] as? String, let articleID = doc.documentID as String? {
-                    let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: URL(string: articleImage)!, articleSource: URL(string: articleSource)!, articleDate: self.dateFormatter(datePosted: articleDate), articleOrderDate: articleOrderDate, articleCategory: articleCategory, articleID: articleID)
-                    self.articles.append(newArticle)
-                    DispatchQueue.main.async {
-                        self.newsTableView.reloadData()
+                   let articleImage = data["headerImageRef"] as? String, let articleID = doc.documentID as String? {
+                    let storageRef = Storage.storage().reference()
+                    let fileRef = storageRef.child("images/articles/headerImages/\(articleImage)")
+                    fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                        if error == nil && data != nil {
+                            let image = UIImage(data: data!)!
+                            DispatchQueue.main.async {
+                                let newArticle = NewsArticle(articleTitle: articleTitle, articleText: articleText, articleImage: image, articleSource: URL(string: articleSource)!, articleDate: self.dateFormatter(datePosted: articleDate), articleOrderDate: articleOrderDate, articleCategory: articleCategory, articleID: articleID)
+                                self.articles.append(newArticle)
+                                DispatchQueue.main.async {
+                                    self.newsTableView.reloadData()
+                                }
+                            }
+                            }else {
+                                print("There is no news available")
+                            }
+                        }
+                        } else {
+                            print("Issue Getting Image")
+                            return()
                     }
-                } else {
-                    print("There is no news available")
-                }
+                   
             }
         }
-    }
-    func checkArticlesLoaded() {
-        
     }
 }
 
@@ -285,7 +293,7 @@ extension NewsViewController: UITableViewDataSource {
         let cell = newsTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewsCell
         cell.articleTitleLabel.text = articles[indexPath.row].articleTitle
         cell.articleDateLabel.text = articles[indexPath.row].articleDate
-        cell.articleImageView.load(url: articles[indexPath.row].articleImage)
+        cell.articleImageView.image = articles[indexPath.row].articleImage
         cell.articleSourceImageView.load(url: articles[indexPath.row].articleSource)
         return cell
     }

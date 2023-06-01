@@ -14,6 +14,7 @@
 		432AA20129D0CB4200E22949 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432AA20029D0CB4200E22949 /* GradientView.swift */; };
 		432AA20329D0CBB400E22949 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432AA20229D0CBB300E22949 /* ArticleViewController.swift */; };
 		433B0D7329F8560900D751B5 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433B0D7229F8560900D751B5 /* ForgotPasswordViewController.swift */; };
+		436CD2562A1FA1F900D21CD9 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 436CD2552A1FA1F900D21CD9 /* FirebaseStorage */; };
 		4384C3B129E8DADF00F09597 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 4384C3B029E8DADF00F09597 /* FirebaseFunctions */; };
 		438CBEB829C14385008F742E /* NewArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CBEB729C14385008F742E /* NewArticleViewController.swift */; };
 		43AECF5F29DCF42C00DBDC34 /* welcomeVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 43AECF5E29DCF42C00DBDC34 /* welcomeVideo.mp4 */; };
@@ -77,6 +78,7 @@
 				43CBD35C2A1BB41E00C3262E /* NVActivityIndicatorView in Frameworks */,
 				43AFB33629BF6A470016F657 /* FirebaseAuth in Frameworks */,
 				43CBD35E2A1BB41E00C3262E /* NVActivityIndicatorViewExtended in Frameworks */,
+				436CD2562A1FA1F900D21CD9 /* FirebaseStorage in Frameworks */,
 				43AFB33829BF6A470016F657 /* FirebaseFirestore in Frameworks */,
 				4384C3B129E8DADF00F09597 /* FirebaseFunctions in Frameworks */,
 			);
@@ -180,6 +182,7 @@
 				4384C3B029E8DADF00F09597 /* FirebaseFunctions */,
 				43CBD35B2A1BB41E00C3262E /* NVActivityIndicatorView */,
 				43CBD35D2A1BB41E00C3262E /* NVActivityIndicatorViewExtended */,
+				436CD2552A1FA1F900D21CD9 /* FirebaseStorage */,
 			);
 			productName = ATP_Football;
 			productReference = 43E7801829BA934600D3ADD7 /* Euroball.app */;
@@ -524,6 +527,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 430B282E29BB4A08009DDF73 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		436CD2552A1FA1F900D21CD9 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43AFB33429BF6A470016F657 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 		4384C3B029E8DADF00F09597 /* FirebaseFunctions */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -45,7 +45,7 @@ class UpdateArticleViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         titleTextField.text = SelectedArticle.articleTitle
-        headerImageTextField.text = SelectedArticle.articleHeaderImage?.absoluteString
+        
         sourceImageTextField.text = SelectedArticle.articleSourceImage?.absoluteString
         contentTextView.text = SelectedArticle.articleContent
     }
