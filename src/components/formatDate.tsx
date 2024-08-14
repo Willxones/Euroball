@@ -11,7 +11,9 @@ export function formatDate(dateStr: string): string {
   const minutesDiff = differenceInMinutes(now, date);
   const hoursDiff = differenceInHours(now, date);
 
-  if (minutesDiff < 1) {
+  if (dateStr == "") {
+    return dateStr
+  } else if (minutesDiff < 1) {
     return 'Just now';
   } else if (minutesDiff < 60) {
     return `${minutesDiff}m ago`;

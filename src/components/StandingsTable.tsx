@@ -1,4 +1,4 @@
-import LeaguePicker from "./LeaguePicker";
+import LeaguePicker from "../pages/news/LeaguePicker";
 
 import { Table } from "flowbite-react";
 export default function StandingsTable() {

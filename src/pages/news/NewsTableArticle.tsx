@@ -1,5 +1,5 @@
 import { Card } from "flowbite-react";
-import { formatDate } from "./formatDate";
+import { formatDate } from "../../components/formatDate";
 import { Article } from "./NewsTable";
 
 export function NewsTableArticle({ article }: { article: Article }) {
@@ -8,7 +8,7 @@ export function NewsTableArticle({ article }: { article: Article }) {
       className="w-full cursor-pointer hover:shadow-xl lg:max-w-sm"
       imgAlt="Meaningful alt text for an image that is not purely decorative"
       imgSrc={article.headerImage.url}
-      href="/article"
+      href={`/article/${article.sys.id}`}
     >
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {article.title}

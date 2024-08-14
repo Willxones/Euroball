@@ -1,8 +1,9 @@
 import { useQuery } from "@apollo/client";
-import { NewsTableArticle } from "./NewsTableArticle"
+import { NewsTableArticle } from "./NewsTableArticle";
 import { Pagination } from "flowbite-react";
 import { useEffect, useState } from "react";
-import { GET_ARTICLES } from "../queries";
+import { GET_ARTICLES_BY_LEAGUE, GET_ALL_ARTICLES } from "../../queries";
+import { League } from "./LeaguePicker"; // Ensure to import League type
 
 export interface Article {
   sys: {
@@ -35,32 +36,48 @@ export interface GetArticlesResponse {
   articleCollection: ArticleCollection;
 }
 
-export default function NewsTable() {
+interface NewsTableProps {
+  selectedLeague: League | null;
+}
+
+export default function NewsTable({ selectedLeague }: NewsTableProps) {
   const [currentPage, setCurrentPage] = useState(1);
-  const limit = 1;
+  const limit = 12; // Adjust as needed
   const skip = (currentPage - 1) * limit;
 
-  const { data, loading, error } = useQuery(GET_ARTICLES, {
-    variables: { limit, skip },
-  });
-
-  useEffect(() => {
-    if (data) {
-      // Handle any side effects when data changes
+  // Determine which query to use based on selected league
+  const { data, loading, error } = useQuery<GetArticlesResponse>(
+    selectedLeague?.name === 'All Leagues' ? GET_ALL_ARTICLES : GET_ARTICLES_BY_LEAGUE,
+    {
+      variables: {
+        limit,
+        skip,
+        leagueName: selectedLeague?.name === 'All Leagues' ? null : selectedLeague?.name,
+      },
     }
-  }, [data]);
+  );
+
+  // Reset current page when league changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedLeague]);
 
   const onPageChange = (page: number) => setCurrentPage(page);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error loading articles</div>;
 
-  const totalPages = Math.ceil(data.articleCollection.total / limit);
+  // Calculate total pages based on the total count of articles for the current filter
+  const totalArticles = data?.articleCollection.total || 0;
+  const totalPages = Math.ceil(totalArticles / limit);
+
+  // Get filtered articles to display on the current page
+  const filteredArticles = data?.articleCollection.items || [];
 
   return (
     <>
       <div className="my-5 flex flex-col gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-3">
-        {data?.articleCollection.items.map((article: Article) => (
+        {filteredArticles.map((article: Article) => (
           <NewsTableArticle key={article.sys.id} article={article} />
         ))}
       </div>

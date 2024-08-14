@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import DOMPurify from 'dompurify';
 
 interface ArticleHTMLProps {
-  content: string;
+  content: string
 }
 
-const ArticleHTML = ({ content }: ArticleHTMLProps) => {
+export default function ArticleHTML({content}:ArticleHTMLProps) {
   // Sanitize the content to prevent XSS attacks
   const sanitizedContent = DOMPurify.sanitize(content);
 
@@ -33,6 +33,4 @@ const ArticleHTML = ({ content }: ArticleHTMLProps) => {
     <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
   );
 };
-
-export default ArticleHTML;
 
