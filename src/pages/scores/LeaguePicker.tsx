@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/client';
-import { GET_LEAGUES } from '../../queries';
-import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
-import NewsTable from './NewsTable'; // Import the NewsTable component
-import debounce from 'lodash.debounce'; // Import debounce
-import { TextInput } from 'flowbite-react';
+import { useQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
+import { GET_LEAGUES } from "../../queries";
+import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import ScoresTable from "./ScoresTable";
 
 export type League = {
   name: string;
@@ -14,28 +12,20 @@ export type League = {
   };
 };
 
-const ALL_LEAGUES_OPTION = { name: 'All Leagues', logo: { url: 'https://cdn-icons-png.flaticon.com/512/272/272611.png' } };
-
 export default function LeaguePicker() {
   const { data, loading, error } = useQuery(GET_LEAGUES);
-  const [selected, setSelected] = useState<League | null>(ALL_LEAGUES_OPTION);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [selected, setSelected] = useState<League | null>(null);
 
   useEffect(() => {
     if (data && !selected) {
-      setSelected(data.leagueCollection.items[0] || ALL_LEAGUES_OPTION);
+      setSelected(data.leagueCollection.items[0]);
     }
   }, [data, selected]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error loading leagues</div>;
 
-  const leagues: League[] = [ALL_LEAGUES_OPTION, ...(data?.leagueCollection?.items || [])];
-
-  // Debounced search handler
-  const handleSearch = debounce((query: string) => {
-    setSearchQuery(query);
-  }, 300); // Debounce for 300ms
+  const leagues: League[] = data?.leagueCollection?.items || [];
 
   return (
     <>
@@ -76,11 +66,7 @@ export default function LeaguePicker() {
         </div>
       </Listbox>
 
-      {/* Search input */}
-      
-      <TextInput id="small" type="text" sizing="sm" onChange={(e) => handleSearch(e.target.value)} placeholder='Search Articles'/>
-
-      <NewsTable selectedLeague={selected} searchQuery={searchQuery} />
+      <ScoresTable selectedLeague={selected} />
     </>
   );
 }
