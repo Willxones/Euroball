@@ -4,6 +4,7 @@ import { GET_LEAGUES } from "../../queries";
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import ScoresTable from "./ScoresTable";
+import WeekPicker, { Week } from "./WeekPicker";
 
 export type League = {
   name: string;
@@ -15,6 +16,7 @@ export type League = {
 export default function LeaguePicker() {
   const { data, loading, error } = useQuery(GET_LEAGUES);
   const [selected, setSelected] = useState<League | null>(null);
+  const [selectedWeek, setSelectedWeek] = useState<Week | null>(null);
 
   useEffect(() => {
     if (data && !selected) {
@@ -65,8 +67,8 @@ export default function LeaguePicker() {
           </ListboxOptions>
         </div>
       </Listbox>
-
-      <ScoresTable selectedLeague={selected} />
+      <WeekPicker selectedLeague={selected} onWeekChange={setSelectedWeek}/>
+      <ScoresTable selectedWeek={selectedWeek}/>
     </>
   );
 }

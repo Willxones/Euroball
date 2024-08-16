@@ -20,8 +20,9 @@ export default function Header() {
         <Navbar.Collapse>
           <Navbar.Link href="/" active={isActive('/')}>Home</Navbar.Link>
           <Navbar.Link href="/news" active={isActive('/news')}>News</Navbar.Link>
-          <Navbar.Link href="/scores" active={isActive('/scores')}>Scores (Coming Soon)</Navbar.Link>
-          <Navbar.Link href="" active={isActive('/standings')}>Standings (Coming Soon)</Navbar.Link>
+          <Navbar.Link href="/scores" active={isActive('/scores')}>Scores</Navbar.Link>
+          <Navbar.Link href="" active={isActive('/standings')}>Standings</Navbar.Link>
+          <Navbar.Link href="" active={isActive('feedback')}>Feedback</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </header>

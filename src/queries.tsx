@@ -15,6 +15,80 @@ export const GET_LEAGUES = gql`
   }
 `;
 
+export const GET_WEEKS_BY_LEAGUE = gql`
+  query GetWeeksByLeague($limit: Int!, $leagueName: String) {
+    weekCollection(
+      limit: $limit
+      order: sys_firstPublishedAt_ASC
+      where: {
+        league: { name: $leagueName }
+      }
+    ) {
+      items {
+        sys {
+          id
+        }
+        weekName
+        isPlayoffWeek
+      }
+    }
+  }
+`;
+
+export const GET_GAMES_BY_WEEKS = gql`
+  query GetGamesByWeeks($limit: Int!, $weekIds: [String!]) {
+    gameCollection(
+      limit: $limit
+      order: dateAndTime_DESC
+      where: {
+        week: { sys: { id_in: $weekIds } }
+      }
+    ) {
+      items {
+        sys {
+          id
+        }
+        dateAndTime
+        week {
+          sys {
+            id
+          }
+          weekName
+        }
+        homeScore
+        awayScore
+      }
+    }
+  }
+`;
+
+export const GET_GAMES_BY_WEEK = gql`
+  query GetGamesByWeeks($limit: Int!, $weekId: String!) {
+    gameCollection(
+      limit: $limit
+      order: dateAndTime_DESC
+      where: {
+        week: { sys: { id: $weekId } }
+      }
+    ) {
+      items {
+        sys {
+          id
+        }
+        dateAndTime
+        week {
+          sys {
+            id
+          }
+          weekName
+        }
+        homeScore
+        awayScore
+      }
+    }
+  }
+`;
+
 export const GET_ARTICLES_BY_LEAGUE = gql`
   query GetArticlesByLeague($limit: Int!, $skip: Int!, $leagueName: String, $searchQuery: String) {
     articleCollection(
