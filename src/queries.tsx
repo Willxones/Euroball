@@ -15,6 +15,50 @@ export const GET_LEAGUES = gql`
   }
 `;
 
+export const GET_DIVISIONS_BY_LEAGUE = gql`
+  query GetDivisionsByLeague($leagueName: String!) {
+    divisionCollection(
+      where: {
+        league: { name: $leagueName }
+      }
+    ) {
+      items {
+        sys {
+          id
+        }
+        name
+      }
+    }
+  }
+`;
+
+export const GET_TEAMS_BY_DIVISION = gql`
+  query GetTeamsByDivision($divisionId: String!) {
+    teamCollection(
+      where: {
+        division: { sys: { id: $divisionId } }
+      }
+    ) {
+      items {
+        sys {
+          id
+        }
+        teamName
+        locationName
+        logo {
+          url
+        }
+        wins
+        draws
+        losses
+        pointsFor
+        pointsAgainst
+      }
+    }
+  }
+`;
+
+
 export const GET_WEEKS_BY_LEAGUE = gql`
   query GetWeeksByLeague($limit: Int!, $leagueName: String) {
     weekCollection(
