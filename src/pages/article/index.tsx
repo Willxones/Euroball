@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { GET_ARTICLE_BY_ID, GET_ASSETS_BY_IDS, GET_USER_BY_ID } from "../../queries";
+import { GET_ARTICLE_BY_ID, GET_ASSETS_BY_IDS } from "../../queries";
 import { useLazyQuery, useQuery } from "@apollo/client";
 import { formatDate } from "../../components/formatDate";
 import { Document } from "@contentful/rich-text-types";
@@ -7,21 +7,26 @@ import { Spinner } from "flowbite-react";
 import { documentToReactComponents, Options } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { useEffect, useState } from "react";
+import SocialSharing from "./SocialSharing";
 
 export interface Article {
   sys: {
     id: string;
     firstPublishedAt: string;
-    createdBy: {
-      sys: {
-        id: string;
-      };
-    };
   };
   title: string;
   headerImage: {
     url: string;
   };
+  author: {
+    firstName: string;
+    lastName: string;
+    role: string;
+    avatar: {
+      url: string;
+    }
+    bio: string | null
+  }
   content: {
     json: Document;
   };
@@ -38,12 +43,6 @@ export interface Article {
 interface GetArticleResponse {
   article: Article;
 }
-interface GetUserResponse {
-  user: {
-    firstName: string;
-    lastName: string;
-  };
-}
 interface Asset {
   sys: {
     id: string;
@@ -59,11 +58,6 @@ export default function Article() {
     variables: { id },
   });
 
-  const createdById = data?.article?.sys?.createdBy?.sys?.id;
-  const { data: userData, loading: userLoading, error: userError } = useQuery<GetUserResponse>(GET_USER_BY_ID, {
-    variables: { id: createdById },
-    skip: !createdById,  // Skip the query if createdById is not available
-  });
   const [fetchAssets, { data: assetsData }] = useLazyQuery(GET_ASSETS_BY_IDS);
 
   const [assetMap, setAssetMap] = useState<{ [key: string]: Asset }>({});
@@ -100,9 +94,9 @@ export default function Article() {
     }
   }, [assetsData]);
 
-  if (loading || userLoading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
-  if (error || userError) {
-    console.error("Error loading article:", error || userError);
+  if (loading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
+  if (error) {
+    console.error("Error loading article:", error);
     return <div>Error loading article</div>;
   }
 
@@ -156,18 +150,23 @@ export default function Article() {
     },
   };
 
-  const authorName = `${userData?.user.firstName || ""} ${userData?.user.lastName || ""}`;
-
   return (
     <>
       <div className="relative my-2 flex flex-col gap-5 lg:flex-row">
         <div className="max-w-screen-lg flex-1 text-gray-700 dark:text-white lg:min-w-[600px]">
           <img className="max-h-[450px] w-full rounded-xl object-cover" alt="header image" src={article?.headerImage.url} />
-          <p className="pb-2 pt-5 text-4xl font-semibold text-gray-700 dark:text-white">{article?.title}</p>
-          <div className="flex">
-            <p className="pb-5">By {authorName}</p>
-            <p className="ml-auto font-thin">{formatDate(article?.sys.firstPublishedAt || "")}</p>
+          <p className="pt-5 text-4xl font-semibold text-gray-700 dark:text-white">{article?.title}</p>
+          <div className="flex py-2">
+            <div className="flex gap-2">
+              <img src={article?.author.avatar.url} className="size-[40px] rounded-full" alt={`Image of author ${article?.author.firstName} ${article?.author.lastName}`}/>
+              <div>
+              <p className="">{article?.author.firstName} {article?.author.lastName}</p>
+              <p className="text-sm text-gray-400">{article?.author.role}</p>
+              </div>
+            </div>
+            <p className="ml-auto pb-5 font-thin">{formatDate(article?.sys.firstPublishedAt || "")}</p>
           </div>
+          <SocialSharing title={article?.title} url={window.location.href}/>
           <div>
             {documentToReactComponents(contentJson, options)}
           </div>

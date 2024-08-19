@@ -4,6 +4,7 @@ import Layout from './components/Layout.js';
 import News from './pages/news/index.js';
 import Article from './pages/article/index.js';
 import Scores from './pages/scores/index.js';
+import Standings from './pages/standings/index.js';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path='/news' element={<News/>}/>
             <Route path='/article/:id' element={<Article/>}/>
             <Route path='/scores' element={<Scores/>}/>
+            <Route path='/standings' element={<Standings/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

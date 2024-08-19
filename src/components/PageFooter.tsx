@@ -2,7 +2,7 @@ import { Footer } from "flowbite-react";
 
 export default function PageFooter() {
     return(
-        <section className="mb-20 lg:mb-0">
+        <section className="sticky top-[100vh]">
         <Footer container>
       <Footer.Copyright href="#" by="EuroBall" year={2024} />
       <Footer.LinkGroup>

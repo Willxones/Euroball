@@ -5,9 +5,11 @@ import PageFooter from "./PageFooter";
 export default function Layout() {
     return(
         <>
+        <div className="min-h-screen">
             <Header/>
             <Outlet/>
             <PageFooter/>
+        </div>
         </>
     )
 }

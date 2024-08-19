@@ -7,7 +7,8 @@ export default defineConfig(({ mode }) => {
   return {
     define: {
       'process.env.SPACE_ID': JSON.stringify(env.SPACE_ID),
-      'process.env.DELIVERY_ACCESS_TOKEN' : JSON.stringify(env.DELIVERY_ACCESS_TOKEN)
+      'process.env.DELIVERY_ACCESS_TOKEN' : JSON.stringify(env.DELIVERY_ACCESS_TOKEN),
+      'process.env.CMA_ACCESS_TOKEN' : JSON.stringify(env.CMA_ACCESS_TOKEN)
     },
     plugins: [react()],
   }

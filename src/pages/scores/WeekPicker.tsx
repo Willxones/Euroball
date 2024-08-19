@@ -24,6 +24,16 @@ export type Game = {
         }
         weekName: string;
     };
+    homeTeam: {
+        sys: {
+            id: string;
+        }
+    }
+    awayTeam: {
+        sys: {
+            id: string;
+        }
+    }
     homeScore: number | null;
     awayScore: number | null;
 }
@@ -113,6 +123,13 @@ export default function WeekPicker({ selectedLeague, onWeekChange }: WeekPickerP
     const weeks: Week[] = weeksData?.weekCollection?.items || [];
     const isDisabled = weeks.length === 0;
 
+    function removeContentInParentheses(weekName: string): string {
+        // Regular expression to match text within parentheses, including the parentheses
+        const regex = /\(.*?\)/g;
+        // Replace the matched content with an empty string
+        return weekName.replace(regex, '').trim();
+    }
+
     return (
         <>
             <Listbox value={selected} onChange={setSelected} disabled={isDisabled}>
@@ -120,7 +137,7 @@ export default function WeekPicker({ selectedLeague, onWeekChange }: WeekPickerP
                     <ListboxButton className={`relative w-full cursor-pointer rounded-md border py-1 pl-3 pr-10 text-left sm:text-sm sm:leading-6 
                         ${isDisabled ? 'cursor-not-allowed bg-gray-200 text-gray-400 dark:border-gray-600 dark:bg-gray-600' : 'bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white'}`}>
                         <span className="flex items-center">
-                            <span className="block truncate">{selected ? `${selected.weekName}${selected.sys.id === currentWeekId ? ' (current week)' : ''}` : 'No scores available'}</span>
+                            <span className="block truncate">{selected ? `${removeContentInParentheses(selected.weekName)}${selected.sys.id === currentWeekId ? ' (current week)' : ''}` : 'No scores available'}</span>
                         </span>
                         <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                             <ChevronUpDownIcon aria-hidden="true" className="size-5 text-gray-400" />
@@ -140,7 +157,7 @@ export default function WeekPicker({ selectedLeague, onWeekChange }: WeekPickerP
                                 >
                                     <div className="flex items-center">
                                         <span className="block truncate font-normal group-data-[selected]:font-semibold">
-                                            {week.weekName} {week.sys.id === currentWeekId ? '(current week)' : ''}
+                                            {removeContentInParentheses(week.weekName)} {week.sys.id === currentWeekId ? '(current week)' : ''}
                                         </span>
                                     </div>
                                     <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-900 group-data-[focus]:text-white dark:text-white dark:group-data-[focus]:text-gray-700 [.group:not([data-selected])_&]:hidden">

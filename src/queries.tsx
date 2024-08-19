@@ -63,7 +63,7 @@ export const GET_GAMES_BY_WEEKS = gql`
 `;
 
 export const GET_GAMES_BY_WEEK = gql`
-  query GetGamesByWeeks($limit: Int!, $weekId: String!) {
+  query GetGamesByWeek($limit: Int!, $weekId: String!) {
     gameCollection(
       limit: $limit
       order: dateAndTime_DESC
@@ -82,12 +82,35 @@ export const GET_GAMES_BY_WEEK = gql`
           }
           weekName
         }
+        homeTeam {
+          sys {
+            id
+          }
+          teamName
+          locationName
+          shortenedName
+          logo {
+            url
+          }
+        }
+        awayTeam {
+          sys {
+            id
+          }
+          teamName
+          locationName
+          shortenedName
+          logo {
+            url
+          }
+        }
         homeScore
         awayScore
       }
     }
   }
 `;
+
 
 export const GET_ARTICLES_BY_LEAGUE = gql`
   query GetArticlesByLeague($limit: Int!, $skip: Int!, $leagueName: String, $searchQuery: String) {
@@ -170,6 +193,22 @@ export const GET_ALL_ARTICLES = gql`
   }
 `;
 
+export const GET_TEAM_BY_ID = gql`
+  query GetTeamById($id: String!) {
+    team(id: $id) {
+      sys {
+        id
+      }
+      teamName
+      locationName
+      shortenedName
+      logo {
+        url
+      }
+    }
+  }
+`
+
 
 export const GET_ARTICLE_BY_ID = gql`
   query GetArticleById($id: String!) {
@@ -181,6 +220,15 @@ export const GET_ARTICLE_BY_ID = gql`
       title
       headerImage {
         url
+      }
+      author {
+        firstName
+        lastName
+        role
+        avatar {
+          url
+        }
+        bio
       }
       content {
         json
@@ -196,6 +244,7 @@ export const GET_ARTICLE_BY_ID = gql`
     }
   }
 `;
+
 export const GET_ASSETS_BY_IDS = gql`
   query GetAssetsByIds($ids: [String!]!) {
     assets: assetCollection(where: { sys: { id_in: $ids } }) {
