@@ -9,6 +9,7 @@ export default function SocialSharing({title, url}: SocialSharingProps) {
     function copy(text: string){
         navigator.clipboard.writeText(text)
       }
+      console.log(title)
     return (
         <>
             <div>
