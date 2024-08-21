@@ -8,6 +8,7 @@ import { documentToReactComponents, Options } from "@contentful/rich-text-react-
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { useEffect, useState } from "react";
 import SocialSharing from "./SocialSharing";
+import ReactGA from "react-ga4"
 
 export interface Article {
   sys: {
@@ -149,6 +150,11 @@ export default function Article() {
       },
     },
   };
+  ReactGA.send({
+    hitType: "pageview",
+    page: `/article/${id}`,
+    title: `Article: ${article?.title}`
+  })
 
   return (
     <>

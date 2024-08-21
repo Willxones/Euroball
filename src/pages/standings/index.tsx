@@ -3,8 +3,14 @@ import DivisionSection, { Division } from "./DivisionSection";
 import LeaguePicker, { League } from "./LeaguePicker";
 import { useQuery } from "@apollo/client";
 import { GET_DIVISIONS_BY_LEAGUE } from "../../queries";
+import ReactGA from "react-ga4"
 
 export default function Standings() {
+    ReactGA.send({
+        hitType: "pageview",
+        page: `/standings`,
+        title: `Standings`
+      })
     const [selectedLeague, setSelectedLeague] = useState<League | null>(null);
 
     const { loading: loadingDivisions, error: errorDivisions, data: dataDivisions } = useQuery(GET_DIVISIONS_BY_LEAGUE, {

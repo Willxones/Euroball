@@ -1,4 +1,11 @@
+import ReactGA from "react-ga4"
+
 export default function PrivacyPolicy() {
+    ReactGA.send({
+        hitType: "pageview",
+        page: `/privacy-policy`,
+        title: `Privacy Policy`
+      })
     return (
         <>
         <div className="mx-auto mt-10 max-w-lg dark:text-white">

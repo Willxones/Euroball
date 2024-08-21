@@ -1,6 +1,12 @@
 import { Button, Textarea } from "flowbite-react";
+import ReactGA from "react-ga4"
 
 export default function Feedback() {
+    ReactGA.send({
+        hitType: "pageview",
+        page: `/feedback`,
+        title: `Feedback`
+      })
     return(
         <>
     <form action={`https://formsubmit.co/${process.env.EMAIL_ADDRESS}`} method="POST" >

@@ -1,6 +1,12 @@
 import { Button, Label, Textarea, TextInput } from "flowbite-react";
+import ReactGA from "react-ga4"
 
 export default function Contact() {
+  ReactGA.send({
+    hitType: "pageview",
+    page: `/contact`,
+    title: `Contact`
+  })
     return (
         <>
         <form action={`https://formsubmit.co/${process.env.EMAIL_ADDRESS}`} method="POST" >
