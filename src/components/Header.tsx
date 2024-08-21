@@ -22,7 +22,7 @@ export default function Header() {
           <Navbar.Link href="/news" active={isActive('/news')}>News</Navbar.Link>
           <Navbar.Link href="/scores" active={isActive('/scores')}>Scores</Navbar.Link>
           <Navbar.Link href="/standings" active={isActive('/standings')}>Standings</Navbar.Link>
-          <Navbar.Link href="" active={isActive('feedback')}>Feedback</Navbar.Link>
+          <Navbar.Link href="/feedback" active={isActive('feedback')}>Feedback</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </header>

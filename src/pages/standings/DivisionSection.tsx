@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { League } from "./LeaguePicker"
+import { League } from "./LeaguePicker";
 import { Table } from "flowbite-react";
 import { GET_TEAMS_BY_DIVISION } from "../../queries";
 import TeamRow from "./TeamRow";
@@ -34,7 +34,7 @@ export interface Team {
     division: Division
 }
 
-export default function DivisionSection({division}: DivisionProps) {
+export default function DivisionSection({ division }: DivisionProps) {
     const { loading: loadingTeams, error: errorTeams, data: dataTeams } = useQuery(GET_TEAMS_BY_DIVISION, {
         variables: { divisionId: division?.sys.id },
     });
@@ -43,6 +43,17 @@ export default function DivisionSection({division}: DivisionProps) {
     if (errorTeams) return <p>Error: {errorTeams.message}</p>;
 
     const teams: Team[] = dataTeams?.teamCollection?.items || [];
+
+    // Sorting the teams based on the provided criteria
+    const sortedTeams = teams.sort((a, b) => {
+        if (a.position !== b.position) {
+            return a.position - b.position; // Sort by position ascending
+        } else if (a.pointsAgainst !== b.pointsAgainst) {
+            return a.pointsAgainst - b.pointsAgainst; // Sort by points against ascending
+        } else {
+            return b.pointsFor - a.pointsFor; // Sort by points for descending
+        }
+    });
 
     return (
         <>
@@ -62,7 +73,7 @@ export default function DivisionSection({division}: DivisionProps) {
                         </Table.Head>
                         <Table.Body className="divide-y">
                             {
-                                teams.map(team => (
+                                sortedTeams.map(team => (
                                     <TeamRow key={team.sys.id} team={team} />
                                 ))
                             }
@@ -71,5 +82,5 @@ export default function DivisionSection({division}: DivisionProps) {
                 </div>
             </div>
         </>
-    )
+    );
 }
