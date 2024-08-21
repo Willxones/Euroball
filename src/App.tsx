@@ -12,7 +12,7 @@ import Contact from './pages/other/Contact.js';
 import ReactGA from 'react-ga4';
 
 function App() {
-  ReactGA.initialize('GA_TRACKING_ID');
+  ReactGA.initialize(process.env.GA_TRACKING_ID!);
   return (
     <main className='mx-auto max-w-7xl px-10'>
       <BrowserRouter>
