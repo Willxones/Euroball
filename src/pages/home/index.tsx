@@ -14,7 +14,7 @@ export default function Home() {
         <>
         <FeaturedNewsSection/>
         <RecentScoresSection/>
-        <RecentNewsSection/>
+        <RecentNewsSection isSidebar={false} currentArticleId={undefined}/>
         <div className="my-4">
         <h2 className="text-lg font-bold dark:text-white">Standings ⚔️</h2>
         <Standings/>
