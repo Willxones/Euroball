@@ -5,7 +5,7 @@ import PageFooter from "./PageFooter";
 export default function Layout() {
     return(
         <>
-        <div className="min-h-screen">
+        <div className="flex min-h-screen flex-col">
             <Header/>
             <Outlet/>
             <PageFooter/>

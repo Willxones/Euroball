@@ -100,7 +100,7 @@ export default function NewsTable({
   }
 
   return (
-    <div className={`my-2 flex gap-5 ${isSidebar ? 'my-0 flex-col' : 'flex-col sm:grid sm:grid-cols-2 sm:flex-row lg:grid-cols-3'}`}>
+    <div className={`my-2 flex gap-5 ${isSidebar ? 'mt-0 flex-col' : 'flex-col sm:grid sm:grid-cols-2 sm:flex-row lg:grid-cols-3'}`}>
       {filteredArticles.map((article: Article) => (
         <NewsTableArticle key={article.sys.id} article={article} />
       ))}

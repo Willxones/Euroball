@@ -158,7 +158,7 @@ export default function Article() {
 
   return (
     <>
-      <div className="relative my-2 flex flex-col gap-5 lg:flex-row">
+      <div className=" my-2 flex flex-col gap-5 lg:flex-row">
         <div className="max-w-screen-lg flex-1 text-gray-700 dark:text-white lg:min-w-[600px]">
           <img className="max-h-[450px] w-full rounded-xl object-cover" alt="header image" src={article?.headerImage.url} />
           <p className="pt-5 text-4xl font-semibold text-gray-700 dark:text-white">{article?.title}</p>
@@ -176,7 +176,7 @@ export default function Article() {
             {documentToReactComponents(contentJson, options)}
           </div>
         </div>
-        <div className="h-20 w-full text-white lg:h-auto lg:w-80">
+        <div className="h-20 w-full dark:text-white lg:h-auto lg:w-80">
           <RecentNewsSection isSidebar={true} currentArticleId={id}/>
         </div>
       </div>
