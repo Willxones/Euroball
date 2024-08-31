@@ -1,14 +1,10 @@
 import { useQuery } from "@apollo/client";
-import ScoreCard from "./ScoreCard";
-import { Game, Week } from "./WeekPicker";
-import { GET_GAMES_BY_WEEK } from "../../queries";
+import ScoreCard from "../scores/ScoreCard";
+import { GET_ALL_GAMES } from "../../queries";
+import { Game } from "../scores/WeekPicker";
 import { Spinner } from "flowbite-react";
 
-interface ScoresTableProps {
-    selectedWeek: Week | null;
-}
-
-interface GetGamesByWeekResponse {
+interface GetAllGamesResponse {
     gameCollection: GameCollection;
 }
 
@@ -17,24 +13,16 @@ interface GameCollection {
     total: number;
 }
 
-export default function ScoresTable({ selectedWeek }: ScoresTableProps) {
-    const weekId = selectedWeek?.sys.id;
-    const limit = 100;
-
-    const { data: gamesData, loading: gamesLoading, error: gamesError } = useQuery<GetGamesByWeekResponse>(
-        GET_GAMES_BY_WEEK,
+export default function RecentScoresSection() {
+    const { data: gamesData, loading: gamesLoading, error: gamesError } = useQuery<GetAllGamesResponse>(
+        GET_ALL_GAMES,
         {
             variables: {
-                limit: limit,
-                weekId: weekId,
+                limit: 8,
+                skip: 0
             },
-            skip: !weekId
         }
     );
-
-    if (!weekId) {
-        return <div>Please select a week to view the scores.</div>;
-    }
 
     if (gamesLoading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
     if (gamesError) return <div>Error loading games</div>;
@@ -50,10 +38,13 @@ export default function ScoresTable({ selectedWeek }: ScoresTableProps) {
     });
 
     return (
-        <div className="flex w-full flex-row flex-wrap justify-evenly gap-2">
+        <>
+        <h2 className="mt-4 text-lg font-bold dark:text-white">Recent Scores 🏈</h2>
+        <div className="mt-2 flex w-full flex-row flex-wrap justify-evenly gap-2">
             {sortedGames.map(game => (
                 <ScoreCard key={game.sys.id} game={game} />
             ))}
         </div>
+        </>
     );
 }

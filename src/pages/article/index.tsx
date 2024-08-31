@@ -7,8 +7,8 @@ import { Spinner } from "flowbite-react";
 import { documentToReactComponents, Options } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { useEffect, useState } from "react";
-import SocialSharing from "./SocialSharing";
 import ReactGA from "react-ga4"
+import RecentNewsSection from "../home/RecentNewsSection";
 
 export interface Article {
   sys: {
@@ -98,7 +98,7 @@ export default function Article() {
   if (loading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
   if (error) {
     console.error("Error loading article:", error);
-    return <div>Error loading article</div>;
+    return <div className="py-12 text-center text-gray-800 dark:text-white">Sorry, there has been a problem loading this page. Please try reloading the page.</div>;
   }
 
   const article = data?.article;
@@ -172,13 +172,12 @@ export default function Article() {
             </div>
             <p className="ml-auto pb-5 font-thin">{formatDate(article?.sys.firstPublishedAt || "")}</p>
           </div>
-          <SocialSharing title={article?.title} url={window.location.href}/>
           <div>
             {documentToReactComponents(contentJson, options)}
           </div>
         </div>
-        <div className="fixed bottom-0 right-0 h-20 w-full bg-black text-white lg:static lg:bottom-auto lg:h-auto lg:w-64">
-          ad
+        <div className="h-20 w-full text-white lg:h-auto lg:w-80">
+          <RecentNewsSection isSidebar={true} currentArticleId={id}/>
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { League } from "./LeaguePicker";
-import { Table } from "flowbite-react";
+import { Spinner, Table } from "flowbite-react";
 import { GET_TEAMS_BY_DIVISION } from "../../queries";
 import TeamRow from "./TeamRow";
 
@@ -39,7 +39,7 @@ export default function DivisionSection({ division }: DivisionProps) {
         variables: { divisionId: division?.sys.id },
     });
 
-    if (loadingTeams) return <p>Loading teams...</p>;
+    if (loadingTeams) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
     if (errorTeams) return <p>Error: {errorTeams.message}</p>;
 
     const teams: Team[] = dataTeams?.teamCollection?.items || [];

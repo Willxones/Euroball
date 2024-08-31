@@ -4,6 +4,7 @@ import { GET_WEEKS_BY_LEAGUE, GET_GAMES_BY_WEEKS } from "../../queries";
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { League } from "./LeaguePicker";
+import { Spinner } from "flowbite-react";
 
 export type Week = {
     sys: {
@@ -116,7 +117,7 @@ export default function WeekPicker({ selectedLeague, onWeekChange }: WeekPickerP
         }
     }, [selectedLeague]);
 
-    if (weeksLoading || gamesLoading) return <div>Loading...</div>;
+    if (weeksLoading || gamesLoading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
     if (weeksError) return <div>Error loading weeks</div>;
     if (gamesError) return <div>Error loading games</div>;
 

@@ -5,7 +5,8 @@ import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headless
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import NewsTable from './NewsTable'; // Import the NewsTable component
 import debounce from 'lodash.debounce'; // Import debounce
-import { TextInput } from 'flowbite-react';
+import { Spinner, TextInput } from 'flowbite-react';
+import NewsPaginator from './NewsPaginator';
 
 export type League = {
   name: string;
@@ -20,6 +21,8 @@ export default function LeaguePicker() {
   const { data, loading, error } = useQuery(GET_LEAGUES);
   const [selected, setSelected] = useState<League | null>(ALL_LEAGUES_OPTION);
   const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);  // State to store total pages
 
   useEffect(() => {
     if (data && !selected) {
@@ -27,7 +30,7 @@ export default function LeaguePicker() {
     }
   }, [data, selected]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
   if (error) return <div>Error loading leagues</div>;
 
   const leagues: League[] = [ALL_LEAGUES_OPTION, ...(data?.leagueCollection?.items || [])];
@@ -35,7 +38,11 @@ export default function LeaguePicker() {
   // Debounced search handler
   const handleSearch = debounce((query: string) => {
     setSearchQuery(query);
-  }, 300); // Debounce for 300ms
+  }, 300);
+
+  const onPageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <>
@@ -50,16 +57,13 @@ export default function LeaguePicker() {
               <ChevronUpDownIcon aria-hidden="true" className="size-5 text-gray-400" />
             </span>
           </ListboxButton>
-          <ListboxOptions
-            transition
-            // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
-            className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base text-gray-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in dark:bg-gray-700 dark:text-white sm:text-sm"
-          >
+          {/* eslint-disable-next-line tailwindcss/migration-from-tailwind-2*/}
+          <ListboxOptions className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base text-gray-900 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-700 dark:text-white sm:text-sm">
             {leagues.map((league) => (
               <ListboxOption
                 key={league.name}
                 value={league}
-                className="group relative cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-gray-700 data-[focus]:text-white dark:text-white dark:data-[focus]:bg-white dark:data-[focus]:text-gray-900"
+                className="group relative cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 dark:text-white"
               >
                 <div className="flex items-center">
                   {league.logo.url && <img alt="" src={league.logo.url} className="size-5 shrink-0 object-cover" />}
@@ -76,11 +80,18 @@ export default function LeaguePicker() {
         </div>
       </Listbox>
 
-      {/* Search input */}
-      
       <TextInput id="small" type="text" sizing="sm" onChange={(e) => handleSearch(e.target.value)} placeholder='Search Articles'/>
 
-      <NewsTable selectedLeague={selected} searchQuery={searchQuery} />
+      <NewsTable
+        selectedLeague={selected}
+        searchQuery={searchQuery}
+        limit={21}
+        currentPage={currentPage}
+        onPageChange={onPageChange}
+        setTotalPages={setTotalPages} // Pass the setTotalPages function to NewsTable
+        isSidebar={false} currentArticleId={undefined} />
+
+      <NewsPaginator currentPage={currentPage} totalPages={totalPages} onPageChange={onPageChange} />
     </>
   );
 }

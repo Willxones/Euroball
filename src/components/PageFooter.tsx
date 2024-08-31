@@ -4,7 +4,7 @@ export default function PageFooter() {
     return(
         <section className="sticky top-[100vh]">
         <Footer container>
-      <Footer.Copyright href="#" by="EuroBall" year={2024} />
+      <Footer.Copyright href="#" by="..." year={2024} />
       <Footer.LinkGroup>
         <Footer.Link href="/about">About</Footer.Link>
         <Footer.Link href="/contact">Contact</Footer.Link>

@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { Game } from "./WeekPicker";
 import { GET_TEAM_BY_ID } from "../../queries";
 import { formatDateTime } from "./formatDateTime";
+import { Spinner } from "flowbite-react";
 
 interface ScoreCardProps {
     game: Game;
@@ -42,7 +43,7 @@ export default function ScoreCard({ game }: ScoreCardProps) {
         }
     );
 
-    if (homeTeamLoading || awayTeamLoading) return <div>Loading...</div>;
+    if (homeTeamLoading || awayTeamLoading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
     if (homeTeamError || awayTeamError) return <div>Error loading team data</div>;
 
     const homeTeam = homeTeamData?.team;
@@ -60,7 +61,7 @@ export default function ScoreCard({ game }: ScoreCardProps) {
     const isAwayScoreHighest = awayScore !== '-' && homeScore !== '-' && awayScore > homeScore;
 
     return (
-        <div className="h-28 w-[294px] overflow-hidden rounded-md border px-4 py-2 text-gray-700 shadow-md dark:border-gray-700 dark:text-white">
+        <div className="h-28 w-full overflow-hidden rounded-md border px-4 py-2 text-gray-700 shadow-md dark:border-gray-700 dark:text-white sm:w-[294px]">
             <div className="flex flex-col gap-2">
                 <div className="flex">
                     <p>{formatDateTime(game.dateAndTime)}</p>

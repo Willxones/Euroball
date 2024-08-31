@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { GET_LEAGUES } from "../../queries";
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import { Spinner } from "flowbite-react";
 
 export type League = {
   name: string;
@@ -29,7 +30,7 @@ export default function LeaguePicker({onLeagueChange}: LeaguePickerProps) {
     onLeagueChange(selected);
   }, [onLeagueChange, selected]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
   if (error) return <div>Error loading leagues</div>;
 
   const leagues: League[] = data?.leagueCollection?.items || [];

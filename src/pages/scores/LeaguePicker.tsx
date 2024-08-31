@@ -5,6 +5,7 @@ import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headless
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import ScoresTable from "./ScoresTable";
 import WeekPicker, { Week } from "./WeekPicker";
+import { Spinner } from "flowbite-react";
 
 export type League = {
   name: string;
@@ -24,7 +25,7 @@ export default function LeaguePicker() {
     }
   }, [data, selected]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
   if (error) return <div>Error loading leagues</div>;
 
   const leagues: League[] = data?.leagueCollection?.items || [];

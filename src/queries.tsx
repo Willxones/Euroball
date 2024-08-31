@@ -155,6 +155,55 @@ export const GET_GAMES_BY_WEEK = gql`
   }
 `;
 
+export const GET_ALL_GAMES = gql`
+  query GetAllGames($limit: Int!, $skip: Int!) {
+    gameCollection(
+      limit: $limit
+      skip: $skip
+      order: dateAndTime_DESC
+    ) {
+      items {
+        sys {
+          id
+        }
+        dateAndTime
+        homeTeam {
+          sys {
+            id
+          }
+          teamName
+          locationName
+          shortenedName
+          logo {
+            url
+          }
+        }
+        awayTeam {
+          sys {
+            id
+          }
+          teamName
+          locationName
+          shortenedName
+          logo {
+            url
+          }
+        }
+        homeScore
+        awayScore
+        week {
+          sys {
+            id
+          }
+          weekName
+          isPlayoffWeek
+        }
+      }
+      total
+    }
+  }
+`;
+
 
 export const GET_ARTICLES_BY_LEAGUE = gql`
   query GetArticlesByLeague($limit: Int!, $skip: Int!, $leagueName: String, $searchQuery: String) {
@@ -179,6 +228,13 @@ export const GET_ARTICLES_BY_LEAGUE = gql`
         content {
           json
         }
+        author {
+          firstName
+          lastName
+          avatar {
+            url
+          }
+        }
         leagueCollection {
           items {
             name
@@ -197,6 +253,57 @@ export const GET_USER_BY_ID = gql`
     user(id: $id) {
       firstName
       lastName
+    }
+  }
+`;
+
+export const GET_FEATURED_ARTICLES = gql`
+  query GetFeaturedArticles {
+    articleCollection(
+      limit: 3
+      order: sys_firstPublishedAt_DESC
+      where: {
+        contentfulMetadata: {
+          tags: {
+            id_contains_all: "featured"
+          }
+        }
+      }
+    ) {
+      items {
+        contentfulMetadata {
+          tags {
+            id
+          }
+        }
+        sys {
+          id
+          firstPublishedAt
+        }
+        title
+        headerImage {
+          url
+        }
+        content {
+          json
+        }
+        author {
+          firstName
+          lastName
+          avatar {
+            url
+          }
+        }
+        leagueCollection {
+          items {
+            name
+            logo {
+              url
+            }
+          }
+        }
+      }
+      total
     }
   }
 `;
@@ -222,6 +329,13 @@ export const GET_ALL_ARTICLES = gql`
         }
         content {
           json
+        }
+          author {
+          firstName
+          lastName
+          avatar {
+            url
+          }
         }
         leagueCollection {
           items {
