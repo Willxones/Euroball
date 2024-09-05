@@ -14,7 +14,7 @@ import ReactGA from 'react-ga4';
 function App() {
   ReactGA.initialize(process.env.GA_TRACKING_ID!);
   return (
-    <main className='mx-auto max-w-7xl px-10'>
+    <main className='mx-auto max-w-7xl px-10 min-h-screen'>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout/>}>

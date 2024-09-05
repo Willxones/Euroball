@@ -11,7 +11,8 @@ export default function Header() {
     <header className="sticky top-0 z-10">
       <Navbar fluid>
         <Navbar.Brand href="/">
-          <img src="/eb.png" className="mr-3 h-6 sm:h-9" alt="Euroball Logo" />
+          <img src="/DarkRegLogo.png" className="mr-3 h-6 dark:hidden sm:h-9" alt="Euroball Logo" />
+          <img src="/LightRegLogo.png" className="mr-3 hidden h-6 dark:block sm:h-9" alt="Euroball Logo" />
         </Navbar.Brand>
         <div className="flex md:order-2">
           <DarkThemeToggle />

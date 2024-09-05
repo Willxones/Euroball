@@ -23,7 +23,6 @@ export interface Team {
     sys: {
         id: string;
     };
-    position: number;
     locationName: string;
     teamName: string;
     logo: {

@@ -176,7 +176,7 @@ export default function Article() {
             {documentToReactComponents(contentJson, options)}
           </div>
         </div>
-        <div className="h-20 w-full dark:text-white lg:h-auto lg:w-80">
+        <div className="w-full dark:text-white lg:w-80">
           <RecentNewsSection isSidebar={true} currentArticleId={id}/>
         </div>
       </div>

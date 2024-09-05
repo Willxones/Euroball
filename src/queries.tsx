@@ -45,7 +45,6 @@ export const GET_TEAMS_WITHIN_DIVISION = gql`
             sys {
               id
             }
-            position
             locationName
             teamName
             logo {

@@ -2,9 +2,10 @@ import { Footer } from "flowbite-react";
 
 export default function PageFooter() {
     return(
-        <section className="">
+      <>
+        <section className="mt-2 dark:hidden">
         <Footer container>
-      <Footer.Copyright href="#" by="..." year={2024} />
+        <Footer.Brand src="/DarkRegLogo.png"/>
       <Footer.LinkGroup>
         <Footer.Link href="/about">About</Footer.Link>
         <Footer.Link href="/contact">Contact</Footer.Link>
@@ -12,5 +13,17 @@ export default function PageFooter() {
       </Footer.LinkGroup>
     </Footer>
     </section>
+
+<section className="mt-2 hidden dark:block">
+<Footer container>
+<Footer.Brand src="/LightRegLogo.png"/>
+<Footer.LinkGroup>
+<Footer.Link href="/about">About</Footer.Link>
+<Footer.Link href="/contact">Contact</Footer.Link>
+<Footer.Link href="/privacy-policy">Privacy Policy</Footer.Link>
+</Footer.LinkGroup>
+</Footer>
+</section>
+</>
     )
 }
