@@ -32,31 +32,37 @@ export const GET_DIVISIONS_BY_LEAGUE = gql`
   }
 `;
 
-export const GET_TEAMS_BY_DIVISION = gql`
-  query GetTeamsByDivision($divisionId: String!) {
-    teamCollection(
-      where: {
-        division: { sys: { id: $divisionId } }
-      }
-    ) {
+export const GET_TEAMS_WITHIN_DIVISION = gql`
+  query GetTeamsWithinDivision($divisionId: String!, $limit: Int!) {
+    divisionCollection(where: { sys: { id: $divisionId } }) {
       items {
         sys {
           id
         }
-        teamName
-        locationName
-        logo {
-          url
+        name
+        teamsCollection(limit: $limit) {
+          items {
+            sys {
+              id
+            }
+            position
+            locationName
+            teamName
+            logo {
+              url
+            }
+            wins
+            draws
+            losses
+            pointsFor
+            pointsAgainst
+          }
         }
-        wins
-        draws
-        losses
-        pointsFor
-        pointsAgainst
       }
     }
   }
 `;
+
 
 
 export const GET_WEEKS_BY_LEAGUE = gql`
