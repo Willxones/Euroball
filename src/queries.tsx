@@ -161,11 +161,17 @@ export const GET_GAMES_BY_WEEK = gql`
 `;
 
 export const GET_ALL_GAMES = gql`
-  query GetAllGames($limit: Int!, $skip: Int!) {
+  query GetAllGames($limit: Int!, $skip: Int!, $homeScoreExists: Boolean, $awayScoreExists: Boolean) {
     gameCollection(
       limit: $limit
       skip: $skip
       order: dateAndTime_DESC
+      where: {
+        OR: [
+          { homeScore_exists: $homeScoreExists },
+          { awayScore_exists: $awayScoreExists }
+        ]
+      }
     ) {
       items {
         sys {

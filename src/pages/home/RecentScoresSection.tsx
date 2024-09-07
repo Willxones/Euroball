@@ -19,7 +19,9 @@ export default function RecentScoresSection() {
         {
             variables: {
                 limit: 8,
-                skip: 0
+                skip: 0,
+                homeScoreExists: true,
+                awayScoreExists: true,
             },
         }
     );
