@@ -37,7 +37,7 @@ export default function ScoresTable({ selectedWeek }: ScoresTableProps) {
     }
 
     if (gamesLoading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
-    if (gamesError) return <div>Error loading games</div>;
+    if (gamesError) return <div className="py-4 text-center text-white">Error loading games</div>;
 
     // Get the games and create a new array for sorting
     const games: Game[] = gamesData?.gameCollection?.items || [];
@@ -46,8 +46,8 @@ export default function ScoresTable({ selectedWeek }: ScoresTableProps) {
     const sortedGames = [...games].sort((a, b) => {
         const dateA = new Date(a.dateAndTime);
         const dateB = new Date(b.dateAndTime);
-        return dateB.getTime() - dateA.getTime();
-    });
+        return dateA.getTime() - dateB.getTime();
+    });    
 
     return (
         <div className="flex w-full flex-row flex-wrap justify-evenly gap-2">

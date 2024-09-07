@@ -134,7 +134,7 @@ export default function WeekPicker({ selectedLeague, onWeekChange }: WeekPickerP
     return (
         <>
             <Listbox value={selected} onChange={setSelected} disabled={isDisabled}>
-                <div className="relative my-2">
+                <div className="relative mb-2">
                     <ListboxButton className={`relative w-full cursor-pointer rounded-md border py-1 pl-3 pr-10 text-left sm:text-sm sm:leading-6 
                         ${isDisabled ? 'cursor-not-allowed bg-gray-200 text-gray-400 dark:border-gray-600 dark:bg-gray-600' : 'bg-white text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white'}`}>
                         <span className="flex items-center">
