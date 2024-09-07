@@ -64,7 +64,7 @@ export default function ScoreCard({ game }: ScoreCardProps) {
         <div className="h-28 w-full overflow-hidden rounded-md border px-4 py-2 text-gray-700 shadow-md dark:border-gray-700 dark:text-white sm:w-[294px]">
             <div className="flex flex-col gap-2">
                 <div className="flex">
-                    <p>{formatDateTime(game.dateAndTime)}</p>
+                    <p>{formatDateTime(game.dateAndTime)} <span className=" text-xs font-thin">(UTC)</span></p>
                     <p className="mx-auto mr-0">{statusText}</p>
                 </div>
                 <div className="flex flex-col gap-2">
