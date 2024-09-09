@@ -44,7 +44,7 @@ export default function ScoreCard({ game }: ScoreCardProps) {
     );
 
     if (homeTeamLoading || awayTeamLoading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
-    if (homeTeamError || awayTeamError) return <div>Error loading team data</div>;
+    if (homeTeamError || awayTeamError) return <div></div>;
 
     const homeTeam = homeTeamData?.team;
     const awayTeam = awayTeamData?.team;
