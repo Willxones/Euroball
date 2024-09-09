@@ -69,12 +69,12 @@ export default function ScoreCard({ game }: ScoreCardProps) {
                 </div>
                 <div className="flex flex-col gap-2">
                     <div className={`flex items-center ${isHomeScoreHighest ? 'font-bold' : ''}`}>
-                        <img alt={homeTeam?.teamName + " logo"} src={homeTeam?.logo.url} className="mr-2 size-6 rounded-sm bg-gray-800 object-contain" />
+                        <img alt={homeTeam?.teamName + " logo"} src={homeTeam?.logo.url} className="mr-2 size-6 rounded-md bg-gray-200 object-contain dark:bg-transparent" />
                         <p className="truncate">{homeTeam?.locationName} {homeTeam?.teamName}</p>
                         <p className="ml-auto mr-0">{homeScore}</p>
                     </div>
                     <div className={`flex items-center ${isAwayScoreHighest ? 'font-bold' : ''}`}>
-                        <img alt={awayTeam?.teamName + " logo"} src={awayTeam?.logo.url} className="mr-2 size-6 rounded-sm bg-gray-800 object-contain" />
+                        <img alt={awayTeam?.teamName + " logo"} src={awayTeam?.logo.url} className="mr-2 size-6 rounded-md bg-gray-200 object-contain dark:bg-transparent" />
                         <p className="truncate">{awayTeam?.locationName} {awayTeam?.teamName}</p>
                         <p className="ml-auto mr-0">{awayScore}</p>
                     </div>
