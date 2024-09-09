@@ -9,7 +9,7 @@ export default function RecentNewsSection({isSidebar, currentArticleId}: RecentN
     const selected = null;
     const searchQuery = "";
     const currentPage = 0;
-    const limit = 6;
+    const limit = isSidebar ? 5 : 6;
     
     return (
         <>
