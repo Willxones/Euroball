@@ -9,7 +9,7 @@ export default function TeamRow({team}: TeamRowProps) {
     return(
         <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
             <Table.Cell className="flex whitespace-nowrap font-medium text-gray-900 dark:text-white ">
-                <img className="mr-2 size-5 object-cover" src={team.logo.url} alt={`${team.locationName} ${team.teamName} logo`} /> {team.locationName} {team.teamName}
+                <img className="mr-2 size-7 rounded-md bg-gray-200 object-cover p-1 dark:bg-transparent" src={team.logo.url} alt={`${team.locationName} ${team.teamName} logo`} /> <div className="my-auto">{team.locationName} {team.teamName}</div>
             </Table.Cell>
             <Table.Cell>{team.wins}</Table.Cell>
             <Table.Cell>{team.draws}</Table.Cell>
