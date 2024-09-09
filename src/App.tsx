@@ -9,10 +9,8 @@ import Feedback from './pages/feedback/index.js';
 import About from './pages/other/About.js';
 import PrivacyPolicy from './pages/other/PrivacyPolicy.js';
 import Contact from './pages/other/Contact.js';
-import ReactGA from 'react-ga4';
 
 function App() {
-  ReactGA.initialize(process.env.GA_TRACKING_ID!);
   return (
     <main className='mx-auto min-h-screen max-w-7xl px-5 sm:px-10'>
       <BrowserRouter>
