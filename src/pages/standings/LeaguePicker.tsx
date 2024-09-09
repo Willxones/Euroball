@@ -12,12 +12,27 @@ export type League = {
   };
 };
 
+interface GetAllLeaguesResponse {
+  leagueCollection: leagueCollection;
+}
+interface leagueCollection {
+  items: League[];
+  total: number;
+}
+
 interface LeaguePickerProps {
   onLeagueChange: (league: League | null) => void
 }
 
 export default function LeaguePicker({onLeagueChange}: LeaguePickerProps) {
-  const { data, loading, error } = useQuery(GET_LEAGUES);
+  const { data, loading, error } = useQuery<GetAllLeaguesResponse>(
+    GET_LEAGUES,
+    {
+      variables: {
+        isActive: true
+      }
+    }
+  );
   const [selected, setSelected] = useState<League | null>(null);
 
   useEffect(() => {

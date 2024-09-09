@@ -33,7 +33,7 @@ export default function ScoresTable({ selectedWeek }: ScoresTableProps) {
     );
 
     if (!weekId) {
-        return <div>Please select a week to view the scores.</div>;
+        return <div></div>;
     }
 
     if (gamesLoading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;

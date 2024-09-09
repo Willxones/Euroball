@@ -1,9 +1,10 @@
 import { gql } from '@apollo/client';
 
 export const GET_LEAGUES = gql`
-  query GetLeagues {
-    leagueCollection (
-      order: sys_firstPublishedAt_ASC
+  query GetLeagues($isActive: Boolean) {
+    leagueCollection(
+      where: { isActive: $isActive }
+      order: sys_firstPublishedAt_DESC
     ) {
       items {
         name
@@ -14,6 +15,7 @@ export const GET_LEAGUES = gql`
     }
   }
 `;
+
 
 export const GET_DIVISIONS_BY_LEAGUE = gql`
   query GetDivisionsByLeague($leagueName: String!) {
