@@ -14,8 +14,23 @@ export type League = {
   };
 };
 
+interface GetAllLeaguesResponse {
+  leagueCollection: leagueCollection;
+}
+interface leagueCollection {
+  items: League[];
+  total: number;
+}
+
 export default function LeaguePicker() {
-  const { data, loading, error } = useQuery(GET_LEAGUES);
+  const { data, loading, error } = useQuery<GetAllLeaguesResponse>(
+    GET_LEAGUES,
+    {
+      variables: {
+        isActive: true
+      }
+    }
+  );
   const [selected, setSelected] = useState<League | null>(null);
   const [selectedWeek, setSelectedWeek] = useState<Week | null>(null);
 
