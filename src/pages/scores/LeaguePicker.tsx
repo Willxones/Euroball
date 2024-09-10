@@ -4,7 +4,7 @@ import { GET_LEAGUES } from "../../queries";
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import ScoresTable from "./ScoresTable";
-import WeekPicker, { Week } from "./WeekPicker";
+import WeekPicker, { Game, Week } from "./WeekPicker";
 import { Spinner } from "flowbite-react";
 
 export type League = {
@@ -22,7 +22,11 @@ interface leagueCollection {
   total: number;
 }
 
-export default function LeaguePicker() {
+interface LeaguePickerProps {
+  openModal: (game: Game | null) => void;
+}
+
+export default function LeaguePicker({openModal}: LeaguePickerProps) {
   const { data, loading, error } = useQuery<GetAllLeaguesResponse>(
     GET_LEAGUES,
     {
@@ -84,7 +88,7 @@ export default function LeaguePicker() {
         </div>
       </Listbox>
       <WeekPicker selectedLeague={selected} onWeekChange={setSelectedWeek}/>
-      <ScoresTable selectedWeek={selectedWeek}/>
+      <ScoresTable selectedWeek={selectedWeek} openModal={openModal}/>
     </>
   );
 }

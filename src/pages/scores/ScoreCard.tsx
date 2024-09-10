@@ -6,6 +6,7 @@ import { Spinner } from "flowbite-react";
 
 interface ScoreCardProps {
     game: Game;
+    openModal: (game: Game | null) => void;
 }
 
 interface Team {
@@ -24,7 +25,10 @@ interface GetTeamResponse {
     team: Team;
 }
 
-export default function ScoreCard({ game }: ScoreCardProps) {
+export default function ScoreCard({ game, openModal }: ScoreCardProps) {
+    const handleClick = () => {
+        openModal(game)
+    }
     const { data: homeTeamData, loading: homeTeamLoading, error: homeTeamError } = useQuery<GetTeamResponse>(
         GET_TEAM_BY_ID,
         {
@@ -61,6 +65,7 @@ export default function ScoreCard({ game }: ScoreCardProps) {
     const isAwayScoreHighest = awayScore !== '-' && homeScore !== '-' && awayScore > homeScore;
 
     return (
+        <a onClick={handleClick} className="cursor-pointer">
         <div className="h-28 w-full overflow-hidden rounded-md border px-4 py-2 text-gray-700 shadow-md dark:border-gray-700 dark:text-white sm:w-[294px]">
             <div className="flex flex-col gap-2">
                 <div className="flex">
@@ -81,5 +86,6 @@ export default function ScoreCard({ game }: ScoreCardProps) {
                 </div>
             </div>
         </div>
+        </a>
     );
 }

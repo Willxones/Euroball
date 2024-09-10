@@ -6,6 +6,7 @@ import { Spinner } from "flowbite-react";
 
 interface ScoresTableProps {
     selectedWeek: Week | null;
+    openModal: (game: Game | null) => void;
 }
 
 interface GetGamesByWeekResponse {
@@ -17,7 +18,7 @@ interface GameCollection {
     total: number;
 }
 
-export default function ScoresTable({ selectedWeek }: ScoresTableProps) {
+export default function ScoresTable({ selectedWeek, openModal }: ScoresTableProps) {
     const weekId = selectedWeek?.sys.id;
     const limit = 100;
 
@@ -52,7 +53,7 @@ export default function ScoresTable({ selectedWeek }: ScoresTableProps) {
     return (
         <div className="flex w-full flex-row flex-wrap justify-evenly gap-2">
             {sortedGames.map(game => (
-                <ScoreCard key={game.sys.id} game={game} />
+                <ScoreCard key={game.sys.id} game={game} openModal={openModal} />
             ))}
         </div>
     );
