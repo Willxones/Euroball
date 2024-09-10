@@ -13,7 +13,11 @@ interface GameCollection {
     total: number;
 }
 
-export default function RecentScoresSection() {
+interface RecentScoresSectionProps {
+    openModal: (game: Game | null) => void;
+}
+
+export default function RecentScoresSection({openModal}: RecentScoresSectionProps) {
     const { data: gamesData, loading: gamesLoading, error: gamesError } = useQuery<GetAllGamesResponse>(
         GET_ALL_GAMES,
         {
@@ -44,7 +48,7 @@ export default function RecentScoresSection() {
         <h2 className="mt-4 text-lg font-bold dark:text-white">Recent Scores 🏈</h2>
         <div className="mt-2 flex w-full flex-row flex-wrap justify-evenly gap-2">
             {sortedGames.map(game => (
-                <ScoreCard key={game.sys.id} game={game} />
+                <ScoreCard key={game.sys.id} game={game} openModal={openModal} />
             ))}
         </div>
         </>
