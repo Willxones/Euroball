@@ -125,14 +125,14 @@ export default function ScoresModal({ isModalOpen, selectedGame, homeTeam, awayT
                 <img src={homeTeam?.logo.url} alt={`${homeTeam?.locationName} ${homeTeam?.teamName} Logo`} className="size-6 rounded-md bg-gray-200 object-contain dark:bg-transparent" />
                 <p>{homeTeam?.locationName} {homeTeam?.teamName}</p>
               </div>
-              <div className={`${isHomeScoreHighest ? 'font-bold' : ''}`}>{selectedGame?.homeScore}</div>
+              <div className={`${isHomeScoreHighest ? 'font-bold' : ''}`}>{selectedGame?.homeScore || "-"}</div>
             </div>
             <div className="flex">
               <div className={`flex flex-1 gap-2 ${isAwayScoreHighest ? 'font-bold' : ''}`}>
                 <img src={awayTeam?.logo.url} alt={`${awayTeam?.locationName} ${awayTeam?.teamName} Logo`} className="size-6 rounded-md bg-gray-200 object-contain dark:bg-transparent" />
                 <p>{awayTeam?.locationName} {awayTeam?.teamName}</p>
               </div>
-              <div className={`${isAwayScoreHighest ? 'font-bold' : ''}`}>{selectedGame?.awayScore}</div>
+              <div className={`${isAwayScoreHighest ? 'font-bold' : ''}`}>{selectedGame?.homeScore || "-"}</div>
             </div>
 
             <h2 className="font-bold">Highlights / Game Replay</h2>
