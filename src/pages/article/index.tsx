@@ -1,5 +1,4 @@
-import { useParams } from "react-router-dom";
-import { GET_ARTICLE_BY_ID, GET_ASSETS_BY_IDS } from "../../queries";
+import { GET_ARTICLE_BY_ID, GET_ASSETS_BY_IDS, GET_TWEETS_BY_IDS } from "../../queries";
 import { useLazyQuery, useQuery } from "@apollo/client";
 import { formatDate } from "../../components/formatDate";
 import { Document } from "@contentful/rich-text-types";
@@ -7,8 +6,10 @@ import { Spinner } from "flowbite-react";
 import { documentToReactComponents, Options } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { useEffect, useState } from "react";
-import ReactGA from "react-ga4"
+import ReactGA from "react-ga4";
 import RecentNewsSection from "../home/RecentNewsSection";
+import {Tweet} from 'react-tweet'
+import { useParams } from "react-router-dom";
 
 export interface Article {
   sys: {
@@ -25,9 +26,9 @@ export interface Article {
     role: string;
     avatar: {
       url: string;
-    }
-    bio: string | null
-  }
+    };
+    bio: string | null;
+  };
   content: {
     json: Document;
   };
@@ -44,6 +45,7 @@ export interface Article {
 interface GetArticleResponse {
   article: Article;
 }
+
 interface Asset {
   sys: {
     id: string;
@@ -53,37 +55,55 @@ interface Asset {
   contentType: string;
 }
 
+interface TweetEntry {
+  sys: {
+    id: string;
+  };
+  tweetId: string;
+}
+
 export default function Article() {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();  // Using object destructuring for types
   const { data, loading, error } = useQuery<GetArticleResponse>(GET_ARTICLE_BY_ID, {
     variables: { id },
   });
 
   const [fetchAssets, { data: assetsData }] = useLazyQuery(GET_ASSETS_BY_IDS);
+  const [fetchTweets, { data: tweetsData }] = useLazyQuery(GET_TWEETS_BY_IDS);
 
   const [assetMap, setAssetMap] = useState<{ [key: string]: Asset }>({});
+  const [tweetMap, setTweetMap] = useState<{ [key: string]: string }>({});
 
   useEffect(() => {
     if (data?.article?.content?.json) {
       const assetIds = new Set<string>();
+      const tweetIds = new Set<string>();
       const content = data.article.content.json;
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-      const findAssetIds = (node: any) => {
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const findEmbeddedIds = (node: any) => {
         if (node.nodeType === 'embedded-asset-block') {
           assetIds.add(node.data.target.sys.id);
         }
+        if (node.nodeType === 'embedded-entry-block') {
+          tweetIds.add(node.data.target.sys.id);
+        }
         if (node?.content) {
-          node.content.forEach((child: any) => findAssetIds(child));
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          node.content.forEach((child: any) => findEmbeddedIds(child));
         }
       };
 
-      findAssetIds(content);
+      findEmbeddedIds(content);
 
       if (assetIds.size > 0) {
         fetchAssets({ variables: { ids: Array.from(assetIds) } });
       }
+      if (tweetIds.size > 0) {
+        fetchTweets({ variables: { ids: Array.from(tweetIds) } });
+      }
     }
-  }, [data, fetchAssets]);
+  }, [data, fetchAssets, fetchTweets]);
 
   useEffect(() => {
     if (assetsData?.assets?.items) {
@@ -95,7 +115,17 @@ export default function Article() {
     }
   }, [assetsData]);
 
-  if (loading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
+  useEffect(() => {
+    if (tweetsData?.tweetCollection?.items) {
+      const map: { [key: string]: string } = {};
+      tweetsData.tweetCollection.items.forEach((tweet: TweetEntry) => {
+        map[tweet.sys.id] = tweet.tweetId;
+      });
+      setTweetMap(map);
+    }
+  }, [tweetsData]);
+
+  if (loading) return <div className="py-12 text-center"><Spinner aria-label="Loading" size="xl" /></div>;
   if (error) {
     console.error("Error loading article:", error);
     return <div className="py-12 text-center text-gray-800 dark:text-white">Sorry, there has been a problem loading this page. Please try reloading the page.</div>;
@@ -107,7 +137,6 @@ export default function Article() {
   const options: Options = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => {
-        // Check if the paragraph node is empty
         if (!node.content || (node.content.length === 1 && node.content[0].nodeType === 'text' && node.content[0].value === '')) {
           return <br />;
         }
@@ -126,10 +155,6 @@ export default function Article() {
       [BLOCKS.TABLE_ROW]: (_node, children) => <tr className="border border-gray-300">{children}</tr>,
       [BLOCKS.TABLE_HEADER_CELL]: (_node, children) => <th className="border border-gray-300 bg-gray-100 p-2 font-bold dark:text-gray-700">{children}</th>,
       [BLOCKS.TABLE_CELL]: (_node, children) => <td className="border border-gray-300 p-2">{children}</td>,
-      [INLINES.HYPERLINK]: (node, children) => {
-        const { uri } = node.data;
-        return <a href={uri} className="text-blue-500 underline">{children}</a>;
-      },
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
         const assetId = node.data.target.sys.id;
         const asset = assetMap[assetId];
@@ -148,13 +173,27 @@ export default function Article() {
         }
         return null;
       },
+      [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+        const entryId = node.data.target.sys.id;
+        const tweetId = tweetMap[entryId];
+        if (tweetId) {
+          // eslint-disable-next-line tailwindcss/no-custom-classname
+          return <div className="light dark:dark"><Tweet id={tweetId} /></div>;
+        }
+        return <div className="text-center"><Spinner aria-label="Loading" size="xl" /></div>;
+      },
+      [INLINES.HYPERLINK]: (node, children) => {
+        const { uri } = node.data;
+        return <a href={uri} className="text-blue-500 underline">{children}</a>;
+      },
     },
   };
+
   ReactGA.send({
     hitType: "pageview",
     page: `/article/${id}`,
-    title: `Article: ${article?.title}`
-  })
+    title: `Article: ${article?.title}`,
+  });
 
   return (
     <>
@@ -164,10 +203,10 @@ export default function Article() {
           <p className="pt-5 text-4xl font-semibold text-gray-700 dark:text-white">{article?.title}</p>
           <div className="flex py-2">
             <div className="flex gap-2">
-              <img src={article?.author.avatar.url} className="size-[40px] rounded-full" alt={`Image of author ${article?.author.firstName} ${article?.author.lastName}`}/>
+              <img src={article?.author.avatar.url} className="size-[40px] rounded-full" alt={`Image of author ${article?.author.firstName} ${article?.author.lastName}`} />
               <div>
-              <p className="">{article?.author.firstName} {article?.author.lastName}</p>
-              <p className="text-sm text-gray-400">{article?.author.role}</p>
+                <p className="">{article?.author.firstName} {article?.author.lastName}</p>
+                <p className="text-sm text-gray-400">{article?.author.role}</p>
               </div>
             </div>
             <p className="ml-auto pb-5 font-thin">{formatDate(article?.sys.firstPublishedAt || "")}</p>
@@ -176,8 +215,8 @@ export default function Article() {
             {documentToReactComponents(contentJson, options)}
           </div>
         </div>
-        <div className="w-full dark:text-white lg:w-80">
-          <RecentNewsSection isSidebar={true} currentArticleId={id}/>
+        <div className="mt-10 w-full dark:text-white lg:mt-0 lg:w-80">
+          <RecentNewsSection isSidebar={true} currentArticleId={id} />
         </div>
       </div>
     </>

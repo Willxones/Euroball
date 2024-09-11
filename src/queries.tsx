@@ -477,3 +477,16 @@ export const GET_ASSETS_BY_IDS = gql`
     }
   }
 `;
+
+export const GET_TWEETS_BY_IDS = gql`
+  query GetTweetsByIds($ids: [String!]) {
+    tweetCollection(where: { sys: { id_in: $ids } }) {
+      items {
+        sys {
+          id
+        }
+        tweetId
+      }
+    }
+  }
+`;
