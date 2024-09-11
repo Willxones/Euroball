@@ -1,13 +1,16 @@
 import { formatDate } from "../../components/formatDate";
 import { Article } from "./NewsTable";
 
-export function NewsTableArticle({ article }: { article: Article }) {
+export function NewsTableArticle({ article }: { article: Article | undefined }) {
+  if (!article) {
+    return <div className="text-center dark:text-white">Error Fetching Article</div>
+  }
   return (
     <>
     <a href={`/article/${article.sys.id}`}>
     <div className="h-[400px] w-full cursor-pointer rounded-lg shadow-md hover:shadow-xl dark:border dark:border-gray-700 dark:text-white sm:h-[500px] lg:max-w-sm">
       <img src={article.headerImage.url} className="h-52 w-full rounded-t-lg object-cover object-center sm:h-72"/>
-      <div className="h-full p-5">
+      <div className=" p-5">
     <h5 className="line-clamp-4 h-32 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {article.title}
       </h5>

@@ -3,10 +3,11 @@ import ScoreCard from "./ScoreCard";
 import { Game, Week } from "./WeekPicker";
 import { GET_GAMES_BY_WEEK } from "../../queries";
 import { Spinner } from "flowbite-react";
+import { Team } from "../scores/ScoreCard";
 
 interface ScoresTableProps {
     selectedWeek: Week | null;
-    openModal: (game: Game | null) => void;
+    openModal: (game: Game | null, homeTeam: Team | undefined, awayTeam: Team | undefined) => void;
 }
 
 interface GetGamesByWeekResponse {

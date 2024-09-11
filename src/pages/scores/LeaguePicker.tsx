@@ -6,6 +6,7 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import ScoresTable from "./ScoresTable";
 import WeekPicker, { Game, Week } from "./WeekPicker";
 import { Spinner } from "flowbite-react";
+import { Team } from "./ScoreCard";
 
 export type League = {
   name: string;
@@ -23,7 +24,7 @@ interface leagueCollection {
 }
 
 interface LeaguePickerProps {
-  openModal: (game: Game | null) => void;
+  openModal: (game: Game | null,  homeTeam: Team | undefined, awayTeam: Team | undefined) => void;
 }
 
 export default function LeaguePicker({openModal}: LeaguePickerProps) {

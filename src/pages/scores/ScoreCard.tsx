@@ -6,10 +6,10 @@ import { Spinner } from "flowbite-react";
 
 interface ScoreCardProps {
     game: Game;
-    openModal: (game: Game | null) => void;
+    openModal: (game: Game | null, homeTeam: Team | undefined, awayTeam: Team | undefined) => void;
 }
 
-interface Team {
+export interface Team {
     sys: {
         id: string;
     };
@@ -26,9 +26,6 @@ interface GetTeamResponse {
 }
 
 export default function ScoreCard({ game, openModal }: ScoreCardProps) {
-    const handleClick = () => {
-        openModal(game)
-    }
     const { data: homeTeamData, loading: homeTeamLoading, error: homeTeamError } = useQuery<GetTeamResponse>(
         GET_TEAM_BY_ID,
         {
@@ -53,6 +50,10 @@ export default function ScoreCard({ game, openModal }: ScoreCardProps) {
     const homeTeam = homeTeamData?.team;
     const awayTeam = awayTeamData?.team;
 
+    const handleClick = () => {
+        openModal(game, homeTeam, awayTeam!); // Pass the teams along with the game
+    };
+
     // Handle null or undefined scores
     const homeScore = game.homeScore ?? '-';
     const awayScore = game.awayScore ?? '-';
@@ -65,7 +66,7 @@ export default function ScoreCard({ game, openModal }: ScoreCardProps) {
     const isAwayScoreHighest = awayScore !== '-' && homeScore !== '-' && awayScore > homeScore;
 
     return (
-        <a onClick={handleClick} className="cursor-pointer">
+        <a onClick={handleClick} className="h-28 w-full cursor-pointer overflow-hidden rounded-md hover:shadow-md sm:w-[294px]">
         <div className="h-28 w-full overflow-hidden rounded-md border px-4 py-2 text-gray-700 shadow-md dark:border-gray-700 dark:text-white sm:w-[294px]">
             <div className="flex flex-col gap-2">
                 <div className="flex">

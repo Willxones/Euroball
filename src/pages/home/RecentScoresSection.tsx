@@ -3,6 +3,7 @@ import ScoreCard from "../scores/ScoreCard";
 import { GET_ALL_GAMES } from "../../queries";
 import { Game } from "../scores/WeekPicker";
 import { Spinner } from "flowbite-react";
+import {Team} from '../scores/ScoreCard';
 
 interface GetAllGamesResponse {
     gameCollection: GameCollection;
@@ -14,7 +15,7 @@ interface GameCollection {
 }
 
 interface RecentScoresSectionProps {
-    openModal: (game: Game | null) => void;
+    openModal: (game: Game | null, homeTeam: Team | undefined, awayTeam: Team | undefined) => void;
 }
 
 export default function RecentScoresSection({openModal}: RecentScoresSectionProps) {
