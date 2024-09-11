@@ -5,7 +5,7 @@ export default function PageFooter() {
       <>
         <section className="mt-2 dark:hidden">
         <Footer container>
-        <Footer.Brand src="/DarkRegLogo.png"/>
+        <Footer.Brand src="/DarkRegLogo.png" className="h-5"/>
       <Footer.LinkGroup>
         <Footer.Link href="/about">About</Footer.Link>
         <Footer.Link href="/contact">Contact</Footer.Link>
