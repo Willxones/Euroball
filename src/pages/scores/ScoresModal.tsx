@@ -71,7 +71,7 @@ export default function ScoresModal({ isModalOpen, selectedGame, homeTeam, awayT
         <div className="h-44 w-full sm:h-60">
           <iframe
             src={selectedGame.gameReplay}
-            className="size-full"
+            className="size-full rounded-lg"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
@@ -132,7 +132,7 @@ export default function ScoresModal({ isModalOpen, selectedGame, homeTeam, awayT
                 <img src={awayTeam?.logo.url} alt={`${awayTeam?.locationName} ${awayTeam?.teamName} Logo`} className="size-6 rounded-md bg-gray-200 object-contain dark:bg-transparent" />
                 <p>{awayTeam?.locationName} {awayTeam?.teamName}</p>
               </div>
-              <div className={`${isAwayScoreHighest ? 'font-bold' : ''}`}>{selectedGame?.homeScore || "-"}</div>
+              <div className={`${isAwayScoreHighest ? 'font-bold' : ''}`}>{selectedGame?.awayScore || "-"}</div>
             </div>
 
             <h2 className="font-bold">Highlights / Game Replay</h2>
