@@ -109,14 +109,14 @@ export default function ScoresModal({ isModalOpen, selectedGame, homeTeam, awayT
             {/* Show week and league data if available */}
             <div className="flex flex-col gap-2 sm:flex-row">
               {league && 
-              <div className="flex-1 flex gap-2">
-              <img className="size-6 object-cover rounded-md" src={league.logo.url}/>
+              <div className="flex flex-1 gap-2">
+              <img className="size-6 rounded-md object-cover" src={league.logo.url}/>
               <p className="text-base sm:text-lg">
                 {league.name}
               </p>
               </div>
               }
-              {week && <p className="text-base sm:text-lg flex">{<CalendarIcon className="size-6 mr-2"/>} {removeContentInParentheses(week.weekName)}</p>}
+              {week && <p className="flex text-base sm:text-lg">{<CalendarIcon className="mr-2 size-6"/>} {removeContentInParentheses(week.weekName)}</p>}
             </div>
 
             <h2 className="font-bold">Game Scores</h2>
