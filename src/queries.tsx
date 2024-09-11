@@ -15,7 +15,37 @@ export const GET_LEAGUES = gql`
     }
   }
 `;
+export const GET_WEEK_BY_ID = gql`
+  query GetWeek($weekId: String!) {
+    week(id: $weekId) {
+      sys {
+        id
+      }
+      weekName
+      isPlayoffWeek
+      league {
+        sys {
+          id
+        }
+      }
+    }
+  }
+`;
 
+
+export const GET_LEAGUE_BY_ID = gql`
+  query GetLeague($leagueId: String!) {
+    league(id: $leagueId) {
+      sys {
+        id
+      }
+      name
+      logo {
+        url
+      }
+    }
+  }
+`;
 
 export const GET_DIVISIONS_BY_LEAGUE = gql`
   query GetDivisionsByLeague($leagueName: String!) {
@@ -81,6 +111,11 @@ export const GET_WEEKS_BY_LEAGUE = gql`
         }
         weekName
         isPlayoffWeek
+        league {
+          sys {
+            id
+          }
+        }
       }
     }
   }
@@ -157,6 +192,12 @@ export const GET_GAMES_BY_WEEK = gql`
         }
         homeScore
         awayScore
+        relatedArticle {
+          sys {
+            id
+          }
+        }
+        gameReplay
       }
     }
   }
@@ -204,6 +245,12 @@ export const GET_ALL_GAMES = gql`
         }
         homeScore
         awayScore
+        relatedArticle {
+          sys {
+            id
+          }
+        }
+        gameReplay
         week {
           sys {
             id

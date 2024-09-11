@@ -12,6 +12,11 @@ export type Week = {
     }
     weekName: string;
     isPlayoffWeek: boolean;
+    league: {
+        sys: {
+            id: string;
+        }
+    };
 }
 
 export type Game = {
@@ -37,6 +42,12 @@ export type Game = {
     }
     homeScore: number | null;
     awayScore: number | null;
+    relatedArticle: {
+        sys: {
+            id: string;
+        }
+    }
+    gameReplay: string;
 }
 
 interface WeekPickerProps {
