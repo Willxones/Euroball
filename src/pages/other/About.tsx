@@ -8,8 +8,7 @@ export default function About() {
       })
     return (
         <>
-        <div className="mx-auto mt-10 max-w-lg dark:text-white">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-lg py-12 dark:text-white">
   {/* About Us Section */}
   <div className="mb-12">
     <h1 className="text-4xl font-extrabold">About Us</h1>
@@ -33,7 +32,7 @@ export default function About() {
       We aim to grow the game as we grow our brand across multiple media platforms, with plans to expand with more products in the future.
     </p>
     <p className="mt-4 text-lg">
-      We hope you enjoy our content, and don’t hesitate to provide any feedback, positive or negative!
+      We hope you enjoy our content, and don't hesitate to provide any feedback, positive or negative!
     </p>
   </div>
 
@@ -41,12 +40,10 @@ export default function About() {
   <div className="py-8">
     <h2 className="text-3xl font-bold">Get Involved</h2>
     <p className="mt-4 text-lg">
-      If you’re an aspiring writer, content creator, or developer, be sure to <a className="text-blue-600" href="/contact">contact us</a> to get involved in our journey!
+      If you're an aspiring writer, content creator, or developer, be sure to <a className="text-blue-600" href="/contact">contact us</a> to get involved in our journey!
     </p>
   </div>
 </div>
-
-        </div>
         </>
     )
 }
