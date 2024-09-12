@@ -71,7 +71,7 @@ export default function ScoresModal({ isModalOpen, selectedGame, homeTeam, awayT
         <div className="h-44 w-full sm:h-60">
           <iframe
             src={selectedGame.gameReplay}
-            className="size-full rounded-lg"
+            className="size-full rounded-lg lg:max-w-sm"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
