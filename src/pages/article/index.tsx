@@ -53,6 +53,7 @@ interface Asset {
   url: string;
   title: string;
   contentType: string;
+  description: string;
 }
 
 interface TweetEntry {
@@ -135,12 +136,13 @@ export default function Article() {
   const contentJson: Document = article?.content.json as Document;
 
   const options: Options = {
+    preserveWhitespace: true,
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => {
         if (!node.content || (node.content.length === 1 && node.content[0].nodeType === 'text' && node.content[0].value === '')) {
           return <br />;
         }
-        return <p>{children}</p>;
+        return <p className="lg:text-lg">{children}</p>;
       },
       [BLOCKS.HEADING_1]: (_node, children) => <h1 className="text-4xl font-bold">{children}</h1>,
       [BLOCKS.HEADING_2]: (_node, children) => <h2 className="text-3xl font-semibold">{children}</h2>,
@@ -162,9 +164,9 @@ export default function Article() {
           const mimeType = asset.contentType;
           const url = asset.url;
           if (mimeType.startsWith('image/')) {
-            return <img src={url} alt={asset.title} className="my-4" />;
+            return <div><img src={url} alt={asset.title} className="my-4 max-h-[500px] w-full object-contain" /><sub>{asset.description}</sub></div>;
           } else if (mimeType.startsWith('video/')) {
-            return <video controls src={url} className="my-4" />;
+            return <div><video controls src={url} className="my-4 max-h-[500px] w-full object-contain" /><sub>{asset.description}</sub></div>;
           } else if (mimeType.startsWith('audio/')) {
             return <audio controls src={url} className="my-4" />;
           } else {
@@ -211,7 +213,7 @@ export default function Article() {
             </div>
             <p className="ml-auto pb-5 font-thin">{formatDate(article?.sys.firstPublishedAt || "")}</p>
           </div>
-          <div>
+          <div className="flex flex-col gap-7">
             {documentToReactComponents(contentJson, options)}
           </div>
         </div>

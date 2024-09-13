@@ -473,6 +473,7 @@ export const GET_ASSETS_BY_IDS = gql`
         url
         title
         contentType
+        description
       }
     }
   }
