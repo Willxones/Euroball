@@ -71,7 +71,7 @@ export default function ScoresModal({ isModalOpen, selectedGame, homeTeam, awayT
         <div className="h-44 w-full sm:h-60">
           <iframe
             src={selectedGame.gameReplay}
-            className="size-full rounded-lg lg:max-w-sm"
+            className="mx-auto size-full rounded-lg lg:max-w-sm"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
@@ -85,7 +85,7 @@ export default function ScoresModal({ isModalOpen, selectedGame, homeTeam, awayT
   // Render article section
   const articleSection = () => {
     if (selectedGame?.relatedArticle) {
-      return <div><NewsTableArticle article={article} /></div>;
+      return <div className="flex justify-center"><NewsTableArticle article={article} /></div>;
     } else {
       return <div><p className="text-center">This game has no related news</p></div>;
     }

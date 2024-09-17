@@ -164,7 +164,7 @@ export default function Article() {
           const mimeType = asset.contentType;
           const url = asset.url;
           if (mimeType.startsWith('image/')) {
-            return <div><img src={url} alt={asset.title} className="my-4 max-h-[500px] w-full object-contain" /><sub>{asset.description}</sub></div>;
+            return <div><img src={url} alt={asset.description} className="my-4 max-h-[500px] w-full object-contain" /><sub>{asset.description}</sub></div>;
           } else if (mimeType.startsWith('video/')) {
             return <div><video controls src={url} className="my-4 max-h-[500px] w-full object-contain" /><sub>{asset.description}</sub></div>;
           } else if (mimeType.startsWith('audio/')) {

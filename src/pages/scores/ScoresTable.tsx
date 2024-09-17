@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import ScoreCard from "./ScoreCard";
 import { Game, Week } from "./WeekPicker";
 import { GET_GAMES_BY_WEEK } from "../../queries";
-import { Spinner } from "flowbite-react";
+import { Modal, Spinner } from "flowbite-react";
 import { Team } from "../scores/ScoreCard";
 
 interface ScoresTableProps {
@@ -38,7 +38,7 @@ export default function ScoresTable({ selectedWeek, openModal }: ScoresTableProp
         return <div></div>;
     }
 
-    if (gamesLoading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
+    if (gamesLoading) return <Modal><div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div></Modal>;
     if (gamesError) return <div className="py-4 text-center text-white">Error loading games</div>;
 
     // Get the games and create a new array for sorting

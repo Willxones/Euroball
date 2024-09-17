@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import ScoreCard from "../scores/ScoreCard";
 import { GET_ALL_GAMES } from "../../queries";
 import { Game } from "../scores/WeekPicker";
-import { Spinner } from "flowbite-react";
+import { Modal, Spinner } from "flowbite-react";
 import {Team} from '../scores/ScoreCard';
 
 interface GetAllGamesResponse {
@@ -31,7 +31,7 @@ export default function RecentScoresSection({openModal}: RecentScoresSectionProp
         }
     );
 
-    if (gamesLoading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
+    if (gamesLoading) return <Modal><div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div></Modal>;
     if (gamesError) return <div>Error loading games</div>;
 
     // Get the games and create a new array for sorting
