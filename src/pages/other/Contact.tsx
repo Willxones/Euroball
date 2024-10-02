@@ -16,8 +16,7 @@ export default function Contact() {
         <div className="mx-auto mt-10 max-w-lg dark:text-white">
           <h1 className="text-2xl font-bold">Contact us</h1>
           <p className="mb-2 text-xs text-gray-400 sm:text-lg">
-            Use this form to get in touch with us. We'll do our best to reply as
-            quickly as possible.
+            Use this form to get in touch with us. All messages will be replied to as quickly as possible.
           </p>
           <div className="mb-2 block">
             <Label htmlFor="email1" value="Your email" />

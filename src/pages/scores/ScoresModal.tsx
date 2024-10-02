@@ -1,18 +1,19 @@
 "use client";
 
 import { Modal, Spinner } from "flowbite-react";
-import { Game } from "./WeekPicker";
+import { Game, Week } from "./WeekPicker";
 import { formatDateTime } from "./formatDateTime";
 import { Team } from "../scores/ScoreCard";
 import { NewsTableArticle } from "../news/NewsTableArticle";
 import {
   GET_ARTICLE_BY_ID,
-  GET_LEAGUE_BY_ID,
+  GET_LEAGUES,  // Updated query to fetch all leagues
   GET_WEEK_BY_ID,
 } from "../../queries";
 import { useQuery } from "@apollo/client";
 import { Article } from "../news/NewsTable";
 import { CalendarIcon } from "@heroicons/react/20/solid";
+import { League } from "./LeaguePicker";
 
 interface ScoresModalProps {
   isModalOpen: boolean;
@@ -41,17 +42,12 @@ export default function ScoresModal({
     skip: !weekId || typeof weekId !== "string", // Skip query if weekId is undefined or not a valid string
   });
 
-  const leagueId = weekData?.week?.league?.sys?.id;
-
-  // Fetch league data conditionally
+  // Fetch all leagues
   const {
-    data: leagueData,
-    loading: leagueLoading,
-    error: leagueError,
-  } = useQuery(GET_LEAGUE_BY_ID, {
-    variables: { leagueId },
-    skip: !leagueId, // Skip if no league ID
-  });
+    data: leaguesData,
+    loading: leaguesLoading,
+    error: leaguesError,
+  } = useQuery(GET_LEAGUES);
 
   // Fetch article data based on relatedArticle ID from selectedGame
   const {
@@ -65,15 +61,18 @@ export default function ScoresModal({
     skip: !selectedGame?.relatedArticle?.sys?.id, // Skip if no article ID
   });
 
-  // Handling loading and error states for article, week, and league
+  // Handling loading and error states for article, week, and leagues
   if (articleError) return <div>Error loading article</div>;
-
   if (weekError) return <p>Error fetching week: {weekError.message}</p>;
-  if (leagueError) return <p>Error fetching league: {leagueError.message}</p>;
+  if (leaguesError) return <p>Error fetching leagues: {leaguesError.message}</p>;
 
   const week = weekData?.week;
-  const league = leagueData?.league;
   const article = articleData?.article;
+
+  // Find the league that contains the week
+  const league = leaguesData?.leagueCollection.items.find((league: League) =>
+    league.weeksCollection.items.some((week: Week) => week.sys.id === weekId)
+  );
 
   // Determine the score comparison
   let isHomeScoreHighest = false;
@@ -122,7 +121,7 @@ export default function ScoresModal({
     }
   };
 
-  if (articleLoading || weekLoading || leagueLoading) {
+  if (articleLoading || weekLoading || leaguesLoading) {
     return (
       <Modal>
         <div className="py-12 text-center">
@@ -131,12 +130,14 @@ export default function ScoresModal({
       </Modal>
     );
   }
+
   function removeContentInParentheses(weekName: string): string {
     // Regular expression to match text within parentheses, including the parentheses
     const regex = /\(.*?\)/g;
     // Replace the matched content with an empty string
     return weekName.replace(regex, "").trim();
   }
+
   return (
     <>
       <Modal

@@ -18,6 +18,17 @@ export type League = {
   logo: {
     url: string;
   };
+  sys: {
+    id: string;
+  }
+  weeksCollection: {
+    items: {
+      some(arg0: (week: Week) => boolean): unknown;
+      sys: {
+        id: string;
+      }
+    }
+  }
 };
 
 interface GetAllLeaguesResponse {

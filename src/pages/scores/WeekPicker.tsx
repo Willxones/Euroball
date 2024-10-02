@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { GET_WEEKS_BY_LEAGUE, GET_GAMES_BY_WEEKS } from "../../queries";
 import {
   Listbox,
@@ -59,23 +59,6 @@ interface WeekPickerProps {
   selectedLeague: League | null;
   onWeekChange: (week: Week | null) => void;
 }
-interface WeekCollection {
-  items: Week[];
-  total: number;
-}
-
-interface GameCollection {
-  items: Game[];
-  total: number;
-}
-
-interface GetWeeksResponse {
-  weekCollection: WeekCollection;
-}
-
-interface GetGamesResponse {
-  gameCollection: GameCollection;
-}
 
 export default function WeekPicker({
   selectedLeague,
@@ -86,18 +69,19 @@ export default function WeekPicker({
     data: weeksData,
     loading: weeksLoading,
     error: weeksError,
-  } = useQuery<GetWeeksResponse>(GET_WEEKS_BY_LEAGUE, {
-    variables: { limit, leagueName: selectedLeague?.name },
+  } = useQuery(GET_WEEKS_BY_LEAGUE, {
+    variables: { limit, leagueId: selectedLeague?.sys.id },
     skip: !selectedLeague,
   });
-
-  const weekIds =
-    weeksData?.weekCollection.items.map((week) => week.sys.id) || [];
+  const weeks: Week[] = useMemo(() => {
+    return weeksData?.leagueCollection.items[0]?.weeksCollection.items || [];
+  }, [weeksData]);
+  const weekIds = weeks.map((week) => week.sys.id);
   const {
     data: gamesData,
     loading: gamesLoading,
     error: gamesError,
-  } = useQuery<GetGamesResponse>(GET_GAMES_BY_WEEKS, {
+  } = useQuery(GET_GAMES_BY_WEEKS, {
     variables: { limit, weekIds },
     skip: weekIds.length === 0,
   });
@@ -111,32 +95,32 @@ export default function WeekPicker({
   useEffect(() => {
     if (weeksData && gamesData) {
       const playedGames = gamesData.gameCollection.items.filter(
-        (game) => game.homeScore !== null || game.awayScore !== null,
+        (game: Game) => game.homeScore !== null || game.awayScore !== null,
       );
-      const mostRecentGame = playedGames.reduce((latest, game) => {
+      const mostRecentGame = playedGames.reduce((latest: Game, game: Game) => {
         return new Date(game.dateAndTime) > new Date(latest.dateAndTime)
           ? game
           : latest;
       }, playedGames[0]);
 
       if (mostRecentGame) {
-        const mostRecentWeek = weeksData.weekCollection.items.find(
-          (week) => week.sys.id === mostRecentGame.week.sys.id,
+        const mostRecentWeek = weeks.find(
+          (week: Week) => week.sys.id === mostRecentGame.week.sys.id,
         );
         setSelected(mostRecentWeek || null);
         setCurrentWeekId(mostRecentWeek?.sys.id || null);
-      } else if (weeksData.weekCollection.items.length > 0) {
-        setSelected(weeksData.weekCollection.items[0]);
+      } else if (weeks.length > 0) {
+        setSelected(weeks[0]);
         setCurrentWeekId(null);
       } else {
         setSelected(null);
         setCurrentWeekId(null);
       }
-    } else if (weeksData && weeksData.weekCollection.items.length === 0) {
+    } else if (weeksData && weeks.length === 0) {
       setSelected(null);
       setCurrentWeekId(null);
     }
-  }, [weeksData, gamesData]);
+  }, [weeksData, gamesData, weeks]);
 
   useEffect(() => {
     if (!selectedLeague) {
@@ -154,7 +138,6 @@ export default function WeekPicker({
   if (weeksError) return <div>Error loading weeks</div>;
   if (gamesError) return <div>Error loading games</div>;
 
-  const weeks: Week[] = weeksData?.weekCollection?.items || [];
   const isDisabled = weeks.length === 0;
 
   function removeContentInParentheses(weekName: string): string {

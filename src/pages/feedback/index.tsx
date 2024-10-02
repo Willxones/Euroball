@@ -17,12 +17,10 @@ export default function Feedback() {
           <div className="dark:text-white">
             <h1 className="text-2xl font-semibold">Leave us some feedback</h1>
             <p className="mb-2 text-xs text-gray-400 sm:text-lg">
-              We want to hear from you! As we look to continuously improve our
-              service, we would greatly appreciate any feedback regarding your
-              thoughts on the website, what could be improved, what features you
-              would like to see, etc. As a very small team we will do our best
-              to action these, but we may not be able to implement every
-              suggestion.
+              We want to hear from you! If you have any thoughts on the website,
+              what could be improved, what features you would like to see, etc.
+              please get in touch to let us know. Every suggestion will be
+              considered as we look to continuously improve our services.
             </p>
           </div>
           <Textarea

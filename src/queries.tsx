@@ -11,6 +11,17 @@ export const GET_LEAGUES = gql`
         logo {
           url
         }
+        sys {
+          id
+        }
+        weeksCollection {
+          items {
+            sys {
+              id
+            }
+            weekName
+          }
+        }
       }
     }
   }
@@ -23,11 +34,6 @@ export const GET_WEEK_BY_ID = gql`
       }
       weekName
       isPlayoffWeek
-      league {
-        sys {
-          id
-        }
-      }
     }
   }
 `;
@@ -93,21 +99,20 @@ export const GET_TEAMS_WITHIN_DIVISION = gql`
 `;
 
 export const GET_WEEKS_BY_LEAGUE = gql`
-  query GetWeeksByLeague($limit: Int!, $leagueName: String) {
-    weekCollection(
-      limit: $limit
-      order: sys_firstPublishedAt_ASC
-      where: { league: { name: $leagueName } }
-    ) {
+  query GetWeeksByLeague($limit: Int!, $leagueId: String!) {
+    leagueCollection(where: { sys: { id: $leagueId } }) {
       items {
         sys {
           id
         }
-        weekName
-        isPlayoffWeek
-        league {
-          sys {
-            id
+        name
+        weeksCollection(limit: $limit) {
+          items {
+            sys {
+              id
+            }
+            weekName
+            isPlayoffWeek
           }
         }
       }
