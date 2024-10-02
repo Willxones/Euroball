@@ -34,6 +34,7 @@ export type Game = {
       id: string;
     };
     weekName: string;
+    isPlayoffWeek: boolean;
   };
   homeTeam: {
     sys: {
