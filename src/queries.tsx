@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_LEAGUES = gql`
   query GetLeagues($isActive: Boolean) {
@@ -32,7 +32,6 @@ export const GET_WEEK_BY_ID = gql`
   }
 `;
 
-
 export const GET_LEAGUE_BY_ID = gql`
   query GetLeague($leagueId: String!) {
     league(id: $leagueId) {
@@ -50,9 +49,8 @@ export const GET_LEAGUE_BY_ID = gql`
 export const GET_DIVISIONS_BY_LEAGUE = gql`
   query GetDivisionsByLeague($leagueName: String!) {
     divisionCollection(
-      where: {
-        league: { name: $leagueName }
-      }
+      order: sys_firstPublishedAt_ASC
+      where: { league: { name: $leagueName } }
     ) {
       items {
         sys {
@@ -94,16 +92,12 @@ export const GET_TEAMS_WITHIN_DIVISION = gql`
   }
 `;
 
-
-
 export const GET_WEEKS_BY_LEAGUE = gql`
   query GetWeeksByLeague($limit: Int!, $leagueName: String) {
     weekCollection(
       limit: $limit
       order: sys_firstPublishedAt_ASC
-      where: {
-        league: { name: $leagueName }
-      }
+      where: { league: { name: $leagueName } }
     ) {
       items {
         sys {
@@ -126,9 +120,7 @@ export const GET_GAMES_BY_WEEKS = gql`
     gameCollection(
       limit: $limit
       order: dateAndTime_DESC
-      where: {
-        week: { sys: { id_in: $weekIds } }
-      }
+      where: { week: { sys: { id_in: $weekIds } } }
     ) {
       items {
         sys {
@@ -153,9 +145,7 @@ export const GET_GAMES_BY_WEEK = gql`
     gameCollection(
       limit: $limit
       order: dateAndTime_DESC
-      where: {
-        week: { sys: { id: $weekId } }
-      }
+      where: { week: { sys: { id: $weekId } } }
     ) {
       items {
         sys {
@@ -204,14 +194,19 @@ export const GET_GAMES_BY_WEEK = gql`
 `;
 
 export const GET_ALL_GAMES = gql`
-  query GetAllGames($limit: Int!, $skip: Int!, $homeScoreExists: Boolean, $awayScoreExists: Boolean) {
+  query GetAllGames(
+    $limit: Int!
+    $skip: Int!
+    $homeScoreExists: Boolean
+    $awayScoreExists: Boolean
+  ) {
     gameCollection(
       limit: $limit
       skip: $skip
       order: dateAndTime_DESC
       where: {
         OR: [
-          { homeScore_exists: $homeScoreExists },
+          { homeScore_exists: $homeScoreExists }
           { awayScore_exists: $awayScoreExists }
         ]
       }
@@ -264,17 +259,18 @@ export const GET_ALL_GAMES = gql`
   }
 `;
 
-
 export const GET_ARTICLES_BY_LEAGUE = gql`
-  query GetArticlesByLeague($limit: Int!, $skip: Int!, $leagueName: String, $searchQuery: String) {
+  query GetArticlesByLeague(
+    $limit: Int!
+    $skip: Int!
+    $leagueName: String
+    $searchQuery: String
+  ) {
     articleCollection(
       limit: $limit
       skip: $skip
       order: sys_firstPublishedAt_DESC
-      where: {
-        league: { name: $leagueName }
-        title_contains: $searchQuery
-      }
+      where: { league: { name: $leagueName }, title_contains: $searchQuery }
     ) {
       items {
         sys {
@@ -322,13 +318,7 @@ export const GET_FEATURED_ARTICLES = gql`
     articleCollection(
       limit: 3
       order: sys_firstPublishedAt_DESC
-      where: {
-        contentfulMetadata: {
-          tags: {
-            id_contains_all: "featured"
-          }
-        }
-      }
+      where: { contentfulMetadata: { tags: { id_contains_all: "featured" } } }
     ) {
       items {
         contentfulMetadata {
@@ -374,9 +364,7 @@ export const GET_ALL_ARTICLES = gql`
       limit: $limit
       skip: $skip
       order: sys_firstPublishedAt_DESC
-      where: {
-        title_contains: $searchQuery
-      }
+      where: { title_contains: $searchQuery }
     ) {
       items {
         sys {
@@ -390,7 +378,7 @@ export const GET_ALL_ARTICLES = gql`
         content {
           json
         }
-          author {
+        author {
           firstName
           lastName
           avatar {
@@ -425,8 +413,7 @@ export const GET_TEAM_BY_ID = gql`
       }
     }
   }
-`
-
+`;
 
 export const GET_ARTICLE_BY_ID = gql`
   query GetArticleById($id: String!) {

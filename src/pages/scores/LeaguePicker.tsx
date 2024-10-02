@@ -1,7 +1,12 @@
 import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { GET_LEAGUES } from "../../queries";
-import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react";
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import ScoresTable from "./ScoresTable";
 import WeekPicker, { Game, Week } from "./WeekPicker";
@@ -24,17 +29,21 @@ interface leagueCollection {
 }
 
 interface LeaguePickerProps {
-  openModal: (game: Game | null,  homeTeam: Team | undefined, awayTeam: Team | undefined) => void;
+  openModal: (
+    game: Game | null,
+    homeTeam: Team | undefined,
+    awayTeam: Team | undefined,
+  ) => void;
 }
 
-export default function LeaguePicker({openModal}: LeaguePickerProps) {
+export default function LeaguePicker({ openModal }: LeaguePickerProps) {
   const { data, loading, error } = useQuery<GetAllLeaguesResponse>(
     GET_LEAGUES,
     {
       variables: {
-        isActive: true
-      }
-    }
+        isActive: true,
+      },
+    },
   );
   const [selected, setSelected] = useState<League | null>(null);
   const [selectedWeek, setSelectedWeek] = useState<Week | null>(null);
@@ -45,7 +54,12 @@ export default function LeaguePicker({openModal}: LeaguePickerProps) {
     }
   }, [data, selected]);
 
-  if (loading) return <div className="py-12 text-center"><Spinner aria-label="Default status example" size="xl" /></div>;
+  if (loading)
+    return (
+      <div className="py-12 text-center">
+        <Spinner aria-label="Default status example" size="xl" />
+      </div>
+    );
   if (error) return <div>Error loading leagues</div>;
 
   const leagues: League[] = data?.leagueCollection?.items || [];
@@ -56,11 +70,20 @@ export default function LeaguePicker({openModal}: LeaguePickerProps) {
         <div className="relative my-2">
           <ListboxButton className="relative w-full cursor-pointer rounded-md border bg-white py-1 pl-3 pr-10 text-left text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm sm:leading-6">
             <span className="flex items-center">
-              {selected && selected.logo.url && <img alt="" src={selected.logo.url} className="size-5 shrink-0 object-cover" />}
+              {selected && selected.logo.url && (
+                <img
+                  alt=""
+                  src={selected.logo.url}
+                  className="size-5 shrink-0 object-cover"
+                />
+              )}
               <span className="ml-3 block truncate">{selected?.name}</span>
             </span>
             <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-              <ChevronUpDownIcon aria-hidden="true" className="size-5 text-gray-400" />
+              <ChevronUpDownIcon
+                aria-hidden="true"
+                className="size-5 text-gray-400"
+              />
             </span>
           </ListboxButton>
           <ListboxOptions
@@ -75,7 +98,13 @@ export default function LeaguePicker({openModal}: LeaguePickerProps) {
                 className="group relative cursor-pointer select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-gray-700 data-[focus]:text-white dark:text-white dark:data-[focus]:bg-white dark:data-[focus]:text-gray-900"
               >
                 <div className="flex items-center">
-                  {league.logo.url && <img alt="" src={league.logo.url} className="size-5 shrink-0 object-cover" />}
+                  {league.logo.url && (
+                    <img
+                      alt=""
+                      src={league.logo.url}
+                      className="size-5 shrink-0 object-cover"
+                    />
+                  )}
                   <span className="ml-3 block truncate font-normal group-data-[selected]:font-semibold">
                     {league.name}
                   </span>
@@ -88,8 +117,8 @@ export default function LeaguePicker({openModal}: LeaguePickerProps) {
           </ListboxOptions>
         </div>
       </Listbox>
-      <WeekPicker selectedLeague={selected} onWeekChange={setSelectedWeek}/>
-      <ScoresTable selectedWeek={selectedWeek} openModal={openModal}/>
+      <WeekPicker selectedLeague={selected} onWeekChange={setSelectedWeek} />
+      <ScoresTable selectedWeek={selectedWeek} openModal={openModal} />
     </>
   );
 }

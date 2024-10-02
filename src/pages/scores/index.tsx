@@ -14,11 +14,19 @@ export default function Scores() {
 
   const [openModal, setOpenModal] = useState<boolean>(false); // Controls modal visibility
   const [selectedGame, setSelectedGame] = useState<Game | null>(null); // Stores the selected game
-  const [selectedHomeTeam, setSelectedHomeTeam] = useState<Team | undefined>(undefined);
-const [selectedAwayTeam, setSelectedAwayTeam] = useState<Team | undefined>(undefined);
+  const [selectedHomeTeam, setSelectedHomeTeam] = useState<Team | undefined>(
+    undefined,
+  );
+  const [selectedAwayTeam, setSelectedAwayTeam] = useState<Team | undefined>(
+    undefined,
+  );
 
   // Function to open modal with the provided game
-  const handleOpenModal = (game: Game | null, homeTeam: Team | undefined, awayTeam: Team | undefined) => {
+  const handleOpenModal = (
+    game: Game | null,
+    homeTeam: Team | undefined,
+    awayTeam: Team | undefined,
+  ) => {
     setSelectedGame(game);
     setSelectedHomeTeam(homeTeam);
     setSelectedAwayTeam(awayTeam);
@@ -38,7 +46,7 @@ const [selectedAwayTeam, setSelectedAwayTeam] = useState<Team | undefined>(undef
         selectedGame={selectedGame}
         onCloseModal={handleCloseModal} // Pass the close function to the modal
         homeTeam={selectedHomeTeam}
-    awayTeam={selectedAwayTeam}
+        awayTeam={selectedAwayTeam}
       />
     </>
   );
