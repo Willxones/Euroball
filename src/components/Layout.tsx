@@ -3,25 +3,19 @@ import Header from "./Header";
 import PageFooter from "./PageFooter";
 import CookieConsent, {
   Cookies,
-  getCookieConsentValue,
 } from "react-cookie-consent";
 import ReactGA from "react-ga4";
-import { useEffect } from "react";
 
 export default function Layout() {
-  useEffect(() => {
-    const isConsent = getCookieConsentValue();
-    if (isConsent === "true") {
-      handleAcceptCookie();
-    }
-  }, []);
   const handleAcceptCookie = () => {
-    if (process.env.GA_TRACKING_ID) {
-      ReactGA.initialize(process.env.GA_TRACKING_ID!);
+    const trackingId = process.env.GA_TRACKING_ID;
+    if (trackingId) {
+      ReactGA.initialize(trackingId);
     }
   };
+
   const handleDeclineCookie = () => {
-    //remove google analytics cookies
+    // Remove Google Analytics cookies
     Cookies.remove("_ga");
     Cookies.remove("_gat");
     Cookies.remove("_gid");

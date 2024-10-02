@@ -9,8 +9,19 @@ import Feedback from "./pages/feedback/index.js";
 import About from "./pages/other/About.js";
 import PrivacyPolicy from "./pages/other/PrivacyPolicy.js";
 import Contact from "./pages/other/Contact.js";
+import { useEffect } from "react";
+import { getCookieConsentValue } from "react-cookie-consent";
+import ReactGA from "react-ga4";
 
 function App() {
+  useEffect(() => {
+    const isConsent = getCookieConsentValue();
+    const trackingId = process.env.GA_TRACKING_ID;
+
+    if (isConsent === "true" && trackingId) {
+      ReactGA.initialize(trackingId);
+    }
+  }, []);
   return (
     <main className="mx-auto min-h-screen max-w-7xl px-5 sm:px-10">
       <BrowserRouter>

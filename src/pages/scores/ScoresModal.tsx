@@ -7,7 +7,7 @@ import { Team } from "../scores/ScoreCard";
 import { NewsTableArticle } from "../news/NewsTableArticle";
 import {
   GET_ARTICLE_BY_ID,
-  GET_LEAGUES,  // Updated query to fetch all leagues
+  GET_LEAGUES, // Updated query to fetch all leagues
   GET_WEEK_BY_ID,
 } from "../../queries";
 import { useQuery } from "@apollo/client";
@@ -64,14 +64,15 @@ export default function ScoresModal({
   // Handling loading and error states for article, week, and leagues
   if (articleError) return <div>Error loading article</div>;
   if (weekError) return <p>Error fetching week: {weekError.message}</p>;
-  if (leaguesError) return <p>Error fetching leagues: {leaguesError.message}</p>;
+  if (leaguesError)
+    return <p>Error fetching leagues: {leaguesError.message}</p>;
 
   const week = weekData?.week;
   const article = articleData?.article;
 
   // Find the league that contains the week
   const league = leaguesData?.leagueCollection.items.find((league: League) =>
-    league.weeksCollection.items.some((week: Week) => week.sys.id === weekId)
+    league.weeksCollection.items.some((week: Week) => week.sys.id === weekId),
   );
 
   // Determine the score comparison

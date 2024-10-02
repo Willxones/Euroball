@@ -3,4 +3,3 @@
 interface Window {
     twttr: unknown;
 }
-
