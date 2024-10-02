@@ -9,9 +9,15 @@ import Feedback from './pages/feedback/index.js';
 import About from './pages/other/About.js';
 import PrivacyPolicy from './pages/other/PrivacyPolicy.js';
 import Contact from './pages/other/Contact.js';
+import AuthProvider from './components/AuthProvider.js';
+import { Login } from './pages/auth/Login.js';
+import { Register } from './pages/auth/Register.js';
+import { PasswordReset } from './pages/auth/PasswordReset.js';
+import Account from './pages/auth/Account.js';
 
 function App() {
   return (
+    <AuthProvider>
     <main className='mx-auto min-h-screen max-w-7xl px-5 sm:px-10'>
       <BrowserRouter>
         <Routes>
@@ -25,10 +31,15 @@ function App() {
             <Route path='/about' element={<About/>}/>
             <Route path='/privacy-policy' element={<PrivacyPolicy/>}/>
             <Route path='/contact' element={<Contact/>}/>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/register' element={<Register/>}/>
+            <Route path='/password-reset' element={<PasswordReset/>}/>
+            <Route path='/account' element={<Account/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
     </main>
+    </AuthProvider>
   );
 }
 

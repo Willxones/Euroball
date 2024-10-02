@@ -4,7 +4,7 @@ export default function PageFooter() {
     return(
       <>
         <section className="mt-2 dark:hidden">
-        <Footer container>
+        <Footer className="shadow-none" container>
         <Footer.Brand src="/DarkRegLogo.png" className="h-5"/>
       <Footer.LinkGroup>
         <Footer.Link href="/about">About</Footer.Link>
@@ -15,8 +15,8 @@ export default function PageFooter() {
     </section>
 
 <section className="mt-2 hidden dark:block">
-<Footer container>
-<Footer.Brand src="/LightRegLogo.png"/>
+<Footer className="shadow-none" container>
+<Footer.Brand src="/LightRegLogo.png" className="h-5"/>
 <Footer.LinkGroup>
 <Footer.Link href="/about">About</Footer.Link>
 <Footer.Link href="/contact">Contact</Footer.Link>
