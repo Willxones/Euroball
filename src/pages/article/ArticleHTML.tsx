@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
-import DOMPurify from 'dompurify';
+import { useEffect } from "react";
+import DOMPurify from "dompurify";
 
 interface ArticleHTMLProps {
-  content: string
+  content: string;
 }
 
-export default function ArticleHTML({content}:ArticleHTMLProps) {
+export default function ArticleHTML({ content }: ArticleHTMLProps) {
   // Sanitize the content to prevent XSS attacks
   const sanitizedContent = DOMPurify.sanitize(content);
 
@@ -13,10 +13,10 @@ export default function ArticleHTML({content}:ArticleHTMLProps) {
     // Function to load the Twitter script
     const loadTwitterScript = () => {
       if (!window.twttr) {
-        const script = document.createElement('script');
-        script.src = 'https://platform.twitter.com/widgets.js';
+        const script = document.createElement("script");
+        script.src = "https://platform.twitter.com/widgets.js";
         script.async = true;
-        script.charset = 'utf-8';
+        script.charset = "utf-8";
         document.body.appendChild(script);
       } else {
         // Assert the type of window.twttr to ensure type safety
@@ -29,8 +29,5 @@ export default function ArticleHTML({content}:ArticleHTMLProps) {
     loadTwitterScript();
   }, [sanitizedContent]);
 
-  return (
-    <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
-  );
-};
-
+  return <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />;
+}

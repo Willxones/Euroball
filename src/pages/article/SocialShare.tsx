@@ -1,12 +1,12 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faFacebookF, 
-  faTwitter, 
-  faLinkedinIn, 
-  faWhatsapp 
-} from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faClipboard } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faTwitter,
+  faLinkedinIn,
+  faWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faClipboard } from "@fortawesome/free-solid-svg-icons";
 
 interface SocialShareProps {
   url: string | undefined;
@@ -15,17 +15,24 @@ interface SocialShareProps {
   hashtag?: string | undefined;
 }
 
-const SocialShare: React.FC<SocialShareProps> = ({ url, title, text, hashtag }) => {
-  
+const SocialShare: React.FC<SocialShareProps> = ({
+  url,
+  title,
+  text,
+  hashtag,
+}) => {
   const encodedUrl = encodeURIComponent(url!);
   const encodedTitle = encodeURIComponent(title!);
   const encodedText = encodeURIComponent(text!);
-  const encodedHashtag = hashtag ? encodeURIComponent(`#${hashtag}`) : '#Euroball';
+  const encodedHashtag = hashtag
+    ? encodeURIComponent(`#${hashtag}`)
+    : "#Euroball";
 
   const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(url!)
-      .then(() => alert('URL copied to clipboard!'))
-      .catch(err => alert('Failed to copy URL: ' + err));
+    navigator.clipboard
+      .writeText(url!)
+      .then(() => alert("URL copied to clipboard!"))
+      .catch((err) => alert("Failed to copy URL: " + err));
   };
 
   return (

@@ -1,4 +1,9 @@
-import { format, differenceInMinutes, differenceInHours, parseISO } from 'date-fns';
+import {
+  format,
+  differenceInMinutes,
+  differenceInHours,
+  parseISO,
+} from "date-fns";
 
 /**
  * Formats the given date string based on the specified conditions.
@@ -12,14 +17,14 @@ export function formatDate(dateStr: string): string {
   const hoursDiff = differenceInHours(now, date);
 
   if (dateStr == "") {
-    return dateStr
+    return dateStr;
   } else if (minutesDiff < 1) {
-    return 'Just now';
+    return "Just now";
   } else if (minutesDiff < 60) {
     return `${minutesDiff}m ago`;
   } else if (hoursDiff < 24) {
     return `${hoursDiff}h ago`;
   } else {
-    return format(date, 'dd MMM, yyyy');
+    return format(date, "dd MMM, yyyy");
   }
 }
