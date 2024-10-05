@@ -2,7 +2,6 @@ import { useQuery } from "@apollo/client";
 import { Game } from "./WeekPicker";
 import { GET_TEAM_BY_ID } from "../../queries";
 import { formatDateTime } from "./formatDateTime";
-import { Spinner } from "flowbite-react";
 
 interface ScoreCardProps {
   game: Game;
@@ -49,11 +48,9 @@ export default function ScoreCard({ game, openModal }: ScoreCardProps) {
       id: game.awayTeam.sys.id,
     },
   });
-
   if (homeTeamLoading || awayTeamLoading)
     return (
-      <div className="py-12 text-center">
-        <Spinner aria-label="Default status example" size="xl" />
+      <div className="h-28 w-full animate-pulse overflow-hidden rounded-md border bg-gray-200 px-4 py-2 text-gray-700 shadow-md dark:border-gray-700 dark:bg-gray-700 dark:text-white sm:w-[294px]">
       </div>
     );
   if (homeTeamError || awayTeamError) return <div></div>;
