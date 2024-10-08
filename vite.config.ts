@@ -10,7 +10,8 @@ export default defineConfig(({ mode }) => {
       'process.env.DELIVERY_ACCESS_TOKEN' : JSON.stringify(env.DELIVERY_ACCESS_TOKEN),
       'process.env.CMA_ACCESS_TOKEN' : JSON.stringify(env.CMA_ACCESS_TOKEN),
       'process.env.EMAIL_ADDRESS' : JSON.stringify(env.EMAIL_ADDRESS),
-      'process.env.GA_TRACKING_ID' : JSON.stringify(env.GA_TRACKING_ID)
+      'process.env.GA_TRACKING_ID' : JSON.stringify(env.GA_TRACKING_ID),
+      'process.env.ENVIRONMENT' : JSON.stringify(env.ENVIRONMENT)
     },
     plugins: [react()],
   }
